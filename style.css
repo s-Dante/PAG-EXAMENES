@@ -85,6 +85,8 @@ header {
     color: var(--colorLetras);
     transform: 0.3s ease;
     box-shadow: 0.3s ease;
+    cursor: pointer;
+
 }
 
 .boton::after {
@@ -104,12 +106,12 @@ header {
     background-image: #00000000;
     transform: translate(0px, -6px);
     box-shadow: 
-        5px 5px 25px 0 #0DE5FF, 
-        -5px 5px 25px 0 #C53AFF;
+        5px 5px 25px 0  #C53AFF, 
+        -5px 5px 25px 0 #0DE5FF;
 }
 
 .boton:hover::after {
-    transform: rotate(150deg);
+    transform: rotate(270deg);
 }
 
 .img-der {
@@ -155,7 +157,6 @@ main {
 }
 
 
-
 .icon {
     margin-right: 15px;
     font-size: 1rem;
@@ -176,9 +177,151 @@ main {
 
 /*  |-> Select*/
 .select {
+    font-size: large;
     grid-column: 1 / -1;
     grid-row: 2 / 3;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #00000000;
+    width: 300px;
 }
+
+/* Estilo de los labels */
+.select label {
+    display: block;
+    font-size: 1.5rem;
+    font-family: 'Markazi Text';
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: var(--colorLetras);
+}
+
+/* Estilos de los select */
+.select select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border: none; /* Elimina los bordes predeterminados */
+    border-bottom: 2px solid #0DE5FF;
+    background-color: #1F2540;
+    font-family: 'Markazi Text';
+    font-size: 16px;
+    color: var(--colorLetras);
+    cursor: pointer;
+    transition: border 0.3s ease;
+}
+
+/* Efecto al poner el cursor sobre el select */
+.select select:hover {
+    background-image: #00000000;
+    transform: translate(0px, -6px);
+    box-shadow: 
+        5px 5px 25px 0  #C53AFF, 
+        -5px 5px 25px 0 #0DE5FF;
+}
+
+
+.select select:focus {
+    outline: none;
+    border-color: #1102df;
+}
+
+.select select option {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #1F2540;
+    color: var(--colorLetras);
+}
+
+.select select option:hover {
+    background-color: #C53AFF;
+    color: #C53AFF;
+}
+
+
+ #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: linear-gradient(180deg, #0E2344 0%, #10151D 100%);
+    border-radius: 10px;
+    box-shadow: 0 14px 16px rgba(0, 0, 0, 0.201);
+}
+
+/* Personalización de la cabecera del calendario */
+.fc-header-toolbar {
+    background-color: #00000000; /* Color de fondo */
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: var(--colorLetras); /* Color de texto en la cabecera */
+    font-size: 16px;
+}
+
+/* Cambiar color de los botones de la cabecera */
+.fc-button {
+    background-color: #c03610; /* Color de los botones */
+    color: rgb(30, 140, 76);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Hover y cambio de color en los botones */
+.fc-button:hover {
+    background-color: #3f1ad6;
+}
+
+/* Personalizar los días de la semana */
+.fc-day-header {
+    font-weight: 400px;
+    background-color: #00000000;
+    color: var(--colorLetras);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Estilo para los días del calendario */
+.fc-daygrid-day {
+    background-color: #00000000;
+    border-radius: 5px;
+}
+
+/* Estilo para los eventos del calendario */
+.fc-event {
+    background-color: #19963e; /* Color de fondo para los eventos */
+    color: rgb(243, 17, 17); /* Color del texto de los eventos */
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Hover sobre los eventos */
+.fc-event:hover {
+    background-color: #FF5722;
+}
+
+/* Estilo para los eventos seleccionados */
+.fc-event-selected {
+    background-color: #FF9800;
+    border: 2px solid #FF5722;
+}
+
+/* Personalización de la vista de días */
+.fc-daygrid-day-number {
+    font-size: 18px;
+    font-weight: 400PX;
+}
+
+/* Estilo para el selector de fechas */
+.fc-state-active {
+    background-color: #c97642 !important;
+    color: white;
+}
+
 
 /*  |-> Resultados*/
 .resultados {
@@ -290,6 +433,11 @@ p {
     .mensaje {
         font-size: 1rem;
     }
+
+    .select {
+        width: 100%;
+    }
+
      /*Otros*/
      h1 {
         color: var(--colorLetras);
