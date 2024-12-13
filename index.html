@@ -5,10 +5,12 @@
         <meta name="viewport" content="width=devicewidth, initial-scale=1.0">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <title>LMAD Calendario de exámenes</title>
-        <link rel="stylesheet" href="style.css">
+
+        <link rel="stylesheet" href="generalStyle.css">
+        <link rel="stylesheet" href="headerStyle.css">
+        <link rel="stylesheet" href="bodyStyle.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
-
 
         <!-- FullCalendar CSS -->
         <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css" rel="stylesheet">
@@ -16,31 +18,31 @@
         <!-- FullCalendar JS -->
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/locales/es.min.js"></script>
-
-        <style>
-        * {
-            font-family: 'Markazi Text';
-            font-weight: 400;
-        }
-
-        @supports (font-variation-settings: "wght" 450) {
-            * {
-            font-family: 'Markazi Text';
-            font-weight: 450;
-            }
-        }
-        </style>
     </head>
 
-    <body class="body">
+    <body>
 
         <header>
             <div class="encabezado">
                 <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener noreferrer">
-                    <img src="img/FCFM-LOGO.png" alt="img-Izq" class="img-izq">
+                    <img src="img/FCFM-LOGO-big.png" 
+                    srcset="img/FCFM-LOGO-small.png 550w, 
+                        img/FCFM-LOGO-medium.png 800w, 
+                        img/FCFM-LOGO-big.png 1000w"
+                    sizes="(max-width: 550px) 80px, 
+                        (max-width: 900px) 100px, 
+                        (max-width: 1200px) 100vw"
+                    alt="img-Izq" class="img-izq">
                 </a>
-                <img src="img/Logo-LMAD.png" alt="img-Der" class="img-der">
-                <a href="VistaMaster/maestros.html">
+                <img src="img/Logo-LMAD-big.png" 
+                srcset="img/Logo-LMAD-small.png 550w, 
+                    img/Logo-LMAD-medium.png 800w, 
+                    img/Logo-LMAD-big.png 1000w"
+                sizes="(max-width: 550px) 80px, 
+                    (max-width: 900px) 100px, 
+                    (max-width: 1200px) 100vw"
+                alt="img-Der" class="img-der">
+                <a href="VistaMaster/inicioSesion.html">
                     <button class="boton">Adminsitrador</button>
                 </a>
                 <div class="rectangulo"></div>

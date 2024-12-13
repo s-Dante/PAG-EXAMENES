@@ -1,0 +1,125 @@
+header {
+    border: #00000000;
+}
+
+.encabezado {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 10px;
+    grid-auto-flow: 
+        "img-izq tema img-der"
+        "rectangulo rectangulo rectangulo";
+    gap: 25px;
+    align-items: center;
+    justify-items: center;
+}
+
+.encabezado:first-child {
+    grid-column: 1 / 2;
+}
+
+.encabezado:nth-child(2) {
+    grid-column: 2 / 3;
+}
+
+.encabezado:nth-child(3) {
+    grid-column: 3 / 4;
+}
+
+.encabezado:last-child {
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
+
+.rectangulo {
+    row-gap: 20px;
+    border: none;
+    background: var(--fondo-gradiente);
+    width: 100%;
+    height: 5px;
+    grid-column: 1 / -1;
+}
+
+.img-der, .img-izq {
+    position: relative;
+    right: 10px;
+    max-width: 200px;
+    height: auto;
+}
+
+.img-der {
+    max-width: 125px;
+    max-height: 45px;
+}
+
+
+.boton {
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    color: var(--colorLetras);
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 10px 10px;
+    transition: all 0.3s ease;
+}
+
+.boton::after {
+    content: '';
+    width: 100px;
+    height: 400px;
+    position: relative;
+    top: auto;
+    left: auto;
+    background-color: #C53AFF;
+    background-image: var(--fondo-gradiente);
+    z-index: 5;
+    transition: transform 0.5s ease;
+}
+
+.boton:hover {
+    background-image: #00000000;
+    transform: translate(0px, -6px);
+    box-shadow: 
+        5px 5px 25px 0  #C53AFF, 
+        -5px 5px 25px 0 #0DE5FF;
+}
+
+.boton:hover::after {
+    transform: rotate(270deg);
+}
+
+
+/*Laptops*/
+@media (max-width: 1124px) {
+    .encabezado {
+        gap: 10px;
+      }
+}
+
+
+/*Celulares*/
+@media (max-width: 768px) {
+    .encabezado {
+        gap: 10px;
+      }
+
+      .boton {
+        padding: 5px 5px;
+      }
+}
+
+
+/*Mas pequeños*/
+@media (max-width: 500px) {
+    .encabezado {
+        gap: 5px;
+        row-gap: 15px;
+    }
+
+    .boton {
+        padding: 5px 5px;
+        right: 30px;
+    }
+}

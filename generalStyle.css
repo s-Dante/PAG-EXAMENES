@@ -1,0 +1,104 @@
+* {
+    font-family: 'Markazi Text';
+    font-weight: 400;
+    border : 0;
+    padding: 0;
+}
+
+:root {
+    --colorLetras: cornsilk;
+    --fondo-gradiente: linear-gradient(to right, #0DE5FF, #00000071, #C53AFF);
+    --color-body: linear-gradient(90deg, #10151D 0%, #131F33 30%, #131F33 70%, #10151D 100%);
+    --color-gradiente-black: linear-gradient(to-bottom, var(-color-fondo), var(var(--color-secundario)));
+    --color-fondo: #10151D;
+    --color-secundario: #131F33;
+    --color-primario: #0DE5FF;
+    --color-contraste: #C53AFF;
+}
+
+@supports (font-variation-settings: "wght" 450) {
+    * {
+    font-family: 'Markazi Text';
+    font-weight: 450;
+    }
+}
+
+
+h1, h2, h3, p {
+    color: var(--colorLetras);
+}
+
+h1 {
+    font-size: 2.5em; /* Tamaño grande para escritorios */
+}
+
+h2 {
+    font-size: 2em; /* Un tamaño más pequeño que el de h1 */
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+p {
+    font-size: 1em;
+}
+
+/*Laptops*/
+@media (max-width: 1124px) {
+    h1 {
+        font-size: 2.2em; /* Un poco más pequeño que en escritorio */
+    }
+
+    h2 {
+        font-size: 1.8em; /* Reducido para laptops */
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
+
+    p {
+        font-size: 1rem; /* Un tamaño de texto más cómodo para pantallas de portátil */
+    }
+}
+
+
+/*Celulares*/
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em; /* Ajustado para pantallas pequeñas */
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 0.9em; /* Un tamaño ligeramente más pequeño para texto en dispositivos móviles */
+    }
+}
+
+
+/*Mas pequeños*/
+@media (max-width: 500px) {
+    h1 {
+        font-size: 1.5em; /* Más pequeño para pantallas muy pequeñas */
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    h3 {
+        font-size: 1.1em;
+    }
+
+    p {
+        font-size: 0.8em; /* Asegúrate de que el texto sea legible, pero no demasiado grande */
+    }
+}
