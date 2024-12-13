@@ -177,14 +177,22 @@ main {
 
 /*  |-> Select*/
 .select {
-    font-size: large;
+    font-size: 1rem;
     grid-column: 1 / -1;
     grid-row: 2 / 3;
-    margin: 20px;
-    padding: 20px;
     border-radius: 8px;
     background-color: #00000000;
     width: 300px;
+    display: grid;
+    grid-template-columns: 10% 1fr 1fr 10%;
+}
+
+.select :first-child {
+    grid-column: 2 / 3;
+}
+
+.select:last-child {
+    grid-template-columns: 3 / 4;
 }
 
 /* Estilo de los labels */
@@ -236,7 +244,7 @@ main {
 }
 
 .select select option:hover {
-    background-color: #C53AFF;
+    background-color: #8c24b8;
     color: #C53AFF;
 }
 

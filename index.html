@@ -15,6 +15,7 @@
 
         <!-- FullCalendar JS -->
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/locales/es.min.js"></script>
 
         <style>
         * {
@@ -89,25 +90,29 @@
                         </select>
                 </form>
 
-                <div id="calendar"></div>
+                <div id="calendar">
                     <!-- Resultados de los exámenes -->
-                    <div class="results" id="results">
-                        <h3>Detalles del Examen</h3>
-                    <div id="exam-details"></div>
+                    
                 </div>
             </div>
 
 
             <div class="resultados">
                 <h2>UNIDADES DE APRENDIZAJE</h2>
+                <div class="results" id="results">
+                    <h3>Detalles del Examen</h3>
+                <div id="exam-details"></div>
                 <!-- Aqui poner los resultados -->
             </div>
+
+            <script src="scripts.js"></script>
+
         </main>
 
         <footer></footer>
 
         <!-- Scrpts -->
-        <script src="scripts.js"></script>
+        
     </body>
 
 </html>
