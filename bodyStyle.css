@@ -4,4 +4,26 @@ body {
     background-repeat: 0;
 }
 
+.textoInfo {
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        ". tema1 .",
+        ". datos .",
+        ". instruccion .";
+    gap: 20px; /* Agrega espacio entre las filas y columnas */
+}
 
+/* Asignar las áreas a los elementos */
+.tema-1 {
+    grid-area: tema1;
+}
+
+.dato {
+    grid-area: datos;
+}
+
+.instruccion {
+    grid-area: instruccion;
+}
