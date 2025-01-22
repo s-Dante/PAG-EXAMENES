@@ -82,10 +82,10 @@ document.getElementById('semestre').dispatchEvent(new Event('change'));
 
 // Datos del calendario
 const examData = [
-    { date: '2024-12-15', semestre: 'Primero', ua: 'Matemáticas', parcial: '1°', details: 'Examen de Matemáticas - 1° Parcial' },
-    { date: '2024-12-16', semestre: 'Segundo', ua: 'Física', parcial: '1°', details: 'Examen de Física - 1° Parcial' },
-    { date: '2024-12-18', semestre: 'Tercero', ua: 'Química', parcial: '2°', details: 'Examen de Química - 2° Parcial' },
-    { date: '2024-12-20', semestre: 'Primero', ua: 'Matemáticas', parcial: '2°', details: 'Examen de Matemáticas - 2° Parcial' }
+    { date: '2025-01-15', semestre: 'Primero', ua: 'Matemáticas', parcial: '1°', details: 'Examen de Matemáticas - 1° Parcial' },
+    { date: '2025-01-16', semestre: 'Segundo', ua: 'Física', parcial: '1°', details: 'Examen de Física - 1° Parcial' },
+    { date: '2025-01-18', semestre: 'Tercero', ua: 'Química', parcial: '2°', details: 'Examen de Química - 2° Parcial' },
+    { date: '2025-01-20', semestre: 'Primero', ua: 'Matemáticas', parcial: '2°', details: 'Examen de Matemáticas - 2° Parcial' }
 ];
 
 // Inicializar el calendario
