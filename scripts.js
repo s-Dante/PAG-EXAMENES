@@ -58,7 +58,7 @@ document.getElementById('semestre').addEventListener('change', function() {
     const semestreSeleccionado = this.value;
     const uaSelect = document.getElementById('ua');
 
-    uaSelect.innerHTML = "";
+    uaSelect.innerHTML = "";  // Limpiar las opciones actuales
 
     if (semestreSeleccionado === "Todos") {
         const option = document.createElement("option");
@@ -76,101 +76,152 @@ document.getElementById('semestre').addEventListener('change', function() {
     }
 });
 
+// Disparar evento de cambio inicial para cargar las opciones cuando la página se carga
 document.getElementById('semestre').dispatchEvent(new Event('change'));
-
 
 
 // Datos del calendario Materia, Gpo, Fecha, Hora, Parcial
 const examData = [
     { date: '2025-01-15', semestre: 'Primero', ua: 'Álgebra', parcial: '1°', details: 'Examen de Matemáticas - 1° Parcial', group: '001', hora: '18:00' },
     { date: '2025-01-15', semestre: 'Primero', ua: 'Matemáticas', parcial: '1°', details: 'Repetición del examen - Matemáticas', group: '001', hora: '19:00' },
+    { date: '2025-01-15', semestre: 'Primero', ua: 'Matemáticas', parcial: '1°', details: 'Repetición del examen - Matemáticas', group: '001', hora: '19:00' },
+    { date: '2025-01-15', semestre: 'Primero', ua: 'Matemáticas', parcial: '1°', details: 'Repetición del examen - Matemáticas', group: '001', hora: '19:00' },
     { date: '2025-01-16', semestre: 'Segundo', ua: 'Física', parcial: '1°', details: 'Examen de Física - 1° Parcial', group: '002', hora: '17:00' },
     { date: '2025-01-18', semestre: 'Tercero', ua: 'Química', parcial: '2°', details: 'Examen de Química - 2° Parcial', group: '003', hora: '16:00' },
     { date: '2025-01-20', semestre: 'Primero', ua: 'Matemáticas', parcial: '2°', details: 'Examen de Matemáticas - 2° Parcial', group: '001', hora: '18:00' }
 ];
 
+// Agrupar los exámenes por fecha
+const groupedExams = examData.reduce((acc, exam) => {
+    if (!acc[exam.date]) {
+        acc[exam.date] = [];
+    }
+    acc[exam.date].push(exam);
+    return acc;
+}, {});
+
 // Inicializar el calendario
 const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
     locale: 'es',
     firstDay: 1,
-    contentHeight: '50rem',
-    aspectRatio: 0.5,
+    contentHeight: '300px',
+    aspectRatio: 1,
     headerToolbar: {
         start: 'prev',
         center: 'title',
         end: 'next'
     },
+
     views: {
         dayGridMonth: {
             titleFormat: {year: 'numeric', month: 'long'},
-            day: 'short,uppercase'
+            day: 'short'
         }
     },
-    //initialView: 'dayGridMonth',
-    events: examData.map(exam => ({
-        title: exam.ua || 'Sin título',
-        start: exam.date,
+    events: Object.keys(groupedExams).map(date => ({
+        title: `Exámenes del ${date}`,
+        start: date,
         extendedProps: {
-            semestre: exam.semestre || 'N/A',
-            parcial: exam.parcial || 'N/A',
-            details: exam.details || 'Sin detalles',
-            hora: exam.hora,
-            group: exam.group
+            exams: groupedExams[date] // Almacena los exámenes de ese día
         }
-    })),
-    eventClick: function(info) {
-        const selectedDate = info.event.startStr;
-        const eventsOnSameDate = calendar.getEvents().filter(event => event.startStr === selectedDate);
+    })),   
+    dateClick: function(info) {
+        const selectedDate = info.dateStr;
+        const examsOnSameDate = groupedExams[selectedDate]; // Obtener los exámenes de ese día
     
         let detailsHTML = '';
-        eventsOnSameDate.forEach(event => {
-            const { group, hora, parcial = 'N/A', semestre = 'N/A', details = 'Sin detalles' } = event.extendedProps;
-            const title = event.title || 'Sin título';
+        if (examsOnSameDate) {
+            examsOnSameDate.forEach(exam => {
+                const { group, hora, parcial = 'N/A', semestre = 'N/A', details = 'Sin detalles' } = exam;
+                const title = exam.ua || 'Sin título';
     
-            detailsHTML += `
-                <div class="b-example-divider"></div>
+                const formattedParcial = parcial === '1°' ? '1P' : (parcial === '2°' ? '2P' : parcial);
 
-                <div class="card-custom mx-5">
-                    <div>
-                        <h5 class="mb-2">${title}</h5>
-                        <p class="mb-0 text-secondary-custom"><strong>Gpo:</strong> ${group || 'No asignado'}</p>
-                        <p class="mb-0">
-                            <span class="text-secondary-custom">${selectedDate} / </span>
-                            <span class="time-text">${hora} hrs</span>
-                        </p>
+                detailsHTML += `
+                    <div class="b-example-divider"></div>
+
+                    <div class="card-custom mx-sm-5 mx-2">
+                        <div class:"info-examen">
+                            <h5 class="mb-2 text-start">${title}</h5>
+                            <p class="mb-0 text-start">
+                                <span class="text-secondary-custom">Gpo:</span>
+                                <span class:"gpo"><strong>${group || 'No asignado'}</strong></span>
+                            </p>
+                            <p class="mb-0">
+                                <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">${selectedDate}</span>
+                                <span class="time-text">${hora} hrs</span>
+                            </p>
+                        </div>
+                        <div class="num-parcial">
+                            <div class="badge-custom text-center"><strong>${formattedParcial}</strong></div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="badge-custom">${parcial}</div>
-                    </div>
-                </div>
-            `;
-        });
+                `;
+            });
+        } else {
+            detailsHTML = `
+            <div class="b-example-divider"></div>
+            <div class="b-example-divider"></div>
+
+            <p>No hay exámenes programados para este día.</p>`;
+        }
     
         document.getElementById('exam-details').innerHTML = detailsHTML;
     }
-    
 });
 
 calendar.render();
 
+
 // Filtrar los eventos según los valores seleccionados en los filtros
 function filterEvents() {
+
+    const currentEvents = calendar.getEvents(); // Obtener todos los eventos actuales
+    currentEvents.forEach(event => event.remove()); // Eliminar cada evento
+    
     const semestre = document.getElementById('semestre').value;
     const ua = document.getElementById('ua').value;
     const parcial = document.getElementById('parcial').value;
 
+    // Filtrar los datos según los valores seleccionados
     const filteredData = examData.filter(exam => {
         return (semestre === 'Todos' || exam.semestre === semestre) &&
             (ua === 'Todas' || exam.ua === ua) &&
             (parcial === '' || exam.parcial === parcial);
     });
 
-    calendar.removeAllEvents();
-    calendar.addEventSource(filteredData.map(exam => ({
-        title: exam.ua,
-        start: exam.date,
-        extendedProps: { semestre: exam.semestre, parcial: exam.parcial, details: exam.details, hora: exam.hora, group: exam.group }
-    })));
+    // Agrupar los exámenes filtrados por fecha
+    const groupedFilteredData = filteredData.reduce((acc, exam) => {
+        if (!acc[exam.date]) {
+            acc[exam.date] = [];
+        }
+        acc[exam.date].push(exam);
+        return acc;
+    }, {});
+
+    console.log(examData);
+    // Aplicar los colores a los días después de añadir los eventos
+    applyDayColors(groupedFilteredData);
+}
+
+
+//Pintar los dias con examenes
+function applyDayColors(groupedFilteredData) {
+    // Primero, limpiamos los colores previos de los días
+    document.querySelectorAll('.fc-day').forEach(day => {
+        day.style.backgroundColor = ''; // Limpiar el color
+    });
+
+    // Ahora recorremos las fechas con exámenes y cambiamos el color
+    Object.keys(groupedFilteredData).forEach(date => {
+        const dayCell = document.querySelector(`.fc-day[data-date="${date}"]`);
+        if (dayCell) {
+            dayCell.style.backgroundColor = '#c43affb1';  // Establece el color de fondo del día
+
+            // Si quieres añadir más personalización, puedes agregar clases o más estilos.
+            dayCell.classList.add('has-exam'); // Clase personalizada para el día con examen
+        }
+    });
 }
 
 // Agregar eventos de cambio a los filtros

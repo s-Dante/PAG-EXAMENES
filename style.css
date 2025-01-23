@@ -9,10 +9,13 @@
     --fondo-gradiente: linear-gradient(to right, #0DE5FF, #00000071, #C53AFF);
 }
 
-h1, h2, h3, h4, h5, h6, p{
+h1, h2, h3, h4, h5, h6{
     color: var(--colorLetras) !important;
 }
 
+p{
+    color: #58a6ff !important;
+}
 .b-example-divider {
     width: 100%;
     height: 2rem;
@@ -44,43 +47,162 @@ h1, h2, h3, h4, h5, h6, p{
 
 /* Estilo de las cards */
 .card-custom {
-    background-color: #1e2733; /* Fondo de las tarjetas */
-    border: 1px solid #2c3646; /* Borde tenue */
-    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0); /* Fondo transparente */
+    box-shadow: 5px 5px 10px rgb(71, 3, 231), 0px 0px 20px rgba(23, 39, 216, 0.5); /* Sombra de caja y glow */
+    border: 2px solid #034be7; /* Borde del color que quieres */
+    border-radius: 15px;
     padding: 16px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    margin-left: 22px;
+    margin-right: 22px;
     padding-top: 20px;
-  }
+    transition: box-shadow 0.3s ease-in-out, border 0.3s ease-in-out; /* Transición suave */
+}
 
-  .text-secondary-custom {
-    color: #8b949e; /* Color de texto tenue */
-  }
+/* Agregar un efecto glow al pasar el cursor */
+.card-custom:hover {
+    box-shadow: 0px 0px 20px rgb(71, 3, 231), 0px 0px 40px rgba(23, 39, 216, 0.5); /* Glow más fuerte al pasar el mouse */
+    border: 2px solid #034be7; /* Se mantiene el borde */
+}
 
-  .time-text {
-    color: #58a6ff; /* Texto azul */
+
+.text-secondary-custom {
+    color: #8b949e;
+}
+
+.time-text {
+    color: #58a6ff;
     font-weight: bold;
-  }
+}
 
-  .badge-custom {
-    background-color: #0d6efd; /* Azul Bootstrap */
-    color: white;
+.badge-custom {
+    color: #5890E0;
+    border-image: #c1c40c;
+    border: 3px solid transparent;
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 3rem;
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%; /* Forma de círculo */
-  }
+    padding-right: 22px;
+}
 
+.info-examen{
+    width: auto;
+    padding-left: 22px;
+    border-image: #408DFC;
+}
+
+.gpo {
+    color: #408DFC !important;
+}
+
+.fecha{
+    color: #AA53FF;
+}
 
 .cuadro-texto {
     background-image: #19963e;
 }
+
+#mensaje-borde{
+    border: 3px solid transparent;
+    border-image: var(--fondo-gradiente) 1;
+    padding: 8px;
+    border-radius: 8px;
+    max-width: fit-content; /*arreglar*/
+}
+
+#calendar{
+    min-height: 600;
+    width: auto;
+    margin: 10px !important;
+}
+
+.fc-day.has-exams {
+    background-color: #ffcccc; /* Cambiar el color de fondo */
+    cursor: pointer; /* Cambiar el cursor para indicar que es interactivo */
+}
+
+.fc-scrollgrid, .fc-scrollgrid-liquid, .fc-daygrid, .fc-dayGridMonth-view, .fc-view{
+    border:none !important;
+}
+
+.fc-daygrid-day-events {
+    display: none;
+}
+
+.fc-col-header-cell-cushion{
+    text-transform: uppercase;
+}
+
+.fc-day:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.fc-header-toolbar .fc-toolbar-title {
+    font-size: 1rem !important;
+    padding-left: 50px;
+    padding-right: 50px
+}
+
+.fc-header-toolbar button {
+    font-size: 0.9rem !important;
+    background-color: #00000000;
+    background-image: none;
+}
+
+/* Cambiar el fondo y los bordes de los días */
+.fc-day {
+    background-color: #f0f0f000 ; /* Cambia el color de fondo */
+    border-color: #00000000 !important;
+    
+}
+
+/* Cambiar el color de fondo del día actual */
+.fc-day-today {
+    background-color: #2b05b3 !important; /* Color de fondo del día actual */
+    color: white; /* Color del texto (número del día) */
+}
+
+/* Estilo para el número de cada día (número en el recuadro) */
+.fc-day-number {
+    font-size: 1rem !important; /* Tamaño del número del día */
+    font-weight: bold !important; /* Hacer que el número sea más visible */
+    border-color: #00000000 !important;
+}
+
+/* Estilo para los días del fin de semana (domingo y sábado) */
+.fc-day-sun, .fc-day-sat, .fc-day-mon, .fc-day-tue, .fc-day-wed, .fc-day-thu, .fc-day-fri {
+    background-color: #e0e0e000; /* Un color distinto para fin de semana */
+}
+
+/* Cambiar el cursor cuando se pasa sobre un día */
+.fc-day:hover {
+    cursor: pointer; /* Cambiar el cursor a puntero */
+}
+
+/* Cambiar el fondo de los días que tienen eventos */
+.fc-day.fc-event {
+    background-color: #c43affb1 !important; /* Fondo verde claro cuando hay un evento */
+}
+
+/* Resaltar las celdas con eventos al pasar el cursor */
+.fc-day.fc-event:hover {
+    background-color: #C53AFF !important; /* Un verde más oscuro al pasar el cursor */
+    box-shadow: 5px 5px 3px black;
+}
+
+
+
+
+
 
 
 /*estilado del cuerpo*/
@@ -233,11 +355,7 @@ main {
 }
 
 
-.icon {
-    margin-right: 15px;
-    font-size: 1rem;
-    grid-column: 1 / 2;
-}
+.icon {}
 
 .mensaje {
     color: var(--colorLetras);
