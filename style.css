@@ -1,11 +1,16 @@
 * {
     border : 0;
     padding: 0;
+    font-family: 'Kodchasan';
 }
 
 :root {
     --colorLetras: cornsilk;
     --fondo-gradiente: linear-gradient(to right, #0DE5FF, #00000071, #C53AFF);
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    color: var(--colorLetras) !important;
 }
 
 .b-example-divider {
@@ -15,6 +20,69 @@
     border: solid rgba(0, 0, 0, 0);
     border-width: 1px 0;
 }
+
+.bg-custom-gradient {
+    background: rgb(16,21,29);
+    background: linear-gradient(180deg, rgba(16,21,29,1) 0%, rgba(19,31,51,1) 72%, rgba(19,31,51,1) 100%);
+  }
+
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-right: 10px; /* Espaciado entre label y select */
+}
+
+.img-invert{
+    size: 50%;
+    filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.263));
+}
+
+/* Estilo de las cards */
+.card-custom {
+    background-color: #1e2733; /* Fondo de las tarjetas */
+    border: 1px solid #2c3646; /* Borde tenue */
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-top: 20px;
+  }
+
+  .text-secondary-custom {
+    color: #8b949e; /* Color de texto tenue */
+  }
+
+  .time-text {
+    color: #58a6ff; /* Texto azul */
+    font-weight: bold;
+  }
+
+  .badge-custom {
+    background-color: #0d6efd; /* Azul Bootstrap */
+    color: white;
+    font-weight: bold;
+    font-size: 1.25rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Forma de círculo */
+  }
+
+
+.cuadro-texto {
+    background-image: #19963e;
+}
+
+
 /*estilado del cuerpo*/
 body {
 
@@ -186,26 +254,27 @@ main {
 /*  |-> Select*/
 #select {
     font-size: 1rem;
-    grid-column: 1 / -1;
-    grid-row: 2 / 3;
+    /* grid-column: 1 / -1;
+    grid-row: 2 / 3; */
     border-radius: 8px;
     background-color: #00000000;
     width: 300px;
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 10% 1fr 1fr 10%;
+    justify-content: end;
 }
 
 #select :first-child {
-    grid-column: 2 / 3;
+    /* grid-column: 2 / 3; */
 }
 
 #select:last-child {
-    grid-template-columns: 3 / 4;
+    /* grid-template-columns: 3 / 4; */
 }
 
 /* Estilo de los labels */
 #select label {
-    display: block;
+    /* display: block; */
     font-size: 1.5rem;
     font-family: 'Markazi Text';
     margin-bottom: 8px;
@@ -257,13 +326,84 @@ main {
 }
 
 
- #calendar {
+
+/* Estilo de los Input*/
+/* Contenedor general */
+#input-container {
+    font-size: 1rem;
+    border-radius: 8px;
+    background-color: #00000000;
+    width: 300px;
+    grid-template-columns: 10% 1fr 1fr 10%;
+    justify-content: end;
+}
+
+/* Estilo de los labels */
+#input-container label {
+    font-size: 1.5rem;
+    font-family: 'Markazi Text';
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: var(--colorLetras);
+}
+
+/* Estilos para los inputs */
+#input-container input[type="text"],
+#input-container input[type="number"],
+#input-container input[type="email"],
+#input-container input[type="password"],
+#input-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border: none; /* Elimina los bordes predeterminados */
+    border-bottom: 2px solid #0DE5FF;
+    background-color: #1F2540;
+    font-family: 'Markazi Text';
+    font-size: 16px;
+    color: var(--colorLetras);
+    cursor: pointer;
+    transition: border 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al poner el cursor sobre el input */
+#input-container input:hover,
+#input-container textarea:hover {
+    background-image: #00000000;
+    transform: translate(0px, -6px);
+    box-shadow: 
+        5px 5px 25px 0  #C53AFF, 
+        -5px 5px 25px 0 #0DE5FF;
+}
+
+/* Estilo al enfocar el input */
+#input-container input:focus,
+#input-container textarea:focus {
+    outline: none;
+    border-color: #1102df;
+}
+
+/* Opcional: Estilo para textarea */
+#input-container textarea {
+    height: 100px; /* Altura fija */
+    resize: none; /* Evita que sea redimensionable */
+}
+
+
+
+
+
+
+
+#calendar {
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
     background-image: linear-gradient(180deg, #0E2344 0%, #10151D 100%);
     border-radius: 10px;
     box-shadow: 0 14px 16px rgba(0, 0, 0, 0.201);
+    text-align: center;
 }
 
 /* Personalización de la cabecera del calendario */

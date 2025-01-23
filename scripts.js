@@ -80,32 +80,75 @@ document.getElementById('semestre').dispatchEvent(new Event('change'));
 
 
 
-// Datos del calendario
+// Datos del calendario Materia, Gpo, Fecha, Hora, Parcial
 const examData = [
-    { date: '2025-01-15', semestre: 'Primero', ua: 'Matemáticas', parcial: '1°', details: 'Examen de Matemáticas - 1° Parcial' },
-    { date: '2025-01-16', semestre: 'Segundo', ua: 'Física', parcial: '1°', details: 'Examen de Física - 1° Parcial' },
-    { date: '2025-01-18', semestre: 'Tercero', ua: 'Química', parcial: '2°', details: 'Examen de Química - 2° Parcial' },
-    { date: '2025-01-20', semestre: 'Primero', ua: 'Matemáticas', parcial: '2°', details: 'Examen de Matemáticas - 2° Parcial' }
+    { date: '2025-01-15', semestre: 'Primero', ua: 'Álgebra', parcial: '1°', details: 'Examen de Matemáticas - 1° Parcial', group: '001', hora: '18:00' },
+    { date: '2025-01-15', semestre: 'Primero', ua: 'Matemáticas', parcial: '1°', details: 'Repetición del examen - Matemáticas', group: '001', hora: '19:00' },
+    { date: '2025-01-16', semestre: 'Segundo', ua: 'Física', parcial: '1°', details: 'Examen de Física - 1° Parcial', group: '002', hora: '17:00' },
+    { date: '2025-01-18', semestre: 'Tercero', ua: 'Química', parcial: '2°', details: 'Examen de Química - 2° Parcial', group: '003', hora: '16:00' },
+    { date: '2025-01-20', semestre: 'Primero', ua: 'Matemáticas', parcial: '2°', details: 'Examen de Matemáticas - 2° Parcial', group: '001', hora: '18:00' }
 ];
 
 // Inicializar el calendario
 const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-    initialView: 'dayGridMonth',
+    locale: 'es',
+    firstDay: 1,
+    contentHeight: '50rem',
+    aspectRatio: 0.5,
+    headerToolbar: {
+        start: 'prev',
+        center: 'title',
+        end: 'next'
+    },
+    views: {
+        dayGridMonth: {
+            titleFormat: {year: 'numeric', month: 'long'},
+            day: 'short,uppercase'
+        }
+    },
+    //initialView: 'dayGridMonth',
     events: examData.map(exam => ({
-        title: exam.ua,
+        title: exam.ua || 'Sin título',
         start: exam.date,
-        extendedProps: { semestre: exam.semestre, parcial: exam.parcial, details: exam.details }
+        extendedProps: {
+            semestre: exam.semestre || 'N/A',
+            parcial: exam.parcial || 'N/A',
+            details: exam.details || 'Sin detalles',
+            hora: exam.hora,
+            group: exam.group
+        }
     })),
     eventClick: function(info) {
-        const event = info.event;
-        const details = event.extendedProps.details;
-        document.getElementById('exam-details').innerHTML = `
-            <p><strong>Materia:</strong> ${event.title}</p>
-            <p><strong>Semestre:</strong> ${event.extendedProps.semestre}</p>
-            <p><strong>Parcial:</strong> ${event.extendedProps.parcial}</p>
-            <p><strong>Detalles:</strong> ${details}</p>
-        `;
+        const selectedDate = info.event.startStr;
+        const eventsOnSameDate = calendar.getEvents().filter(event => event.startStr === selectedDate);
+    
+        let detailsHTML = '';
+        eventsOnSameDate.forEach(event => {
+            const { group, hora, parcial = 'N/A', semestre = 'N/A', details = 'Sin detalles' } = event.extendedProps;
+            const title = event.title || 'Sin título';
+    
+            detailsHTML += `
+                <div class="b-example-divider"></div>
+
+                <div class="card-custom mx-5">
+                    <div>
+                        <h5 class="mb-2">${title}</h5>
+                        <p class="mb-0 text-secondary-custom"><strong>Gpo:</strong> ${group || 'No asignado'}</p>
+                        <p class="mb-0">
+                            <span class="text-secondary-custom">${selectedDate} / </span>
+                            <span class="time-text">${hora} hrs</span>
+                        </p>
+                    </div>
+                    <div>
+                        <div class="badge-custom">${parcial}</div>
+                    </div>
+                </div>
+            `;
+        });
+    
+        document.getElementById('exam-details').innerHTML = detailsHTML;
     }
+    
 });
 
 calendar.render();
@@ -126,7 +169,7 @@ function filterEvents() {
     calendar.addEventSource(filteredData.map(exam => ({
         title: exam.ua,
         start: exam.date,
-        extendedProps: { semestre: exam.semestre, parcial: exam.parcial, details: exam.details }
+        extendedProps: { semestre: exam.semestre, parcial: exam.parcial, details: exam.details, hora: exam.hora, group: exam.group }
     })));
 }
 
