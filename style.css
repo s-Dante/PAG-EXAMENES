@@ -116,7 +116,7 @@ p{
     border-image: var(--fondo-gradiente) 1;
     padding: 8px;
     border-radius: 8px;
-    max-width: fit-content; /*arreglar*/
+    max-width: auto; /*arreglar*/
 }
 
 #calendar{
@@ -140,6 +140,11 @@ p{
 
 .fc-col-header-cell-cushion{
     text-transform: uppercase;
+    color: var(--colorLetras);
+}
+
+.fc-daygrid-day-number{
+    color: var(--colorLetras)
 }
 
 .fc-day:hover {
