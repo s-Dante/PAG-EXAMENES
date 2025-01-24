@@ -65,7 +65,7 @@ p{
 
 /* Agregar un efecto glow al pasar el cursor */
 .card-custom:hover {
-    box-shadow: 0px 0px 20px rgb(71, 3, 231), 0px 0px 40px rgba(23, 39, 216, 0.5); /* Glow más fuerte al pasar el mouse */
+    box-shadow: 0px 0px 40px rgb(71, 3, 231), 0px 0px 40px rgba(23, 39, 216, 0.5); /* Glow más fuerte al pasar el mouse */
     border: 2px solid #034be7; /* Se mantiene el borde */
 }
 
@@ -111,13 +111,37 @@ p{
     background-image: #19963e;
 }
 
-#mensaje-borde{
-    border: 3px solid transparent;
-    border-image: var(--fondo-gradiente) 1;
-    padding: 8px;
-    border-radius: 8px;
-    max-width: auto; /*arreglar*/
+.mensaje-borde {
+    border: 4px solid transparent; /* Necesario para que el degradado funcione */
+    border-image: linear-gradient(to right, #0DE5FF, #00000071, #C53AFF);/* Degradado personalizado */
+    border-image-slice: 1; /* Asegura que el borde se aplique correctamente */
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap; /* Evita el apilamiento */
+    max-width: 100%; /* Ajuste responsivo */
+    gap: 10px;
 }
+
+
+.icono img {
+    max-width: 100%;
+    height: auto; /* Mantener proporción del icono */
+}
+
+.mensaje {
+    max-width: 300px; /* Limita el ancho del texto */
+    width: 100%; /* Permite que sea responsivo */
+    font-size: 1rem; /* Tamaño de texto */
+    text-overflow: ellipsis; /* Para manejar texto largo si es necesario */
+    overflow: hidden; /* Oculta texto que exceda el contenedor */
+    white-space: normal; /* Permite que el texto haga saltos de línea */
+}
+
+.mensaje h6 {
+    margin: 0; /* Elimina márgenes adicionales */
+    font-size: 1rem; /* Hereda el tamaño definido */
+}
+
 
 #calendar{
     min-height: 600;
@@ -132,6 +156,16 @@ p{
 
 .fc-scrollgrid, .fc-scrollgrid-liquid, .fc-daygrid, .fc-dayGridMonth-view, .fc-view{
     border:none !important;
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+.fc-scrollgrid::-webkit-scrollbar,
+.fc-scrollgrid-liquid::-webkit-scrollbar,
+.fc-daygrid::-webkit-scrollbar,
+.fc-dayGridMonth-view::-webkit-scrollbar,
+.fc-view::-webkit-scrollbar {
+    display: none; /* Oculta las barras de desplazamiento en navegadores basados en WebKit */
 }
 
 .fc-daygrid-day-events {
@@ -141,10 +175,24 @@ p{
 .fc-col-header-cell-cushion{
     text-transform: uppercase;
     color: var(--colorLetras);
+    text-decoration: none;
 }
 
 .fc-daygrid-day-number{
-    color: var(--colorLetras)
+    color: var(--colorLetras);
+    justify-content: center;
+    align-content: center;
+    text-decoration: none;
+}
+
+.fc-daygrid-day-top{
+    justify-content: center;
+    align-content: center;
+}
+
+.fc-daygrid-day-frame{
+    justify-content: center;
+    align-content: center;
 }
 
 .fc-day:hover {
@@ -157,11 +205,30 @@ p{
     padding-right: 50px
 }
 
-.fc-header-toolbar button {
+.fc-next-button {
     font-size: 0.9rem !important;
     background-color: #00000000;
     background-image: none;
 }
+
+.fc-icon{
+    color: var(--colorLetras);
+}
+
+.fc-button{
+    background-color: #00000000 !important;
+    border: 0px black transparent;
+    border-color: #00000000 !important;
+}
+
+.fc-button:hover {
+    background-color: transparent;
+    border: none;
+    color: #450bce; /* Cambia el color del texto */
+    transition: all 0.3s ease; /* Añade una transición suave */
+    cursor: pointer;
+}
+
 
 /* Cambiar el fondo y los bordes de los días */
 .fc-day {
@@ -173,7 +240,7 @@ p{
 /* Cambiar el color de fondo del día actual */
 .fc-day-today {
     background-color: #2b05b3 !important; /* Color de fondo del día actual */
-    color: white; /* Color del texto (número del día) */
+    color: white !important; /* Color del texto (número del día) */
 }
 
 /* Estilo para el número de cada día (número en el recuadro) */
@@ -360,8 +427,6 @@ main {
 }
 
 
-.icon {}
-
 .mensaje {
     color: var(--colorLetras);
     font-size: 1.5rem;
@@ -375,16 +440,28 @@ main {
 
 
 /*  |-> Select*/
+.me-2{
+    font-family: "Kodchasan" !important;
+    font-size: 1.2rem !important;
+}
+
+.form-select {
+    font-family: "Kodchasan" !important;
+    font-size: 0.9rem !important;
+}
+#label{
+    font-family: "Kodchasan" !important;
+    font-size: 0.5rem;
+}
+
 #select {
+    font-family: "Kodchasan" !important;
     font-size: 1rem;
     /* grid-column: 1 / -1;
     grid-row: 2 / 3; */
     border-radius: 8px;
     background-color: #00000000;
-    width: 300px;
-    /* display: grid; */
-    grid-template-columns: 10% 1fr 1fr 10%;
-    justify-content: end;
+    width: 500px; /* Asegura que ocupen todo el espacio disponible en su contenedor */
 }
 
 #select :first-child {

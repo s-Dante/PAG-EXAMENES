@@ -104,7 +104,7 @@ const groupedExams = examData.reduce((acc, exam) => {
 const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
     locale: 'es',
     firstDay: 1,
-    contentHeight: '300px',
+    contentHeight: '250px',
     aspectRatio: 1,
     headerToolbar: {
         start: 'prev',
@@ -142,13 +142,13 @@ const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), 
 
                     <div class="card-custom mx-sm-5 mx-2">
                         <div class:"info-examen">
-                            <h5 class="mb-2 text-start">${title}</h5>
-                            <p class="mb-0 text-start">
+                            <h4 class="mb-2 text-start">${title}</h4>
+                            <p class="mb-1 text-start">
                                 <span class="text-secondary-custom">Gpo:</span>
                                 <span class:"gpo"><strong>${group || 'No asignado'}</strong></span>
                             </p>
-                            <p class="mb-0">
-                                <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">${selectedDate}</span>
+                            <p class="mb-1">
+                                <span class="text-secondary-custom text-start fecha" style="margin-right: 10px"> <strong>${selectedDate}</strong></span>
                                 <span class="time-text">${hora} hrs</span>
                             </p>
                         </div>

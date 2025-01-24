@@ -76,160 +76,112 @@
             <div class="p-0 d-flex flex-wrap" id="rectangulo"></div>
         </div>
 
-        <!--
-        <header>
-            <div class="encabezado">
-                <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener noreferrer">
-                    <img src="img/FCFM-LOGO-big.png" 
-                    srcset="img/FCFM-LOGO-small.png 550w, 
-                        img/FCFM-LOGO-medium.png 800w, 
-                        img/FCFM-LOGO-big.png 1000w"
-                    sizes="(max-width: 550px) 80px, 
-                        (max-width: 900px) 100px, 
-                        (max-width: 1200px) 100vw"
-                    alt="img-Izq" class="img-izq">
-                </a>
-                <img src="img/Logo-LMAD-big.png" 
-                srcset="img/Logo-LMAD-small.png 550w, 
-                    img/Logo-LMAD-medium.png 800w, 
-                    img/Logo-LMAD-big.png 1000w"
-                sizes="(max-width: 550px) 80px, 
-                    (max-width: 900px) 100px, 
-                    (max-width: 1200px) 100vw"
-                alt="img-Der" class="img-der">
-                <a href="VistaMaster/inicioSesion.html">
-                    <button class="boton">Adminsitrador</button>
-                </a>
-                <div class="rectangulo"></div>
+
+        <div class="container">
+
+            <div class="b-example-divider"></div>
+            <div class="b-example-divider"></div>
+
+            <!-- Título y Mensaje -->
+            <div class="row">
+                <div class="col-12 text-center" id="tema">
+                    <h1>CALENDARIO DE EXÁMENES</h1>
+                </div>
             </div>
-        </header>
-        -->
 
+            <div class="b-example-divider"></div>
+            <div class="b-example-divider"></div>
 
-        <div class="contianer">
-            <main class="d-flex flex-wrap">
-                
-                <div class="b-example-divider"></div>
-                <div class="b-example-divider"></div>
-
-                <div class="row" id="textoInfo">
-                    <div class="col-12 my-1 text-center" id="tema">
-                        <h1>CALENDARIO DE EXÁMENES</h1>
+            <div class="container d-flex justify-content-center align-items-center">
+                <div class="mensaje-borde d-flex align-items-center">
+                    <div class="icono d-flex justify-content-center align-items-center me-3">
+                        <img src="img/idea 1.png" alt="icono de Idea">
                     </div>
+                    <div class="mensaje">
+                        <h6>Las fechas asignadas para el tercer parcial serán proporcionadas por la Facultad.</h6>
+                    </div>
+                </div>
+            </div>
+            
+            
+        
+            <div class="b-example-divider"></div>
+            <div class="b-example-divider"></div>
 
-                    <div class="b-example-divider"></div>
-                    <div class="b-example-divider"></div>
-
+            <!-- Instrucción -->
+            <div class="row">
+                <div class="col-12 text-center" id="instruccion">
+                    <h4>Para poder visualizar la UA deseada, llene lo siguiente:</h4>
+                </div>
+            </div>
+        
+            <div class="b-example-divider"></div>
+            <div class="b-example-divider"></div>
+            
+            <!-- Sección de Selección -->
+            <div class="container">
+                <div class="row justify-content-evenly" id="seleccion">
+                    <div class="col-4 justify-content-center align-content-center" id="select">
+                        <form action="selecciones" method="post">
+                            <div class="form-group">
+                                <label for="semestre" class="me-2">Semestre:</label>
+                                <select name="semestre" id="semestre" class="form-select">
+                                    <option value="Todos">Todos</option>
+                                    <option value="Primero">Primero</option>
+                                    <option value="Segundo">Segundo</option>
+                                    <option value="Tercero">Tercero</option>
+                                    <option value="Cuarto">Cuarto</option>
+                                    <option value="Quinto">Quinto</option>
+                                    <option value="Sexto">Sexto</option>
+                                    <option value="Septimo">Septimo</option>
+                                    <option value="Octavo">Octavo</option>
+                                    <option value="Noveno">Noveno</option>
+                                </select>
+                            </div>
+            
+                            <div class="form-group mt-3">
+                                <label for="ua" class="me-2">UA's:</label>
+                                <select name="ua" id="ua" class="form-select">
+                                    <option value="">Selecciona un semestre</option>
+                                </select>
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="parcial" class="me-2">Parcial:</label>
+                                <select name="parcial" id="parcial" class="form-select">
+                                    <option value="1°">1°</option>
+                                    <option value="2°">2°</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
                     
-                    <div class="row justify-content-center d-flex flex-wrap cuadro-texto mx-10px">
-                            <div class="col-2 align-content-center justify-content-end min-vh-50" id="icon">
-                                <img src="img/idea 1.png" class="img-fluid" alt="iconoIdea">
-                            </div>
-                            
-                            <div class="col-6 my-2 text-start justify-content-start" id="mensaje">
-                            <h2>Las fechas asignadas para el tercer parcial seran propocionadas por la facultad</h2>
-                            </div>
-                    </div>
-                    </div>
-
-                    <div class="col-12 text-center " id="instruccion">
-                        <h3>Para poder visualizar la UA deseada, llene lo siguiente:</h3>
-                    </div>
+                    <div class="col-4 column" id="calendar"></div>
                 </div>
-
-                <div class="b-example-divider"></div>
-                <div class="b-example-divider"></div>
-
-                <div class="container d-block" id="seleccion">
-                    <div class="row justify-content-around w-100">
-                        <div class="col-8" id="select">
-                            <form action="selecciones" method="post">
-                                <div class="form-group">
-                                    <label for="semestre" class="me-2">Semestre:</label>
-                                    <select name="semestre" id="semestre" class="form-select">
-                                        <option value="Todos">Todos</option>
-                                        <option value="Primero">Primero</option>
-                                        <option value="Segundo">Segundo</option>
-                                        <option value="Tercero">Tercero</option>
-                                        <option value="Cuarto">Cuarto</option>
-                                        <option value="Quinto">Quinto</option>
-                                        <option value="Sexto">Sexto</option>
-                                        <option value="Septimo">Septimo</option>
-                                        <option value="Octavo">Octavo</option>
-                                        <option value="Noveno">Noveno</option>
-                                    </select>
-                                </div>
-                
-                                <div class="form-group mt-3">
-                                    <label for="ua" class="me-2">UA's:</label>
-                                    <select name="ua" id="ua" class="form-select">
-                                        <option value="">Selecciona un semestre</option>
-                                    </select>
-                                </div>
-                
-                                <div class="form-group">
-                                    <label for="parcial" class="me-2">Parcial:</label>
-                                    <select name="parcial" id="parcial" class="form-select">
-                                        <option value="1°">1°</option>
-                                        <option value="2°">2°</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                
-                        <div class="col-4 m-0 align-content-center" id="calendar"></div>
-                    </div>
+            </div>
+    
+            
+            
+            <div class="b-example-divider"></div>
+            <div class="b-example-divider"></div>
+            <div class="b-example-divider"></div>
+            
+            <!-- Resultados -->
+            <div class="row" id="results">
+                <div class="col-12 text-center" id="Results">
+                    <h2>Unidades de Aprendizaje</h2>
                 </div>
-                
-
-                <div class="b-example-divider"></div>
-                <div class="b-example-divider"></div>
-                <div class="b-example-divider"></div>
-
-                <div class="container" id="results">
-                    <div class="col-12 text-center align-content-center" id="Results">
-                        <h2>Unidades de Aprendizaje</h2>
-                    </div>
+            </div>
+        
+            <div class="b-example-divider"></div>
+            
+            <!-- Detalles del Examen -->
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-6 bg-custom-gradient rounded-top-4 text-center">
+                    <div id="exam-details"></div>
                 </div>
-
-                <div class="b-example-divider"></div>
-
-                <div class="container align-content-center">
-                    <div class="row d-block">
-                        <div class="col-10 bg-custom-gradient rounded-top-4 text-center">
-                            <div id="exam-details">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
+            </div>
         </div>
-
-        <!--
-            <main>
-                <section class="textoInfo">
-                    <h2 class="tema1">CALENDARIO DE EXÁMENES</h2>
-                    <div class="datos">
-                        <div class="icon">
-                                <img src="img/idea 1.png" alt="iconoIdea">
-                        </div>
-                        <div class="mensaje">
-                            Las fechas asignadas para el tercer parcial seran propocionadas por la facultad
-                        </div>
-                    </div>
-                    <h3 class="instruccion">Para poder visualizar la UA deseada, llene lo siguiente:</h3>
-                </section>
-
-                <section class="seleccion">
-
-                </section>
-
-                <section class="restados">
-
-                </section>
-            </main>
-        -->
         
         <footer></footer>
 
@@ -238,73 +190,3 @@
     </body>
 
 </html>
-
-
-<!-- </section>
-</main>
-
-<comentario> -->
-
-<!-- 
-<main class="main">
-    <div class="info">
-        <h2 class="tema-1">CALENDARIO DE EXÁMENES</h2>
-         <div class="dato">
-            <div class="icon">
-                    <img src="img/idea 1.png" alt="iconoIdea">
-            </div>
-            <div class="mensaje">
-                Las fechas asignadas para el tercer parcial seran propocionadas por la facultad
-            </div>
-         </div>
-        <h3 class="inst">Para poder visualizar la UA deseada, llene lo siguiente:</h3>
-    </div>
-
-    <div class="select">
-        <form action="selecciones" method="post">
-            <label for="semestre">Semestre:</label>
-                <select name="semestre" id="semestre">
-                  <option value="Todos">Todos</option>
-                  <option value="Primero">Primero</option>
-                  <option value="Segundo">Segundo</option>
-                  <option value="Tercero">Tercero</option>
-                  <option value="Cuarto">Cuarto</option>
-                  <option value="Quinto">Quinto</option>
-                  <option value="Sexto">Sexto</option>
-                  <option value="Septimo">Septimo</option>
-                  <option value="Octavo">Octavo</option>
-                  <option value="Noveno">Noveno</option>
-                </select>
-
-            <label for="ua">UA's:</label>
-                <select name="ua" id="ua">
-                    <option value="">Selecciona un semestre</option>
-                </select>
-
-            <label for="parcial">Parcial:</label>
-                <select  name="parcial" id="parcial">
-                    <option value="1°">1°</option>
-                    <option value="2°">2°</option>
-                </select>
-        </form>
-
-        <div id="calendar">
-             Resultados de los exámenes
-            
-        </div>
-    </div>
-
-
-    <div class="resultados">
-        <h2>UNIDADES DE APRENDIZAJE</h2>
-        <div class="results" id="results">
-            <h3>Detalles del Examen</h3>
-        <div id="exam-details"></div>
-             Aqui poner los resultados
-    </div>
-
-    <script src="scripts.js"></script>
-
-</main>
-</comentario>
--->
