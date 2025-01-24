@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="headerStyle.css">
         <link rel="stylesheet" href="bodyStyle.css"> -->
 
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="Views/style.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
 
@@ -32,7 +32,7 @@
         <div class="container">
             <header class="row align-content-center d-flex flex-wrap my-4 px-0">
                 <div class="col-3">
-                    <a href="../index.html">
+                    <a href="../dashboard.view.php">
                         <img src="../img/Logo-LMAD-big.png" 
                         srcset="../img/Logo-LMAD-small.png 550w, 
                         ../img/Logo-LMAD-medium.png 800w, 

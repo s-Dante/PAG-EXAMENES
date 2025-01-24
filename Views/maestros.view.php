@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=devicewidth, initial-scale=1.0">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <title>LMAD Calendario de exámenes</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Views/style.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
 

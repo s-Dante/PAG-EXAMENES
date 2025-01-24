@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="bodyStyle.css">
         -->
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Views/style.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
 
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="col-4 text-center pt-3">
-                    <a href="VistaMaster/inicioSesion.html">
+                    <a href="Views/inicioSesion.view.php">
                         <button class="boton">Adminsitrador</button>
                     </a>
                 </div>
@@ -178,7 +178,41 @@
             <!-- Detalles del Examen -->
             <div class="row justify-content-center">
                 <div class="col-10 col-md-6 bg-custom-gradient rounded-top-4 text-center">
-                    <div id="exam-details"></div>
+                    <div id="exam-details">
+                        <?php
+                        foreach ($exams as $exam) {
+                            $title = $exam['Materia'];
+                            $group = $exam['Grupo'];
+                            $hora = $exam['Hora'];
+                            $parcial = $exam['Parcial'];
+                            $selectedDate = $exam['Fecha'];
+                            $formattedParcial = ($parcial === '1' ? '1P' : ($parcial === '2' ? '2P' : $parcial));
+                        ?>
+                            <div class="b-example-divider"></div>
+                        
+                            <div class="card-custom mx-sm-5 mx-2">
+                                <div class="info-examen">
+                                    <h4 class="mb-2 text-start"><?php echo htmlspecialchars($title); ?></h4>
+                                    <p class="mb-1 text-start">
+                                        <span class="text-secondary-custom">Gpo:</span>
+                                        <span class="gpo"><strong><?php echo htmlspecialchars($group ?? 'No asignado'); ?></strong></span>
+                                    </p>
+                                    <p class="mb-1">
+                                        <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
+                                            <strong><?php echo htmlspecialchars($selectedDate); ?></strong>
+                                        </span>
+                                        <span class="time-text"><?php echo htmlspecialchars($hora); ?> hrs</span>
+                                    </p>
+                                </div>
+                                <div class="num-parcial">
+                                    <div class="badge-custom text-center"><strong><?php echo htmlspecialchars($formattedParcial); ?></strong></div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -186,7 +220,7 @@
         <footer></footer>
 
         <!-- Scrpts -->
-        <script src="scripts.js"></script>
+        <script src="Views/scripts.js"></script>
     </body>
 
 </html>
