@@ -127,15 +127,13 @@
                                 <label for="semestre" class="me-2">Semestre:</label>
                                 <select name="semestre" id="semestre" class="form-select">
                                     <option value="Todos">Todos</option>
-                                    <option value="Primero">Primero</option>
-                                    <option value="Segundo">Segundo</option>
-                                    <option value="Tercero">Tercero</option>
-                                    <option value="Cuarto">Cuarto</option>
-                                    <option value="Quinto">Quinto</option>
-                                    <option value="Sexto">Sexto</option>
-                                    <option value="Septimo">Septimo</option>
-                                    <option value="Octavo">Octavo</option>
-                                    <option value="Noveno">Noveno</option>
+                                    <option value="3">Tercero</option>
+                                    <option value="4">Cuarto</option>
+                                    <option value="5">Quinto</option>
+                                    <option value="6">Sexto</option>
+                                    <option value="7">Séptimo</option>
+                                    <option value="8">Octavo</option>
+                                    <option value="9">Noveno</option>
                                 </select>
                             </div>
             
@@ -149,8 +147,9 @@
                             <div class="form-group">
                                 <label for="parcial" class="me-2">Parcial:</label>
                                 <select name="parcial" id="parcial" class="form-select">
-                                    <option value="1°">1°</option>
-                                    <option value="2°">2°</option>
+                                    <option value="">Todos</option>
+                                    <option value="1">1°</option>
+                                    <option value="2">2°</option>
                                 </select>
                             </div>
                         </form>

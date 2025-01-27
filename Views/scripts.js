@@ -1,79 +1,94 @@
+
 // Script para mostrar unidades por semestre
-const unidadesPorSemestre = {
-    "Todos": [
-        //Primero
-        "Liderazgo, emprendimiento e innovación", "Responsabilidad social y desarrollo sustentable", 
-        "Metodología de la programación", "Álgebra", "Cálculo diferencial", "Geometría analítica",
 
-        //Segundo
-        "Cultura de paz y derechos humanos", "Ética, transparencia y cultura de la legalidad", 
-        "Igualdad de género, diversidad sexual e inclusión", "Tópicos de álgebra", "Cálculo integral",
-        "Mecánica traslacional y rotacional", "Programación básica", 
+// const unidadesPorSemestre = {
+//     "Todos": [
+//         //Primero
+//         "Liderazgo, emprendimiento e innovación", "Responsabilidad social y desarrollo sustentable", 
+//         "Metodología de la programación", "Álgebra", "Cálculo diferencial", "Geometría analítica",
+
+//         //Segundo
+//         "Cultura de paz y derechos humanos", "Ética, transparencia y cultura de la legalidad", 
+//         "Igualdad de género, diversidad sexual e inclusión", "Tópicos de álgebra", "Cálculo integral",
+//         "Mecánica traslacional y rotacional", "Programación básica", 
          
-        //Tercero
-        "Programación estructurada", "Relaciones espaciales para videojuegos", "Producción multimedia", "Fundamentos del dibujo artístico", 
-        "Metodologías ágiles de trabajo", "Proyección de negocios tecnológicos y animaciones", "Modelado arquitectónico",
+//         //Tercero
+//         "Programación estructurada", "Relaciones espaciales para videojuegos", "Producción multimedia", "Fundamentos del dibujo artístico", 
+//         "Metodologías ágiles de trabajo", "Proyección de negocios tecnológicos y animaciones", "Modelado arquitectónico",
 
-        //Cuarto
-        "Programación avanzada", "Transformaciones gráficas para videojuegos", "Fundamentos de los videojuegos", 
-        "Tecnologías multimedia", "Fotografía digital", "Modelo de administración de datos", "Fundamentos de la animación", 
-        "Modelado orgánico", "Interfaz de programación de aplicaciones", "Cultura de la paz (Plan 420)", 
-        "Estructura de datos (Plan 420)", "Lógica digital (Plan 420)", "Propiedad intelectual (Plan 420)", 
-        "Programación orientada a objetos (Plan 420)", "Sistemas operativos (Plan 420)", "Lenguaje ensamblador (Plan 420)",
+//         //Cuarto
+//         "Programación avanzada", "Transformaciones gráficas para videojuegos", "Fundamentos de los videojuegos", 
+//         "Tecnologías multimedia", "Fotografía digital", "Modelo de administración de datos", "Fundamentos de la animación", 
+//         "Modelado orgánico", "Interfaz de programación de aplicaciones", "Cultura de la paz (Plan 420)", 
+//         "Estructura de datos (Plan 420)", "Lógica digital (Plan 420)", "Propiedad intelectual (Plan 420)", 
+//         "Programación orientada a objetos (Plan 420)", "Sistemas operativos (Plan 420)", "Lenguaje ensamblador (Plan 420)",
 
-        //Quinto
-        "Modelos de administración de datos", "Gráficas computacionales I", "Diseño de hápticos", "Cinematografía", 
-        "Administración de alto volumen de datos", "Animación básica", "Preproducción de vídeo", "Preproducción 2D",
+//         //Quinto
+//         "Modelos de administración de datos", "Gráficas computacionales I", "Diseño de hápticos", "Cinematografía", 
+//         "Administración de alto volumen de datos", "Animación básica", "Preproducción de vídeo", "Preproducción 2D",
 
-        //Sexto
-        "Redes computacionales", "Programación web I", "Guionismo", "Gráficas computacionales II", 
-        "Escenarios de videojuegos", "Modelado en alto poligonaje", "Interface y experiencia de usuario en web", 
-        "Ilustración digital", "Efectos Visuales I", 
+//         //Sexto
+//         "Redes computacionales", "Programación web I", "Guionismo", "Gráficas computacionales II", 
+//         "Escenarios de videojuegos", "Modelado en alto poligonaje", "Interface y experiencia de usuario en web", 
+//         "Ilustración digital", "Efectos Visuales I", 
         
-        //Septimo
-        "Programación web de capa intermedia", "Programación orientada a internet", 
-        "Optimización de videojuegos", "Gráficas computacionales en web", "Base de datos multimedia", "Administración de proyectos", 
-        "Actuación y dirección para animación", "Animación tradicional de humanos y de animales", "Efectos visuales II",
+//         //Septimo
+//         "Programación web de capa intermedia", "Programación orientada a internet", 
+//         "Optimización de videojuegos", "Gráficas computacionales en web", "Base de datos multimedia", "Administración de proyectos", 
+//         "Actuación y dirección para animación", "Animación tradicional de humanos y de animales", "Efectos visuales II",
         
-        //Octavo
-        "Diseño de videojuegos en línea", "Mercadotecnia", "Procesamiento de imágenes", "Programación web II", "Realidad virtual", 
-        "Administración de servidores", "Animación tradicional de escenarios", "Esqueletos de personajes", "Iluminación y audio",
+//         //Octavo
+//         "Diseño de videojuegos en línea", "Mercadotecnia", "Procesamiento de imágenes", "Programación web II", "Realidad virtual", 
+//         "Administración de servidores", "Animación tradicional de escenarios", "Esqueletos de personajes", "Iluminación y audio",
 
-        //Noveno
-        "Proyección personal y de productos", "Ingeniería de software", "Postproducción"
-    ],
-    "Primero": ["Todas", "Liderazgo, emprendimiento e innovación", "Responsabilidad social y desarrollo sustentable", "Metodología de la programación", "Álgebra", "Cálculo diferencial", "Geometría analítica"],
-    "Segundo": ["Todas", "Cultura de paz y derechos humanos", "Ética, transparencia y cultura de la legalidad", "Igualdad de género, diversidad sexual e inclusión", "Tópicos de álgebra", "Cálculo integral", "Mecánica traslacional y rotacional", "Programación básica"],
-    "Tercero": ["Todas", "Programación estructurada", "Relaciones espaciales para videojuegos", "Producción multimedia", "Fundamentos del dibujo artístico", "Metodologías ágiles de trabajo", "Proyección de negocios tecnológicos y animaciones", "Modelado arquitectónico"],
-    "Cuarto": ["Todas", "Programación avanzada", "Transformaciones gráficas para videojuegos", "Fundamentos de los videojuegos", "Tecnologías multimedia", "Fotografía digital", "Modelo de administración de datos", "Fundamentos de la animación", "Modelado orgánico", "Interfaz de programación de aplicaciones", "Cultura de la paz (Plan 420)", "Estructura de datos (Plan 420)", "Lógica digital (Plan 420)", "Propiedad intelectual (Plan 420)", "Programación orientada a objetos (Plan 420)", "Sistemas operativos (Plan 420)", "Lenguaje ensamblador (Plan 420)"],
-    "Quinto": ["Todas", "Liderazgo, emprendimiento e innovación", "Modelos de administración de datos", "Gráficas computacionales I", "Fotografía digital", "Diseño de hápticos", "Cinematografía", "Administración de alto volumen de datos", "Animación básica", "Preproducción de vídeo", "Preproducción 2D"],
-    "Sexto": ["Todas", "Redes computacionales", "Programación web I", "Guionismo", "Gráficas computacionales II", "Escenarios de videojuegos", "Modelado en alto poligonaje", "Interface y experiencia de usuario en web", "Ilustración digital", "Efectos Visuales I"],
-    "Septimo": ["Todas", "Programación web de capa intermedia", "Programación orientada a internet", "Optimización de videojuegos", "Gráficas computacionales en web", "Base de datos multimedia", "Administración de proyectos", "Actuación y dirección para animación", "Animación tradicional de humanos y de animales", "Efectos visuales II"],
-    "Octavo": ["Todas", "Diseño de videojuegos en línea", "Mercadotecnia", "Procesamiento de imágenes", "Programación web II", "Realidad virtual", "Administración de servidores", "Animación tradicional de escenarios", "Esqueletos de personajes", "Iluminación y audio"],
-    "Noveno": ["Todas", "Proyección personal y de productos", "Ingeniería de software", "Postproducción"]
-};
+//         //Noveno
+//         "Proyección personal y de productos", "Ingeniería de software", "Postproducción"
+//     ],
+//     "Primero": ["Todas", "Liderazgo, emprendimiento e innovación", "Responsabilidad social y desarrollo sustentable", "Metodología de la programación", "Álgebra", "Cálculo diferencial", "Geometría analítica"],
+//     "Segundo": ["Todas", "Cultura de paz y derechos humanos", "Ética, transparencia y cultura de la legalidad", "Igualdad de género, diversidad sexual e inclusión", "Tópicos de álgebra", "Cálculo integral", "Mecánica traslacional y rotacional", "Programación básica"],
+//     "Tercero": ["Todas", "Programación estructurada", "Relaciones espaciales para videojuegos", "Producción multimedia", "Fundamentos del dibujo artístico", "Metodologías ágiles de trabajo", "Proyección de negocios tecnológicos y animaciones", "Modelado arquitectónico"],
+//     "Cuarto": ["Todas", "Programación avanzada", "Transformaciones gráficas para videojuegos", "Fundamentos de los videojuegos", "Tecnologías multimedia", "Fotografía digital", "Modelo de administración de datos", "Fundamentos de la animación", "Modelado orgánico", "Interfaz de programación de aplicaciones", "Cultura de la paz (Plan 420)", "Estructura de datos (Plan 420)", "Lógica digital (Plan 420)", "Propiedad intelectual (Plan 420)", "Programación orientada a objetos (Plan 420)", "Sistemas operativos (Plan 420)", "Lenguaje ensamblador (Plan 420)"],
+//     "Quinto": ["Todas", "Liderazgo, emprendimiento e innovación", "Modelos de administración de datos", "Gráficas computacionales I", "Fotografía digital", "Diseño de hápticos", "Cinematografía", "Administración de alto volumen de datos", "Animación básica", "Preproducción de vídeo", "Preproducción 2D"],
+//     "Sexto": ["Todas", "Redes computacionales", "Programación web I", "Guionismo", "Gráficas computacionales II", "Escenarios de videojuegos", "Modelado en alto poligonaje", "Interface y experiencia de usuario en web", "Ilustración digital", "Efectos Visuales I"],
+//     "Septimo": ["Todas", "Programación web de capa intermedia", "Programación orientada a internet", "Optimización de videojuegos", "Gráficas computacionales en web", "Base de datos multimedia", "Administración de proyectos", "Actuación y dirección para animación", "Animación tradicional de humanos y de animales", "Efectos visuales II"],
+//     "Octavo": ["Todas", "Diseño de videojuegos en línea", "Mercadotecnia", "Procesamiento de imágenes", "Programación web II", "Realidad virtual", "Administración de servidores", "Animación tradicional de escenarios", "Esqueletos de personajes", "Iluminación y audio"],
+//     "Noveno": ["Todas", "Proyección personal y de productos", "Ingeniería de software", "Postproducción"]
+// };
 
 // Manejador del cambio en el semestre
-document.getElementById('semestre').addEventListener('change', function() {
-    const semestreSeleccionado = this.value;
+document.getElementById('semestre').addEventListener('change', function () {
+    const semestre = this.value;
     const uaSelect = document.getElementById('ua');
 
-    uaSelect.innerHTML = "";  // Limpiar las opciones actuales
+    // Limpiar opciones previas
+    uaSelect.innerHTML = '<option value="">Selecciona un semestre</option>';
 
-    if (semestreSeleccionado === "Todos") {
-        const option = document.createElement("option");
-        option.value = "Todas";
-        option.textContent = "Todas las materias";
-        uaSelect.appendChild(option);
-    } else {
-        const unidades = unidadesPorSemestre[semestreSeleccionado];
-        unidades.forEach(function(ua) {
-            const option = document.createElement("option");
-            option.value = ua;
-            option.textContent = ua;
-            uaSelect.appendChild(option);
-        });
+    // No hacer nada si no hay un semestre seleccionado
+    if (semestre === 'Todos' || semestre === '') {
+        return;
     }
+
+    // Llamada al backend para obtener materias
+    fetch(`/getMaterias?semestre=${semestre}`)
+        .then(response => response.json())
+        .then(materias => {
+            if (materias.length > 0) {
+                materias.forEach(materia => {
+                    const option = document.createElement('option');
+                    option.value = materia;
+                    option.textContent = materia;
+                    uaSelect.appendChild(option);
+                });
+            } else {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'No hay materias disponibles';
+                uaSelect.appendChild(option);
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar las materias:', error);
+        });
 });
 
 // Disparar evento de cambio inicial para cargar las opciones cuando la página se carga
@@ -173,36 +188,36 @@ const calendar = new FullCalendar.Calendar(document.getElementById('calendar'), 
 calendar.render();
 
 
-// Filtrar los eventos según los valores seleccionados en los filtros
-function filterEvents() {
+// // Filtrar los eventos según los valores seleccionados en los filtros
+// function filterEvents() {
 
-    const currentEvents = calendar.getEvents(); // Obtener todos los eventos actuales
-    currentEvents.forEach(event => event.remove()); // Eliminar cada evento
+//     const currentEvents = calendar.getEvents(); // Obtener todos los eventos actuales
+//     currentEvents.forEach(event => event.remove()); // Eliminar cada evento
     
-    const semestre = document.getElementById('semestre').value;
-    const ua = document.getElementById('ua').value;
-    const parcial = document.getElementById('parcial').value;
+//     const semestre = document.getElementById('semestre').value;
+//     const ua = document.getElementById('ua').value;
+//     const parcial = document.getElementById('parcial').value;
 
-    // Filtrar los datos según los valores seleccionados
-    const filteredData = examData.filter(exam => {
-        return (semestre === 'Todos' || exam.semestre === semestre) &&
-            (ua === 'Todas' || exam.ua === ua) &&
-            (parcial === '' || exam.parcial === parcial);
-    });
+//     // Filtrar los datos según los valores seleccionados
+//     const filteredData = examData.filter(exam => {
+//         return (semestre === 'Todos' || exam.semestre === semestre) &&
+//             (ua === 'Todas' || exam.ua === ua) &&
+//             (parcial === '' || exam.parcial === parcial);
+//     });
 
-    // Agrupar los exámenes filtrados por fecha
-    const groupedFilteredData = filteredData.reduce((acc, exam) => {
-        if (!acc[exam.date]) {
-            acc[exam.date] = [];
-        }
-        acc[exam.date].push(exam);
-        return acc;
-    }, {});
+//     // Agrupar los exámenes filtrados por fecha
+//     const groupedFilteredData = filteredData.reduce((acc, exam) => {
+//         if (!acc[exam.date]) {
+//             acc[exam.date] = [];
+//         }
+//         acc[exam.date].push(exam);
+//         return acc;
+//     }, {});
 
-    console.log(examData);
-    // Aplicar los colores a los días después de añadir los eventos
-    applyDayColors(groupedFilteredData);
-}
+//     console.log(examData);
+//     // Aplicar los colores a los días después de añadir los eventos
+//     applyDayColors(groupedFilteredData);
+// }
 
 
 //Pintar los dias con examenes
@@ -224,10 +239,10 @@ function applyDayColors(groupedFilteredData) {
     });
 }
 
-// Agregar eventos de cambio a los filtros
-document.getElementById('semestre').addEventListener('change', filterEvents);
-document.getElementById('ua').addEventListener('change', filterEvents);
-document.getElementById('parcial').addEventListener('change', filterEvents);
+// // Agregar eventos de cambio a los filtros
+// document.getElementById('semestre').addEventListener('change', filterEvents);
+// document.getElementById('ua').addEventListener('change', filterEvents);
+// document.getElementById('parcial').addEventListener('change', filterEvents);
 
 // Inicializar los filtros
-filterEvents();
+// filterEvents();

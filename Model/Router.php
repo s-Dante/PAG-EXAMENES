@@ -54,7 +54,6 @@ class Router{
     }
 
     protected function abort($code=404){
-        header('Location: /BDM-CI/');
         dd("404");
         // http_response_code($code);
         // echo "valio madres jeje 404";
