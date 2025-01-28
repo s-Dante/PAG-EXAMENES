@@ -22,4 +22,43 @@ class Exam{
         return $stmt->fetchAll(PDO::FETCH_COLUMN); // Retorna un array con solo las materias
     }
 
+    public function getExamsByFilters($semestre, $materia = null, $parcial = null) {
+        // Base de la consulta
+        $sql = "SELECT * FROM Examen WHERE 1=1";
+    
+        // Filtrar por semestre si no es "Todos"
+        if ($semestre !== 'Todos') {
+            $sql .= " AND Semestre = :semestre";
+        }
+    
+        // Filtrar por materia si no es "Todas"
+        if ($materia && $materia !== 'Todas') {
+            $sql .= " AND Materia = :materia";
+        }
+    
+        // Filtrar por parcial si se proporciona
+        if ($parcial && $parcial !== '') {
+            $sql .= " AND Parcial = :parcial";
+        }
+    
+        $stmt = $this->con->getCon()->prepare($sql);
+    
+        // Bind de parámetros solo si son necesarios
+        if ($semestre !== 'Todos') {
+            $stmt->bindParam(':semestre', $semestre, PDO::PARAM_STR);
+        }
+        if ($materia && $materia !== 'Todas') {
+            $stmt->bindParam(':materia', $materia, PDO::PARAM_STR);
+        }
+        if ($parcial && $parcial !== '') {
+            $stmt->bindParam(':parcial', $parcial, PDO::PARAM_STR);
+        }
+    
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    
+    
+    
+
 }
