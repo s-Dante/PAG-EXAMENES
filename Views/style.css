@@ -271,6 +271,18 @@ p{
     box-shadow: 5px 5px 3px black;
 }
 
+#pagination button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#pagination button:hover {
+    background-color: #0056b3;
+}
 
 
 
@@ -356,7 +368,7 @@ header {
     transform: 0.3s ease;
     box-shadow: 0.3s ease;
     cursor: pointer;
-
+    width: 200px;
 }
 
 .boton::after {

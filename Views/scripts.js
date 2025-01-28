@@ -217,6 +217,8 @@ function cargarExamenes() {
 
                     examDetails.innerHTML += `
                         <div class="b-example-divider"></div>
+                        <div class="b-example-divider"></div>
+
                         <div class="card-custom mx-sm-5 mx-2">
                             <div class="info-examen">
                                 <h4 class="mb-2 text-start">${title}</h4>

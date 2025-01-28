@@ -137,14 +137,14 @@
                                 </select>
                             </div>
             
-                            <div class="form-group mt-3">
+                            <div class="form-group mt-3 ms-5">
                                 <label for="ua" class="me-2">UA's:</label>
                                 <select name="ua" id="ua" class="form-select">
                                     <option value="">Selecciona un semestre</option>
                                 </select>
                             </div>
             
-                            <div class="form-group">
+                            <div class="form-group ms-4">
                                 <label for="parcial" class="me-2">Parcial:</label>
                                 <select name="parcial" id="parcial" class="form-select">
                                     <option value="">Todos</option>
@@ -176,10 +176,9 @@
             
             <!-- Detalles del Examen -->
             <div class="row justify-content-center">
-                <div class="col-10 col-md-6 bg-custom-gradient rounded-top-4 text-center">
-                    <div id="exam-details">
-                    </div>
-
+                <div class="col-10 col-md-6 bg-custom-gradient rounded-top-4 text-center" style="box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.7);">
+                    <div id="exam-details"></div>
+                    <div id="pagination"></div>
                 </div>
             </div>
         </div>
