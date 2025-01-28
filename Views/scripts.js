@@ -108,25 +108,35 @@ function initializeCalendar(groupedExams) {
             }
         })),
         dateClick: function (info) {
-            const selectedDate = info.dateStr;
-            const examsOnSameDate = groupedExams[selectedDate]; // Obtener los exámenes de ese día
-
-            let detailsHTML = '';
+            const selectedDate = info.dateStr; // Fecha seleccionada en formato YYYY-MM-DD
+            const examsOnSameDate = groupedExams[selectedDate]; // Obtener exámenes de esa fecha
+        
+            let detailsHTML = ''; // HTML que contendrá la información
+        
             if (examsOnSameDate) {
                 examsOnSameDate.forEach(exam => {
-                    const { group, hora, parcial = 'N/A', semestre = 'N/A', details = 'Sin detalles' } = exam;
-                    const title = exam.Materia || 'Sin título';
-
-                    const formattedParcial = parcial === '1°' ? '1P' : (parcial === '2°' ? '2P' : parcial);
-
+                    // Asegúrate de que cada examen tiene estos valores (pueden ser null o undefined)
+                    const { 
+                        Materia = 'Sin título', 
+                        group = 'No asignado', 
+                        hora = 'Sin hora', 
+                        parcial = 'N/A', 
+                        semestre = 'N/A', 
+                        details = 'Sin detalles' 
+                    } = exam;
+        
+                    // Formatear parcial si aplica
+                    const formattedParcial = parcial === '1' ? '1P' : (parcial === '2' ? '2P' : parcial);
+        
+                    // Construir el HTML del detalle
                     detailsHTML += `
                         <div class="b-example-divider"></div>
                         <div class="card-custom mx-sm-5 mx-2">
                             <div class="info-examen">
-                                <h4 class="mb-2 text-start">${title}</h4>
+                                <h4 class="mb-2 text-start">${Materia}</h4>
                                 <p class="mb-1 text-start">
                                     <span class="text-secondary-custom">Gpo:</span>
-                                    <span class="gpo"><strong>${group || 'No asignado'}</strong></span>
+                                    <span class="gpo"><strong>${group}</strong></span>
                                 </p>
                                 <p class="mb-1">
                                     <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
@@ -142,11 +152,14 @@ function initializeCalendar(groupedExams) {
                     `;
                 });
             } else {
+                // Si no hay exámenes programados para la fecha seleccionada
                 detailsHTML = '<p>No hay exámenes programados para este día.</p>';
             }
-
+        
+            // Mostrar los detalles en el contenedor correspondiente
             document.getElementById('exam-details').innerHTML = detailsHTML;
         }
+        
     });
 
     // Escuchar el evento `datesSet` para aplicar los colores después del renderizado
@@ -175,12 +188,21 @@ function cargarExamenes() {
             if (exams.length > 0) {
                 // Agrupar exámenes por fecha
                 const groupedExams = exams.reduce((acc, exam) => {
-                    const date = new Date(exam.Fecha).toISOString().split('T')[0]; // Convertir a YYYY-MM-DD
+                    const date = new Date(exam.Fecha).toISOString().split('T')[0]; // Normaliza la fecha a YYYY-MM-DD
                     if (!acc[date]) acc[date] = [];
-                    acc[date].push(exam);
+                    acc[date].push({
+                        Materia: exam.Materia || 'Sin título',
+                        group: exam.Grupo || 'No asignado',
+                        hora: exam.Hora || 'Sin hora',
+                        parcial: exam.Parcial || 'N/A',
+                        semestre: exam.Semestre || 'N/A',
+                        details: exam.details || 'Sin detalles'
+                    });
                     return acc;
                 }, {});
                 
+                
+                console.log('Estructura de groupedExams:', groupedExams);
 
                 // Inicializar el calendario con los exámenes agrupados
                 initializeCalendar(groupedExams);
