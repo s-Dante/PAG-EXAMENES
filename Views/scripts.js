@@ -55,6 +55,18 @@
 //     "Noveno": ["Todas", "Proyección personal y de productos", "Ingeniería de software", "Postproducción"]
 // };
 
+
+//Carga de datos iniciales
+document.addEventListener('DOMContentLoaded', function () {
+    // Inicializar el calendario con los exámenes por defecto (si existen)
+    cargarExamenes(); // Llamamos a cargarExamenes para cargar los exámenes iniciales
+
+    // Disparar evento de cambio inicial para cargar las opciones al cargar la página
+    document.getElementById('semestre').dispatchEvent(new Event('change'));
+    document.getElementById('parcial').dispatchEvent(new Event('change'));
+    document.getElementById('ua').dispatchEvent(new Event('change'));
+});
+
 // Manejador del cambio en el semestre
 // Lógica para cargar las materias según el semestre seleccionado
 document.getElementById('semestre').addEventListener('change', function () {
@@ -102,9 +114,6 @@ document.getElementById('semestre').addEventListener('change', function () {
             console.error('Error al cargar las materias:', error);
         });
 });
-
-// Disparar evento de cambio inicial para cargar las opciones al cargar la página
-document.getElementById('semestre').dispatchEvent(new Event('change'));
 
 // Eventos que disparan la actualización del calendario y de los exámenes
 document.getElementById('parcial').addEventListener('change', cargarExamenes);
