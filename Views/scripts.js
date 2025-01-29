@@ -153,7 +153,20 @@ function initializeCalendar(groupedExams) {
                 });
             } else {
                 // Si no hay exámenes programados para la fecha seleccionada
-                detailsHTML = '<p>No hay exámenes programados para este día.</p>';
+                detailsHTML = `
+                        <div class="b-example-divider"></div>
+                        <div class="b-example-divider"></div>
+
+                        <p class="text-center">No hay exámenes disponibles.</p>
+
+                        <div class="b-example-divider"></div>
+                        <div class="b-example-divider"></div>
+
+                        <img src="img/Logo-LMAD.png" alt="logotipo de LMAD">
+
+                        <div class="b-example-divider"></div>
+                        <div class="b-example-divider"></div>
+                    `;
             }
         
             // Mostrar los detalles en el contenedor correspondiente
@@ -173,6 +186,10 @@ function initializeCalendar(groupedExams) {
 }
 
 // Función para cargar exámenes y actualizar el calendario
+let currentPage = 0;
+const examsPerPage = 6;  // Número de exámenes por página
+
+// Función para cargar exámenes y actualizar el calendario con paginación
 function cargarExamenes() {
     const ua = document.getElementById('ua').value;
     const semestre = document.getElementById('semestre').value;
@@ -200,47 +217,39 @@ function cargarExamenes() {
                     });
                     return acc;
                 }, {});
-                
-                
-                console.log('Estructura de groupedExams:', groupedExams);
 
                 // Inicializar el calendario con los exámenes agrupados
                 initializeCalendar(groupedExams);
 
-                // Mostrar detalles de los exámenes actuales en la sección de detalles
-                exams.forEach(exam => {
-                    const title = exam.Materia;
-                    const group = exam.Grupo ?? 'No asignado';
-                    const hora = exam.Hora;
-                    const parcialText = exam.Parcial === '1' ? '1P' : (exam.Parcial === '2' ? '2P' : exam.Parcial);
-                    const selectedDate = exam.Fecha;
+                // Paginamos los exámenes
+                const pages = paginateExams(exams, examsPerPage);
+                showPage(pages, currentPage); // Mostrar la página inicial
 
-                    examDetails.innerHTML += `
-                        <div class="b-example-divider"></div>
-                        <div class="b-example-divider"></div>
+                // Agregar botones de navegación
+                updatePaginationButtons(pages.length);
 
-                        <div class="card-custom mx-sm-5 mx-2">
-                            <div class="info-examen">
-                                <h4 class="mb-2 text-start">${title}</h4>
-                                <p class="mb-1 text-start">
-                                    <span class="text-secondary-custom">Gpo:</span>
-                                    <span class="gpo"><strong>${group}</strong></span>
-                                </p>
-                                <p class="mb-1">
-                                    <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
-                                        <strong>${selectedDate}</strong>
-                                    </span>
-                                    <span class="time-text">${hora} hrs</span>
-                                </p>
-                            </div>
-                            <div class="num-parcial">
-                                <div class="badge-custom text-center"><strong>${parcialText}</strong></div>
-                            </div>
-                        </div>
-                    `;
+                // Eventos para los botones de paginación
+                document.getElementById('prevBtn').addEventListener('click', () => {
+                    if (currentPage > 0) {
+                        currentPage--;
+                        showPage(pages, currentPage);
+                        updatePaginationButtons(pages.length);
+                    }
+                });
+
+                document.getElementById('nextBtn').addEventListener('click', () => {
+                    if (currentPage < pages.length - 1) {
+                        currentPage++;
+                        showPage(pages, currentPage);
+                        updatePaginationButtons(pages.length);
+                    }
                 });
             } else {
-                examDetails.innerHTML = '<p class="text-center">No hay exámenes disponibles.</p>';
+                examDetails.innerHTML = `
+                    <div class="b-example-divider"></div>
+                    <div class="b-example-divider"></div>
+                    <p class="text-center">No hay exámenes disponibles.</p>
+                `;
             }
         })
         .catch(error => {
@@ -248,7 +257,76 @@ function cargarExamenes() {
         });
 }
 
+// Función para dividir los exámenes en páginas
+function paginateExams(exams, examsPerPage) {
+    const pages = [];
+    for (let i = 0; i < exams.length; i += examsPerPage) {
+        pages.push(exams.slice(i, i + examsPerPage));
+    }
+    return pages;
+}
+
+// Función para mostrar una página específica de exámenes
+function showPage(pages, pageIndex) {
+    const examDetails = document.getElementById('exam-details');
+    examDetails.innerHTML = ''; // Limpiar contenido previo
+
+    pages[pageIndex].forEach(exam => {
+        const title = exam.Materia;
+        const group = exam.Grupo ?? 'No asignado';
+        const hora = exam.Hora;
+        const parcialText = exam.Parcial === '1' ? '1P' : (exam.Parcial === '2' ? '2P' : exam.Parcial);
+        const selectedDate = exam.Fecha;
+
+        examDetails.innerHTML += `
+            <div class="b-example-divider"></div>
+            <div class="b-example-divider"></div>
+
+            <div class="card-custom mx-sm-5 mx-2">
+                <div class="info-examen">
+                    <h4 class="mb-2 text-start truncate-text">${title}</h4>
+                    <p class="mb-1 text-start">
+                        <span class="text-secondary-custom">Gpo:</span>
+                        <span class="gpo"><strong class="truncate-text">${group}</strong></span>
+                    </p>
+                    <p class="mb-1">
+                        <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
+                            <strong>${selectedDate}</strong>
+                        </span>
+                        <span class="time-text">${hora} hrs</span>
+                    </p>
+                </div>
+                <div class="num-parcial">
+                    <div class="badge-custom text-center">${parcialText}</div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// Actualiza los botones de paginación según la página actual
+function updatePaginationButtons(totalPages) {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // Deshabilitar o habilitar los botones según la página actual
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage === totalPages - 1;
+}
+
+
+
 // Disparar carga inicial de exámenes
 document.addEventListener('DOMContentLoaded', () => {
     cargarExamenes();
 });
+
+
+// Función para dividir los exámenes en páginas
+function paginateExams(exams, examsPerPage) {
+    const pages = [];
+    for (let i = 0; i < exams.length; i += examsPerPage) {
+        pages.push(exams.slice(i, i + examsPerPage));
+    }
+    return pages;
+}

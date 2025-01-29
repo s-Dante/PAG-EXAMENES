@@ -1,7 +1,7 @@
 * {
     border : 0;
     padding: 0;
-    font-family: 'Kodchasan';
+    font-family: 'Montserrat';
 }
 
 :root {
@@ -258,6 +258,8 @@ p{
 /* Cambiar el cursor cuando se pasa sobre un día */
 .fc-day:hover {
     cursor: pointer; /* Cambiar el cursor a puntero */
+    background-color: #0000003a;
+    box-shadow: 0px 0px 10px black;
 }
 
 /* Cambiar el fondo de los días que tienen eventos */
@@ -267,21 +269,83 @@ p{
 
 /* Resaltar las celdas con eventos al pasar el cursor */
 .fc-day.fc-event:hover {
-    background-color: #C53AFF !important; /* Un verde más oscuro al pasar el cursor */
-    box-shadow: 5px 5px 3px black;
+    background-color: #c43affa9 !important; /* Un verde más oscuro al pasar el cursor */
+    box-shadow: 0px 0px 10px black;
 }
 
-#pagination button {
-    margin: 5px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-btn {
+    padding: 10px 15px;
+    margin: 0 10px;
     cursor: pointer;
+    border: none;
+    background-color: #007bff00;
+    color: rgb(255, 255, 255);
+    border-radius: 50%;
+    font-size: 18px;
 }
 
-#pagination button:hover {
+.pagination-btn:hover {
     background-color: #0056b3;
+}
+
+.pagination-btn:disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+.btn-prev{
+    background-color: #00000000;
+    font-size: 25px;
+    color: blue;
+    padding-right: 10px;
+}
+
+.btn-next{
+    background-color: #00000000;
+    font-size: 25px;
+    color: purple;
+    padding-left: 10px;
+}
+
+
+/* Aseguramos que el texto largo no se desborde */
+.truncate-text {
+    white-space: wrap;
+    overflow: hidden;             /* Esconde el texto que se desborda */
+    text-overflow:ellipsis;      /* Muestra "..." al final del texto que se trunca */
+}
+
+/* Si quieres permitir el salto de línea para palabras muy largas pero evitar que el texto se salga del contenedor */
+.text-start {
+    word-wrap: break-word;        /* Permite el salto de palabras largas */
+    word-break: break-word;       /* Rompe palabras largas si es necesario */
+}
+
+/* Asegúrate de que los contenedores tengan un tamaño máximo para que el texto no se expanda más allá de lo que puede contener */
+.card-custom {
+    max-width: 100%;              /* Limita el ancho máximo */
+    overflow: hidden;             /* Asegura que el contenido no se desborde fuera del contenedor */
+}
+
+/* Limitar el ancho de las cabeceras o elementos grandes */
+.info-examen h4 {
+    max-width: 250px;             /* Ajusta el ancho según tus necesidades */
+    overflow: hidden;
+    text-overflow: ellipsis;      /* Aplica los tres puntos "..." */
+    white-space: nowrap;          /* Evita el salto de línea */
+}
+
+.gpo {
+    max-width: 200px;             /* Limita el ancho de los grupos */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -342,7 +406,7 @@ header {
     row-gap: 20px;
     border: none;
     background: var(--fondo-gradiente);
-    width: 100%;
+    width: 99%;
     height: 5px;
     grid-column: 1 / -1;
 }
@@ -443,6 +507,7 @@ main {
     color: var(--colorLetras);
     font-size: 1.5rem;
     grid-column: 2 / -1;
+    font-style: italic;
 }
 
 .inst {

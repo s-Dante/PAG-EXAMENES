@@ -21,6 +21,10 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
         <!-- FullCalendar CSS -->
@@ -72,7 +76,7 @@
             </header>
         </div>
 
-        <div class="row">
+        <div class="row ms-5" style="max-width:97%; overflow-x:hidden;">
             <div class="p-0 d-flex flex-wrap" id="rectangulo"></div>
         </div>
 
@@ -178,7 +182,43 @@
             <div class="row justify-content-center">
                 <div class="col-10 col-md-6 bg-custom-gradient rounded-top-4 text-center" style="box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.7);">
                     <div id="exam-details"></div>
-                    <div id="pagination"></div>
+                    <!-- <div id="pagination"></div> -->
+                    <div class="b-example-divider"></div>
+
+                    <div id="pagination-controls" class="text-center mt-4">
+                        <button id="prevBtn" class="btn-prev" disabled><bold><</bold></button>
+                        <button id="nextBtn" class="btn-next" disabled><bold>></bold></button>
+                    </div>
+
+
+                    <div class="b-example-divider"></div>
+
+                    <script>
+                        // Función para ajustar el tamaño de la fuente
+                        function ajustarTamanioFuente() {
+                            const examDetails = document.getElementById('exam-details');
+                            const cardTitles = examDetails.querySelectorAll('.card-custom h4');
+
+                            cardTitles.forEach(title => {
+                                // Ajusta el tamaño de la fuente en función del ancho del contenedor
+                                const containerWidth = title.parentElement.offsetWidth;
+                                const fontSize = Math.max(containerWidth / 15, 12); // Cambia el 15 para ajustar la reducción de tamaño
+                                title.style.fontSize = `${fontSize}px`;
+                            });
+                        }
+
+                        // Escuchar el evento 'resize' para ajustar el tamaño cada vez que se redimensiona la ventana
+                        window.addEventListener('resize', function() {
+                            console.log('Redimensionando la ventana...');
+                            ajustarTamanioFuente();
+                        });
+
+                        // Ejecutar la función al cargar la página
+                        document.addEventListener('DOMContentLoaded', function() {
+                            console.log('Página cargada, ajustando el tamaño de la fuente...');
+                            ajustarTamanioFuente();
+                        });
+                    </script>
                 </div>
             </div>
         </div>
