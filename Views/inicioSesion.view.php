@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="headerStyle.css">
         <link rel="stylesheet" href="bodyStyle.css"> -->
 
-        <link rel="stylesheet" href="Views/style.css">
+        <link rel="stylesheet" href="../Views/style.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
 
@@ -32,7 +32,7 @@
         <div class="container">
             <header class="row align-content-center d-flex flex-wrap my-4 px-0">
                 <div class="col-3">
-                    <a href="../dashboard.view.php">
+                    <a href="../Views/dashboard.view.php">
                         <img src="../img/Logo-LMAD-big.png" 
                         srcset="../img/Logo-LMAD-small.png 550w, 
                         ../img/Logo-LMAD-medium.png 800w, 
@@ -59,52 +59,46 @@
         <div class="b-example-divider"></div>
         <div class="b-example-divider"></div>
 
-        <div class="container d-flex justify-content-center align-content-center min-vh-100">
-            <main class="row border-rounded p-3">
-                <div class="container d-flex justify-content-center align-content-center min-vh-100">
-                    <div class="row border-rounded p-3">
-                        <div class="col-md-6 left-box">
-                            <div class="row align-item-center">
-                                <div class="header-text mb4">
-                                    <p>Inicio de Sesion</p>
-                                </div>
-
-                            </div>
+        <div class="container d-flex justify-content-center align-items-center min-vh-100">
+            <div class="row rounded-4 p-3 bg-transparent shadow box-area">
+                <div class="col-md-6 left-box">
+                    <div class="row align-items-center ms-sm-4ms-1">
+                        <div class="header-text fs-1 mb-5 mt-5 ps-4">
+                            <h1>Inicio de Sesión</h1>
                         </div>
-
-                        <div class="col-md-6 rounded-4 justify-content-center align-item-center flex-column d-flex right-box">
-                            <div class="featured-image">
-                                <img src="../img/bookIMG.png" class="img-fluid" alt="Imagen de libro y cafe" style="width: 1200px;">
+                        <div class="align-content-center justify-content-center d-flex flex-wrap">
+                            <div class="input-group mb-3 p-2">
+                                <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Clave de usuario">
+                            </div>
+                            <div class="input-group mb-3 p-2">
+                                <input type="password" id="password-input" class="form-control form-control-lg bg-light fs-6" placeholder="Contraseña">
+                            </div>
+                            <div class="input-group mb-5 p-2">
+                                <button class="btn btn-lg btn-primary w-100 fs-6">Entrar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </main>
+        
+                <div class="col-md-6 d-flex justify-content-center align-items-center flex-column right-box">
+                    <div class="features-image mb-3">
+                        <img id="features-image" src="../img/Logo-LMAD.png" alt="Imagen de un bisonte" class="img-fluid" style="width: 1000px">
+                    </div>
+                </div>
+            </div>
         </div>
 
-
-        <!-- <div class="container">
-            <main class="row d-block">
-                <div class="col-6">
-                    <form action="login" method="post">
-                        <label for="Clave de usuario:"></label>
-                        <input type="text" id="usuario" name="usuario" placeholder="">
-
-                        <label for="Contraseña:"></label>
-                        <input type="password" name="password" id="password" placeholder="">
-                    </form>
-                </div>
-
-                <div class="container">
-                    <div class="row align-content-end">
-                        <div class="col-6"></div>
-                        <div class="col-3 me-1">
-                            <img src="../img/bookIMG.png" alt="Imagen de dlibros y café" class="img-invert">
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div> -->
+        <script>
+            // Cambio
+            document.getElementById('password-input').addEventListener('focus', function() {
+                document.getElementById('features-image').src = '../img/FCFM-LOGO.png';
+            });
+        
+            // devolver
+            document.getElementById('password-input').addEventListener('blur', function() {
+                document.getElementById('features-image').src = '../img/Logo-LMAD.png';
+            });
+        </script>
 
         <footer></footer>
 
