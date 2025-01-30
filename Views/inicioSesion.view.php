@@ -68,10 +68,10 @@
                         </div>
                         <div class="align-content-center justify-content-center d-flex flex-wrap">
                             <div class="input-group mb-3 p-2 me-4">
-                                <input type="text" class="form-control form-control-lg fs-6 custom-input" placeholder="Clave de usuario">
+                                <input type="text" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Clave de usuario">
                             </div>
-                            <div class="input-group mb-3 p-2 me-4">
-                                <input type="password" id="password-input" class="form-control form-control-lg fs-6 custom-input" placeholder="Contraseña">
+                            <div class="input-group mb-3 p-2 me-4" style="color: white;">
+                                <input type="password" id="password-input" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Contraseña">
                             </div>
                             <div class="input-group mb-5 p-2 me-0 justify-content-center">
                                 <button class="boton custom-button" style="width: 110px;">Entrar</button>
