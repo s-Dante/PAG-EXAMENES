@@ -191,33 +191,6 @@
 
 
                     <div class="b-example-divider"></div>
-
-                    <script>
-                        // Función para ajustar el tamaño de la fuente
-                        function ajustarTamanioFuente() {
-                            const examDetails = document.getElementById('exam-details');
-                            const cardTitles = examDetails.querySelectorAll('.card-custom h4');
-
-                            cardTitles.forEach(title => {
-                                // Ajusta el tamaño de la fuente en función del ancho del contenedor
-                                const containerWidth = title.parentElement.offsetWidth;
-                                const fontSize = Math.max(containerWidth / 15, 12); // Cambia el 15 para ajustar la reducción de tamaño
-                                title.style.fontSize = `${fontSize}px`;
-                            });
-                        }
-
-                        // Escuchar el evento 'resize' para ajustar el tamaño cada vez que se redimensiona la ventana
-                        window.addEventListener('resize', function() {
-                            console.log('Redimensionando la ventana...');
-                            ajustarTamanioFuente();
-                        });
-
-                        // Ejecutar la función al cargar la página
-                        document.addEventListener('DOMContentLoaded', function() {
-                            console.log('Página cargada, ajustando el tamaño de la fuente...');
-                            ajustarTamanioFuente();
-                        });
-                    </script>
                 </div>
             </div>
         </div>

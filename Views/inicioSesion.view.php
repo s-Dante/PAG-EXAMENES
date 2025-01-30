@@ -62,7 +62,7 @@
                 <!-- Columna izquierda (Formulario de login) -->
                 <div class="col-12 col-md-6 left-box"> <!-- Cambiado col-md-6 a col-12 en móviles -->
                     <div class="row align-items-center ms-sm-4 ms-1">
-                        <div class="titulo-inicio mb-5 mt-5 ps-4">
+                        <div class="titulo-inicio mb-5 mt-5 ps-4 ps-sm-0">
                             <!-- H1 más pequeño en dispositivos móviles -->
                             <h1 class="fs-1 fs-md-3" style="font-weight: 50px;">INICIO DE SESIÓN</h1>
                         </div>
@@ -83,7 +83,7 @@
                 <!-- Columna derecha (Imagen) -->
                 <div class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column right-box">
                     <div class="features-image mb-3">
-                        <img id="features-image" src="../img/Logo-LMAD.png" alt="Imagen de un bisonte" class="img-fluid" style="max-width: 100%; height: auto;">
+                        <img id="features-image" src="../img/bisonte-saludo.png" alt="Imagen de un bisonte" class="img-fluid" style="max-width: 100%; height: auto;">
                     </div>
                 </div>
             </div>
@@ -93,12 +93,12 @@
         <script>
             // Cambio
             document.getElementById('password-input').addEventListener('focus', function() {
-                document.getElementById('features-image').src = '../img/FCFM-LOGO.png';
+                document.getElementById('features-image').src = '../img/bisonte-detective.png';
             });
         
             // devolver
             document.getElementById('password-input').addEventListener('blur', function() {
-                document.getElementById('features-image').src = '../img/Logo-LMAD.png';
+                document.getElementById('features-image').src = '../img/bisonte-saludo.png';
             });
         </script>
 
