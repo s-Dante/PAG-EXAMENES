@@ -131,12 +131,14 @@ function initializeCalendar(groupedExams) {
                     // Construir el HTML del detalle
                     detailsHTML += `
                         <div class="b-example-divider"></div>
+                        <div class="b-example-divider"></div>
+
                         <div class="card-custom mx-sm-5 mx-2">
                             <div class="info-examen">
-                                <h4 class="mb-2 text-start">${Materia}</h4>
+                                <h4 class="mb-2 text-start truncate-text">${title}</h4>
                                 <p class="mb-1 text-start">
                                     <span class="text-secondary-custom">Gpo:</span>
-                                    <span class="gpo"><strong>${group}</strong></span>
+                                    <span class="gpo"><strong class="truncate-text">${group}</strong></span>
                                 </p>
                                 <p class="mb-1">
                                     <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
@@ -146,7 +148,7 @@ function initializeCalendar(groupedExams) {
                                 </p>
                             </div>
                             <div class="num-parcial">
-                                <div class="badge-custom text-center"><strong>${formattedParcial}</strong></div>
+                                <div class="badge-custom text-center">${parcialText}</div>
                             </div>
                         </div>
                     `;
@@ -187,7 +189,7 @@ function initializeCalendar(groupedExams) {
 
 // Función para cargar exámenes y actualizar el calendario
 let currentPage = 0;
-const examsPerPage = 6;  // Número de exámenes por página
+const examsPerPage = 5;  // Número de exámenes por página
 
 // Función para cargar exámenes y actualizar el calendario con paginación
 function cargarExamenes() {
@@ -247,8 +249,17 @@ function cargarExamenes() {
             } else {
                 examDetails.innerHTML = `
                     <div class="b-example-divider"></div>
-                    <div class="b-example-divider"></div>
-                    <p class="text-center">No hay exámenes disponibles.</p>
+                        <div class="b-example-divider"></div>
+
+                        <p class="text-center">No hay exámenes disponibles.</p>
+
+                        <div class="b-example-divider"></div>
+                        <div class="b-example-divider"></div>
+
+                        <img src="img/Logo-LMAD.png" alt="logotipo de LMAD">
+
+                        <div class="b-example-divider"></div>
+                        <div class="b-example-divider"></div>
                 `;
             }
         })

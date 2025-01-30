@@ -6,7 +6,7 @@
         <meta name="description" content="Calendario de exámenes de la carrera LMAD de la FCFM, UANL">
         <meta name="keywords" content="FCFM, UANL, LMAD, Exámenes, Calendario">
         <meta name="author" content="LMAD">
-        <link rel="icon" type="image/png" href="img/favicon.png">
+        <link rel="icon" type="image/png" href="../img/favicon.png">
         <title>LMAD Calendario de exámenes</title>
         <!-- <link rel="stylesheet" href="generalStyle.css">
         <link rel="stylesheet" href="headerStyle.css">
@@ -52,41 +52,43 @@
             </header>
         </div>
 
-        <div class="row">
-            <div class="w-100 p-0 d-flex flex-wrap" id="rectangulo"></div>
+        <div class="row ms-5" style="max-width:97%; overflow-x:hidden;">
+            <div class="p-0 d-flex flex-wrap" id="rectangulo"></div>
         </div>
 
-        <div class="b-example-divider"></div>
-        <div class="b-example-divider"></div>
 
         <div class="container d-flex justify-content-center align-items-center min-vh-100">
-            <div class="row rounded-4 p-3 bg-transparent shadow box-area">
-                <div class="col-md-6 left-box">
-                    <div class="row align-items-center ms-sm-4ms-1">
-                        <div class="header-text fs-1 mb-5 mt-5 ps-4">
-                            <h1>Inicio de Sesión</h1>
+            <div class="row rounded-4 p-3 bg-transparent">
+                <!-- Columna izquierda (Formulario de login) -->
+                <div class="col-12 col-md-6 left-box"> <!-- Cambiado col-md-6 a col-12 en móviles -->
+                    <div class="row align-items-center ms-sm-4 ms-1">
+                        <div class="titulo-inicio mb-5 mt-5 ps-4">
+                            <!-- H1 más pequeño en dispositivos móviles -->
+                            <h1 class="fs-1 fs-md-3" style="font-weight: 50px;">INICIO DE SESIÓN</h1>
                         </div>
                         <div class="align-content-center justify-content-center d-flex flex-wrap">
-                            <div class="input-group mb-3 p-2">
-                                <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Clave de usuario">
+                            <div class="input-group mb-3 p-2 me-4">
+                                <input type="text" class="form-control form-control-lg fs-6 custom-input" placeholder="Clave de usuario">
                             </div>
-                            <div class="input-group mb-3 p-2">
-                                <input type="password" id="password-input" class="form-control form-control-lg bg-light fs-6" placeholder="Contraseña">
+                            <div class="input-group mb-3 p-2 me-4">
+                                <input type="password" id="password-input" class="form-control form-control-lg fs-6 custom-input" placeholder="Contraseña">
                             </div>
-                            <div class="input-group mb-5 p-2">
-                                <button class="btn btn-lg btn-primary w-100 fs-6">Entrar</button>
+                            <div class="input-group mb-5 p-2 me-0 justify-content-center">
+                                <button class="boton custom-button" style="width: 110px;">Entrar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-        
-                <div class="col-md-6 d-flex justify-content-center align-items-center flex-column right-box">
+
+                <!-- Columna derecha (Imagen) -->
+                <div class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column right-box">
                     <div class="features-image mb-3">
-                        <img id="features-image" src="../img/Logo-LMAD.png" alt="Imagen de un bisonte" class="img-fluid" style="width: 1000px">
+                        <img id="features-image" src="../img/Logo-LMAD.png" alt="Imagen de un bisonte" class="img-fluid" style="max-width: 100%; height: auto;">
                     </div>
                 </div>
             </div>
         </div>
+
 
         <script>
             // Cambio

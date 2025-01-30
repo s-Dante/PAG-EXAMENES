@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6{
 p{
     color: #58a6ff !important;
 }
+
 .b-example-divider {
     width: 100%;
     height: 2rem;
@@ -518,21 +519,22 @@ main {
 
 /*  |-> Select*/
 .me-2{
-    font-family: "Kodchasan" !important;
+    font-family: "Montserrat" !important;
     font-size: 1.2rem !important;
 }
 
 .form-select {
-    font-family: "Kodchasan" !important;
+    font-family: "Montserrat" !important;
     font-size: 0.9rem !important;
 }
+
 #label{
-    font-family: "Kodchasan" !important;
+    font-family: "Montserrat" !important;
     font-size: 0.5rem;
 }
 
 #select {
-    font-family: "Kodchasan" !important;
+    font-family: "Montserrat" !important;
     font-size: 1rem;
     /* grid-column: 1 / -1;
     grid-row: 2 / 3; */
@@ -541,19 +543,11 @@ main {
     width: 500px; /* Asegura que ocupen todo el espacio disponible en su contenedor */
 }
 
-#select :first-child {
-    /* grid-column: 2 / 3; */
-}
-
-#select:last-child {
-    /* grid-template-columns: 3 / 4; */
-}
-
 /* Estilo de los labels */
 #select label {
     /* display: block; */
     font-size: 1.5rem;
-    font-family: 'Markazi Text';
+    font-family: 'Montserrat';
     margin-bottom: 8px;
     font-weight: 400;
     color: var(--colorLetras);
@@ -568,7 +562,7 @@ main {
     border: none; /* Elimina los bordes predeterminados */
     border-bottom: 2px solid #0DE5FF;
     background-color: #1F2540;
-    font-family: 'Markazi Text';
+    font-family: 'Montserrat';
     font-size: 16px;
     color: var(--colorLetras);
     cursor: pointer;
@@ -602,74 +596,51 @@ main {
     color: #C53AFF;
 }
 
-
-
-/* Estilo de los Input*/
-/* Contenedor general */
-#input-container {
+/* Estilo para los inputs */
+.custom-input {
+    width: 500px !important;
+    font-family: "Montserrat" !important;
     font-size: 1rem;
     border-radius: 8px;
-    background-color: #00000000;
-    width: 300px;
-    grid-template-columns: 10% 1fr 1fr 10%;
-    justify-content: end;
-}
-
-/* Estilo de los labels */
-#input-container label {
-    font-size: 1.5rem;
-    font-family: 'Markazi Text';
-    margin-bottom: 8px;
-    font-weight: 400;
-    color: var(--colorLetras);
-}
-
-/* Estilos para los inputs */
-#input-container input[type="text"],
-#input-container input[type="number"],
-#input-container input[type="email"],
-#input-container input[type="password"],
-#input-container textarea {
-    width: 100%;
+    background-color: #1F2540 !important;
+    width: 500px;
     padding: 10px;
     margin-bottom: 16px;
-    border-radius: 10px;
-    border: none; /* Elimina los bordes predeterminados */
-    border-bottom: 2px solid #0DE5FF;
+    border: none !important; /* Elimina los bordes predeterminados */
+    border-bottom: 2px solid #0DE5FF !important;
     background-color: #1F2540;
-    font-family: 'Markazi Text';
-    font-size: 16px;
     color: var(--colorLetras);
-    cursor: pointer;
-    transition: border 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: border 0.3s ease;
+}
+
+::placeholder {
+    color: #fff;  /* Cambia a un color visible como negro */
+}
+
+.custom-input:focus {
+    outline: none;
+    border-color: #1102df;
+}
+
+.custom-input::placeholder {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    color: var(--colorLetras);
 }
 
 /* Efecto al poner el cursor sobre el input */
-#input-container input:hover,
-#input-container textarea:hover {
-    background-image: #00000000;
+.custom-input:hover {
+    background-color: #1F2540;
     transform: translate(0px, -6px);
     box-shadow: 
         5px 5px 25px 0  #C53AFF, 
         -5px 5px 25px 0 #0DE5FF;
 }
 
-/* Estilo al enfocar el input */
-#input-container input:focus,
-#input-container textarea:focus {
-    outline: none;
-    border-color: #1102df;
+
+.titulo-inicio {
+    font-size: 100px; /* O cualquier tamaño que prefieras */
 }
-
-/* Opcional: Estilo para textarea */
-#input-container textarea {
-    height: 100px; /* Altura fija */
-    resize: none; /* Evita que sea redimensionable */
-}
-
-
-
-
 
 
 
