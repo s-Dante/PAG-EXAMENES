@@ -68,7 +68,7 @@
                     alt="img-Der" class="img-der">
                 </div>
 
-                <div class="col-4 text-center pt-3">
+                <div class="col-4 text-center pt-3" style="display:none;">
                     <a href="Views/inicioSesion.view.php">
                         <button class="boton">Adminsitrador</button>
                     </a>

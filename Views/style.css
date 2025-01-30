@@ -102,15 +102,15 @@ p{
 /* Ajuste para pantallas pequeñas */
 @media (max-width: 600px) {
   .card-custom .info-examen h4 {
-    font-size: 0.4rem; /* Título más pequeño en pantallas pequeñas */
+    font-size: 0.9rem; /* Título más pequeño en pantallas pequeñas */
   }
 
   .card-custom .info-examen p {
-    font-size: 0.4rem; /* Párrafos más pequeños en pantallas pequeñas */
+    font-size: 0.9rem; /* Párrafos más pequeños en pantallas pequeñas */
   }
 
   .card-custom .num-parcial .badge-custom {
-    font-size: 0.7rem; /* Badge más pequeño en pantallas pequeñas */
+    font-size: 0.9rem; /* Badge más pequeño en pantallas pequeñas */
   }
 }
 
@@ -223,7 +223,7 @@ p{
 
 
 #calendar{
-    min-height: 600;
+    min-height: 400px;
     width: auto;
     margin: 10px !important;
 }
@@ -1066,4 +1066,8 @@ p {
         color: var(--colorLetras);
         font-size: 0.7em;
     }
+}
+
+.img-lmad {
+    width: 100%;
 }

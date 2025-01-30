@@ -113,9 +113,9 @@ function initializeCalendar(groupedExams) {
         
             let detailsHTML = ''; // HTML que contendrá la información
         
-            if (examsOnSameDate) {
+            if (examsOnSameDate && examsOnSameDate.length > 0) {
                 examsOnSameDate.forEach(exam => {
-                    // Asegúrate de que cada examen tiene estos valores (pueden ser null o undefined)
+                    // Extraer y validar propiedades del examen
                     const { 
                         Materia = 'Sin título', 
                         group = 'No asignado', 
@@ -128,19 +128,19 @@ function initializeCalendar(groupedExams) {
                     // Formatear parcial si aplica
                     const formattedParcial = parcial === '1' ? '1P' : (parcial === '2' ? '2P' : parcial);
         
-                    // Construir el HTML del detalle
+                    // Construcción del HTML corregida
                     detailsHTML += `
                         <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
-
+        
                         <div class="card-custom mx-sm-5 mx-2">
                             <div class="info-examen">
-                                <h4 class="mb-2 text-start truncate-text">${title}</h4>
+                                <h4 class="mb-2 text-start truncate-text">${Materia}</h4>
                                 <p class="mb-1 text-start">
                                     <span class="text-secondary-custom">Gpo:</span>
                                     <span class="gpo"><strong class="truncate-text">${group}</strong></span>
                                 </p>
-                                <p class="mb-1 text-start">
+                                <p class="mb-1">
                                     <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
                                         <strong>${selectedDate}</strong>
                                     </span>
@@ -148,7 +148,7 @@ function initializeCalendar(groupedExams) {
                                 </p>
                             </div>
                             <div class="num-parcial">
-                                <div class="badge-custom text-center">${parcialText}</div>
+                                <div class="badge-custom text-center">${formattedParcial}</div>
                             </div>
                         </div>
                     `;
@@ -156,24 +156,26 @@ function initializeCalendar(groupedExams) {
             } else {
                 // Si no hay exámenes programados para la fecha seleccionada
                 detailsHTML = `
-                        <div class="b-example-divider"></div>
-                        <div class="b-example-divider"></div>
-
-                        <p class="text-center">No hay exámenes disponibles.</p>
-
-                        <div class="b-example-divider"></div>
-                        <div class="b-example-divider"></div>
-
-                        <img src="img/Logo-LMAD.png" alt="logotipo de LMAD">
-
-                        <div class="b-example-divider"></div>
-                        <div class="b-example-divider"></div>
-                    `;
+                    <div class="b-example-divider"></div>
+                    <div class="b-example-divider"></div>
+        
+                    <p class="text-center">No hay exámenes disponibles.</p>
+        
+                    <div class="b-example-divider"></div>
+                    <div class="b-example-divider"></div>
+        
+                    <img src="img/Logo-LMAD.png" alt="logotipo de LMAD" class="img-lmad">
+        
+                    <div class="b-example-divider"></div>
+                    <div class="b-example-divider"></div>
+                `;
             }
         
-            // Mostrar los detalles en el contenedor correspondiente
-            document.getElementById('exam-details').innerHTML = detailsHTML;
+            // Asegurar que se actualiza el contenido del contenedor
+            const examDetails = document.getElementById('exam-details');
+            examDetails.innerHTML = detailsHTML;
         }
+        
         
     });
 
@@ -187,15 +189,19 @@ function initializeCalendar(groupedExams) {
 
 }
 
-// Función para cargar exámenes y actualizar el calendario
+// Variables globales
 let currentPage = 0;
 const examsPerPage = 5;  // Número de exámenes por página
+let pages = []; // Almacenará los exámenes paginados
 
 // Función para cargar exámenes y actualizar el calendario con paginación
 function cargarExamenes() {
     const ua = document.getElementById('ua').value;
     const semestre = document.getElementById('semestre').value;
     const parcial = document.getElementById('parcial').value;
+
+    // Reiniciar la paginación cuando se cambian los filtros
+    currentPage = 0;
 
     // Llamada al backend para obtener exámenes según filtros
     fetch(`/getExams?semestre=${encodeURIComponent(semestre)}&materia=${encodeURIComponent(ua)}&parcial=${encodeURIComponent(parcial)}`)
@@ -224,28 +230,11 @@ function cargarExamenes() {
                 initializeCalendar(groupedExams);
 
                 // Paginamos los exámenes
-                const pages = paginateExams(exams, examsPerPage);
-                showPage(pages, currentPage); // Mostrar la página inicial
+                pages = paginateExams(exams, examsPerPage);
+                showPage(currentPage); // Mostrar la página inicial
 
                 // Agregar botones de navegación
-                updatePaginationButtons(pages.length);
-
-                // Eventos para los botones de paginación
-                document.getElementById('prevBtn').addEventListener('click', () => {
-                    if (currentPage > 0) {
-                        currentPage--;
-                        showPage(pages, currentPage);
-                        updatePaginationButtons(pages.length);
-                    }
-                });
-
-                document.getElementById('nextBtn').addEventListener('click', () => {
-                    if (currentPage < pages.length - 1) {
-                        currentPage++;
-                        showPage(pages, currentPage);
-                        updatePaginationButtons(pages.length);
-                    }
-                });
+                updatePaginationButtons();
             } else {
                 examDetails.innerHTML = `
                     <div class="b-example-divider"></div>
@@ -261,6 +250,8 @@ function cargarExamenes() {
                         <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
                 `;
+                pages = []; // Vaciar las páginas
+                updatePaginationButtons();
             }
         })
         .catch(error => {
@@ -276,68 +267,81 @@ function paginateExams(exams, examsPerPage) {
     }
     return pages;
 }
-
 // Función para mostrar una página específica de exámenes
-function showPage(pages, pageIndex) {
+function showPage(pageIndex) {
     const examDetails = document.getElementById('exam-details');
     examDetails.innerHTML = ''; // Limpiar contenido previo
 
-    pages[pageIndex].forEach(exam => {
-        const title = exam.Materia;
-        const group = exam.Grupo ?? 'No asignado';
-        const hora = exam.Hora;
-        const parcialText = exam.Parcial === '1' ? '1P' : (exam.Parcial === '2' ? '2P' : exam.Parcial);
-        const selectedDate = exam.Fecha;
+    if (pages.length > 0 && pages[pageIndex]) {
+        pages[pageIndex].forEach(exam => {
+            const title = exam.Materia;
+            const group = exam.Grupo ?? 'No asignado';
+            const hora = exam.Hora;
+            const parcialText = exam.Parcial === '1' ? '1P' : (exam.Parcial === '2' ? '2P' : exam.Parcial);
+            const selectedDate = exam.Fecha;
 
-        examDetails.innerHTML += `
-            <div class="b-example-divider"></div>
-            <div class="b-example-divider"></div>
+            examDetails.innerHTML += `
+                <div class="b-example-divider"></div>
+                <div class="b-example-divider"></div>
 
-            <div class="card-custom mx-sm-5 mx-1">
-                <div class="info-examen">
-                    <h4 class="mb-2 text-start truncate-text">${title}</h4>
-                    <p class="mb-1 text-start">
-                        <span class="text-secondary-custom">Gpo:</span>
-                        <span class="gpo"><strong class="truncate-text">${group}</strong></span>
-                    </p>
-                    <p class="mb-1 text-start">
-                        <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
-                            <strong>${selectedDate}</strong>
-                        </span>
-                        <span class="time-text">${hora} hrs</span>
-                    </p>
+                <div class="card-custom mx-sm-5 mx-2">
+                    <div class="info-examen">
+                        <h4 class="mb-2 text-start truncate-text">${title}</h4>
+                        <p class="mb-1 text-start">
+                            <span class="text-secondary-custom">Gpo:</span>
+                            <span class="gpo"><strong class="truncate-text">${group}</strong></span>
+                        </p>
+                        <p class="mb-1">
+                            <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
+                                <strong>${selectedDate}</strong>
+                            </span>
+                            <span class="time-text">${hora} hrs</span>
+                        </p>
+                    </div>
+                    <div class="num-parcial">
+                        <div class="badge-custom text-center">${parcialText}</div>
+                    </div>
                 </div>
-                <div class="num-parcial">
-                    <div class="badge-custom text-center">${parcialText}</div>
-                </div>
-            </div>
-        `;
-    });
+            `;
+        });
+    }
 }
 
 // Actualiza los botones de paginación según la página actual
-function updatePaginationButtons(totalPages) {
+function updatePaginationButtons() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
+    // Verificar si los botones existen antes de manipularlos
+    if (!prevBtn || !nextBtn) return;
+
     // Deshabilitar o habilitar los botones según la página actual
     prevBtn.disabled = currentPage === 0;
-    nextBtn.disabled = currentPage === totalPages - 1;
+    nextBtn.disabled = currentPage === pages.length - 1;
+
+    // Remover eventos previos para evitar acumulación
+    prevBtn.removeEventListener('click', goToPreviousPage);
+    nextBtn.removeEventListener('click', goToNextPage);
+
+    // Agregar eventos nuevamente
+    prevBtn.addEventListener('click', goToPreviousPage);
+    nextBtn.addEventListener('click', goToNextPage);
 }
 
-
-
-// Disparar carga inicial de exámenes
-document.addEventListener('DOMContentLoaded', () => {
-    cargarExamenes();
-});
-
-
-// Función para dividir los exámenes en páginas
-function paginateExams(exams, examsPerPage) {
-    const pages = [];
-    for (let i = 0; i < exams.length; i += examsPerPage) {
-        pages.push(exams.slice(i, i + examsPerPage));
+// Función para ir a la página anterior
+function goToPreviousPage() {
+    if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+        updatePaginationButtons();
     }
-    return pages;
+}
+
+// Función para ir a la página siguiente
+function goToNextPage() {
+    if (currentPage < pages.length - 1) {
+        currentPage++;
+        showPage(currentPage);
+        updatePaginationButtons();
+    }
 }
