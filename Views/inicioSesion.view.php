@@ -32,7 +32,7 @@
         <div class="container">
             <header class="row align-content-center d-flex flex-wrap my-4 px-0">
                 <div class="col-3">
-                    <a href="../Views/dashboard.view.php">
+                    <a href="/">
                         <img src="../img/Logo-LMAD-big.png" 
                         srcset="../img/Logo-LMAD-small.png 550w, 
                         ../img/Logo-LMAD-medium.png 800w, 
