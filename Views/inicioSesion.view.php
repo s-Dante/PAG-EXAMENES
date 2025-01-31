@@ -30,8 +30,8 @@
 
     <body>
         <div class="container">
-            <header class="row align-content-center d-flex flex-wrap my-4 px-0">
-                <div class="col-3">
+            <header class="row align-content-center d-flex flex-wrap my-4 px-0 justify-content-around">
+                <div class="col-3 align-content-center">
                     <a href="/">
                         <img src="../img/Logo-LMAD-big.png" 
                         srcset="../img/Logo-LMAD-small.png 550w, 
@@ -44,9 +44,9 @@
                     </a>
                 </div>
 
-                <div class="col-3"></div>
+                <div class="col-3 ocultar"></div>
 
-                <div class="col-6 text-center pt-4">
+                <div class="col-6 text-end pt-4">
                     <h3>CALENDARIO DE EXÁMENES</h3>
                 </div>
             </header>
@@ -57,14 +57,14 @@
         </div>
 
 
-        <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="container d-flex justify-content-center align-items-center min-vh-100 all-login">
             <div class="row rounded-4 p-3 bg-transparent">
                 <!-- Columna izquierda (Formulario de login) -->
-                <div class="col-12 col-md-6 left-box"> <!-- Cambiado col-md-6 a col-12 en móviles -->
+                <div class="col-12 col-md-6 align-content-center left-box"> <!-- Cambiado col-md-6 a col-12 en móviles -->
                     <div class="row align-items-center ms-sm-4 ms-1">
-                        <div class="titulo-inicio mb-5 mt-5 ps-4 ps-sm-0">
+                        <div class="titulo-inicio mb-5 mt-5 ps-sm-4 ps-4">
                             <!-- H1 más pequeño en dispositivos móviles -->
-                            <h1 class="fs-1 fs-md-3" style="font-weight: 50px;">INICIO DE SESIÓN</h1>
+                            <h1 class="fs-1 fs-md-3 ps-3" style="font-weight: 50px;">INICIO DE SESIÓN</h1>
                         </div>
                         <div class="align-content-center justify-content-center d-flex flex-wrap">
                             <div class="input-group mb-3 p-2 me-4">
@@ -74,7 +74,7 @@
                                 <input type="password" id="password-input" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Contraseña">
                             </div>
                             <div class="input-group mb-5 p-2 me-0 justify-content-center">
-                                <button class="boton custom-button" style="width: 110px;">Entrar</button>
+                                <button class="boton custom-button rounded-3" style="width: 545px; margin-right: 22px; background-color: #0DE5FF; color:black;"><strong>Entrar</strong></button>
                             </div>
                         </div>
                     </div>
@@ -89,6 +89,39 @@
             </div>
         </div>
 
+        <style>
+            @media (max-width: 576px) {
+                .titulo-inicio h1 {
+                    font-size: 2rem; /* Ajustar tamaño de título en móviles */
+                    width: 300px;
+                    text-wrap: nowrap;
+                }
+                .input-group {
+                    margin-bottom: 1rem; /* Reducir el margen entre inputs en pantallas pequeñas */
+                    width: 300px;
+                }
+                .custom-button {
+                    font-size: 1.3rem; /* Ajustar tamaño del botón */
+                    width: 220px;
+                    margin-right: 10px;
+                }
+                .right-box {
+                    display: none; /* Ocultar imagen en pantallas muy pequeñas si es necesario */
+                    width: 300px;
+                    margin-left: 33px;
+                }
+
+                .ocultar {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 344px) {
+                .all-login {
+                    width: 200px;
+                }
+            }
+        </style>
 
         <script>
             // Cambio

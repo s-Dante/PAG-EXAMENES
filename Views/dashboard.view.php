@@ -180,7 +180,7 @@
             
             <!-- Detalles del Examen -->
             <div class="row justify-content-center">
-                <div class="col-10 col-md-6 bg-custom-gradient rounded-top-4 text-center" style="box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.7);">
+                <div class="col-sm-8 col-md-6 col-10 bg-custom-gradient rounded-top-4 text-center" style="box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.7);">
                     <div id="exam-details"></div>
                     <div class="b-example-divider"></div>
 

@@ -70,6 +70,10 @@ p{
     border: 2px solid #0DE5FF; /* Se mantiene el borde */
 }
 
+.card-custom .info-examen {
+    width: 400px;
+}
+
 /* Ajustar el tamaño de todos los textos dentro de .card-custom */
 .card-custom .info-examen h4 {
   font-size: 1.5rem; /* Tamaño de fuente por defecto */
@@ -96,11 +100,11 @@ p{
 }
 
 .card-custom .num-parcial .badge-custom {
-  font-size: calc(1.75rem + (100vw - 1000px) / 150); /* Tamaño del badge ajustable */
+  font-size: calc(5rem + (100vw - 1000px) / 150); /* Tamaño del badge ajustable */
 }
 
 /* Ajuste para pantallas pequeñas */
-@media (max-width: 600px) {
+@media (min-width: 200px) and (max-width: 1385px) {
   .card-custom .info-examen h4 {
     font-size: 0.9rem; /* Título más pequeño en pantallas pequeñas */
   }
@@ -110,7 +114,7 @@ p{
   }
 
   .card-custom .num-parcial .badge-custom {
-    font-size: 0.9rem; /* Badge más pequeño en pantallas pequeñas */
+    font-size: 2rem; /* Badge más pequeño en pantallas pequeñas */
   }
 }
 
@@ -123,13 +127,40 @@ p{
 }
 
 /* Media Query para dispositivos pequeños (móviles) */
-@media (max-width: 600px) {
+@media (min-width: 600px) and (max-width: 1385px) {
     .card-custom .info-examen {
-        padding-left: 0px;
+        padding-left: 0px !important;
     }
 
     .card-custom .badge-custom{
-        padding-right: 0px;
+        padding-right: 0px !important;
+    }
+
+    .card-custom .info-examen{
+        width: 230px;
+    }
+
+  /* Asegurar que los textos largos no se dividan en pantallas pequeñas */
+  .card-custom .info-examen h4,
+  .card-custom .info-examen p {
+    white-space: normal; /* Todo el texto debe ir en una sola línea */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Agregar puntos suspensivos si el texto es muy largo */
+  }
+}
+
+
+@media (min-width: 200px) and (max-width: 600px) {
+    .card-custom .info-examen {
+        padding-left: 0px !important;
+    }
+
+    .card-custom .badge-custom{
+        padding-right: 0px !important;
+    }
+
+    .card-custom .info-examen{
+        width: 150px;
     }
 
   /* Asegurar que los textos largos no se dividan en pantallas pequeñas */
@@ -366,7 +397,7 @@ p{
     background-color: #007bff00;
     color: rgb(255, 255, 255);
     border-radius: 50%;
-    font-size: 18px;
+    font-size: 1rempx;
 }
 
 .pagination-btn:hover {
