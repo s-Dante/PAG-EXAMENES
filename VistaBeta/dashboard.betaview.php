@@ -1,3 +1,12 @@
+<!--
+Para esta pagina flata_
+    -verificar que todos los estilos se muestren correctamente
+    -Que funcionen los filtros segun la carrera seleccionada tambien
+        -Seleccionar carrera
+        -mostrar cantidad de semetres segun la carrera
+        -mostrar materias segun semestre y carrera
+-->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +24,7 @@
         <link rel="stylesheet" href="bodyStyle.css">
         -->
 
-        <link rel="stylesheet" href="Views/style.css">
+        <link rel="stylesheet" href="./Views/style.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
 
@@ -127,6 +136,19 @@
                 <div class="row justify-content-evenly" id="seleccion">
                     <div class="col-4 justify-content-center align-content-center" id="select">
                         <form action="selecciones" method="post">
+                            <div class="form-group ms-4">
+                                <label for="carrera" class="me-2">Carrera:</label>
+                                <select name="carrera" id="carrera" class="form-select">
+                                    <option value="Todas">Todas</option>
+                                    <option value="Licenciatura en Matemáticas">Licenciatura en Matemáticas</option>
+                                    <option value="Licenciatura en Física">Licenciatura en Física</option>
+                                    <option value="Licenciatura en Ciencias Computacionales">Licenciatura en Ciencias Computacionales</option>
+                                    <option value="Licenciatura en Actuaría">Licenciatura en Actuaría</option>
+                                    <option value="Licenciatura en Animación Digital">Licenciatura en Animación Digital</option>
+                                    <option value="Licenciatura en Seguridad en Tecnologías de la Información">Licenciatura en Seguridad en Tecnologías de la Información</option>
+                                </select>    
+                            </div>
+
                             <div class="form-group">
                                 <label for="semestre" class="me-2">Semestre:</label>
                                 <select name="semestre" id="semestre" class="form-select">

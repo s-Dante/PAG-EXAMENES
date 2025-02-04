@@ -159,12 +159,12 @@ function initializeCalendar(groupedExams) {
                     <div class="b-example-divider"></div>
                     <div class="b-example-divider"></div>
         
-                    <p class="text-center">No hay exámenes disponibles.</p>
+                    <p class="text-center" style="font-size: 20px;">No hay exámenes disponibles.</p>
         
                     <div class="b-example-divider"></div>
                     <div class="b-example-divider"></div>
         
-                    <img src="img/Logo-LMAD.png" alt="logotipo de LMAD" class="img-lmad">
+                    <img src="img/bisonte-triste.png" alt="logotipo de LMAD" class="img-lmad">
         
                     <div class="b-example-divider"></div>
                     <div class="b-example-divider"></div>
@@ -240,12 +240,12 @@ function cargarExamenes() {
                     <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
 
-                        <p class="text-center">No hay exámenes disponibles.</p>
+                        <p class="text-center" style="font-size: 20px;>No hay exámenes disponibles.</p>
 
                         <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
 
-                        <img src="img/Logo-LMAD.png" alt="logotipo de LMAD">
+                        <img src="img/bisonte-triste.png" alt="logotipo de LMAD">
 
                         <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
