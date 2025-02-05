@@ -47,7 +47,7 @@
                 <div class="col-3 ocultar"></div>
 
                 <div class="col-6 text-end pt-4">
-                    <h3>CALENDARIO DE EXÁMENES</h3>
+                    <h3><strong>CALENDARIO DE EXÁMENES</strong></h3>
                 </div>
             </header>
         </div>
@@ -62,15 +62,17 @@
                 <!-- Columna izquierda (Formulario de login) -->
                 <div class="col-12 col-md-6 align-content-center left-box"> <!-- Cambiado col-md-6 a col-12 en móviles -->
                     <div class="row align-items-center ms-sm-4 ms-1">
-                        <div class="titulo-inicio mb-5 mt-5 ps-sm-4 ps-4">
+                        <div class="titulo-inicio mb-5 ps-sm-4 ps-4">
                             <!-- H1 más pequeño en dispositivos móviles -->
-                            <h1 class="fs-1 fs-md-3 ps-3" style="font-weight: 50px;">INICIO DE SESIÓN</h1>
+                            <h1 class="fs-md-3 ps-1" style="font-size: 100px;"><strong>INICIO DE SESIÓN</strong></h1>
                         </div>
                         <div class="align-content-center justify-content-center d-flex flex-wrap">
-                            <div class="input-group mb-3 p-2 me-4">
+                            <div class="input-group mb-3 mt-5 p-2 me-4">
+                                <label for="claveUsuario" class="mb-3 fs-4" style="font-family: 'Montserrat'; color: cornsilk;">Clave de usaurio:</label>
                                 <input type="text" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Clave de usuario">
                             </div>
                             <div class="input-group mb-3 p-2 me-4" style="color: white;">
+                                <label for="password" class="mb-3 fs-4" style="font-family: 'Montserrat'; color: cornsilk;">Contraseña:</label>
                                 <input type="password" id="password-input" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Contraseña">
                             </div>
                             <div class="input-group mb-5 p-2 me-0 justify-content-center">

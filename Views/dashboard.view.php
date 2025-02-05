@@ -89,7 +89,7 @@
             <!-- Título y Mensaje -->
             <div class="row">
                 <div class="col-12 text-center" id="tema">
-                    <h1>CALENDARIO DE EXÁMENES</h1>
+                    <h1><strong>CALENDARIO DE EXÁMENES</strong></h1>
                 </div>
             </div>
 
@@ -172,7 +172,7 @@
             <!-- Resultados -->
             <div class="row" id="results">
                 <div class="col-12 text-center" id="Results">
-                    <h2>Unidades de Aprendizaje</h2>
+                    <h2><strong>Unidades de Aprendizaje</strong></h2>
                 </div>
             </div>
         

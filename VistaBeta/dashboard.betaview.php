@@ -1,6 +1,5 @@
 <!--
-Para esta pagina flata_
-    -verificar que todos los estilos se muestren correctamente
+Para esta pagina flata
     -Que funcionen los filtros segun la carrera seleccionada tambien
         -Seleccionar carrera
         -mostrar cantidad de semetres segun la carrera
@@ -15,7 +14,7 @@ Para esta pagina flata_
         <meta name="description" content="Calendario de exámenes de la carrera LMAD de la FCFM, UANL">
         <meta name="keywords" content="FCFM, UANL, LMAD, Exámenes, Calendario">
         <meta name="author" content="LMAD">
-        <link rel="icon" type="image/png" href="img/favicon.png">
+        <link rel="icon" type="image/png" href="/img/favicon.png">
         <title>LMAD Calendario de exámenes</title>
 
         <!--
@@ -24,7 +23,7 @@ Para esta pagina flata_
         <link rel="stylesheet" href="bodyStyle.css">
         -->
 
-        <link rel="stylesheet" href="./Views/style.css">
+        <link rel="stylesheet" href="/Views/style.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
 
@@ -55,10 +54,10 @@ Para esta pagina flata_
             <header class="d-flex flex-wrap my-4 px-0 align-content-center justify-content-center">
                 <div class="col-4">
                     <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener noreferrer">
-                        <img src="img/FCFM-LOGO-big.png" 
-                        srcset="img/FCFM-LOGO-small.png 550w, 
-                            img/FCFM-LOGO-medium.png 800w, 
-                            img/FCFM-LOGO-big.png 1000w"
+                        <img src="/img/FCFM-LOGO-big.png" 
+                        srcset="/img/FCFM-LOGO-small.png 550w, 
+                            /img/FCFM-LOGO-medium.png 800w, 
+                            /img/FCFM-LOGO-big.png 1000w"
                         sizes="(max-width: 550px) 80px, 
                             (max-width: 900px) 100px, 
                             (max-width: 1200px) 100vw"
@@ -67,10 +66,10 @@ Para esta pagina flata_
                 </div>
 
                 <div class="col-4">
-                    <img src="img/Logo-LMAD-big.png" 
-                    srcset="img/Logo-LMAD-small.png 550w, 
-                        img/Logo-LMAD-medium.png 800w, 
-                        img/Logo-LMAD-big.png 1000w"
+                    <img src="/img/Logo-LMAD-big.png" 
+                    srcset="/img/Logo-LMAD-small.png 550w, 
+                        /img/Logo-LMAD-medium.png 800w, 
+                        /img/Logo-LMAD-big.png 1000w"
                     sizes="(max-width: 550px) 80px, 
                         (max-width: 900px) 100px, 
                         (max-width: 1200px) 100vw"
@@ -78,7 +77,7 @@ Para esta pagina flata_
                 </div>
 
                 <div class="col-4 text-center pt-3" style="display:normal;">
-                    <a href="Views/inicioSesion.view.php">
+                    <a href="./Views/inicioSesion.view.php">
                         <button class="boton">Adminsitrador</button>
                     </a>
                 </div>
@@ -98,7 +97,7 @@ Para esta pagina flata_
             <!-- Título y Mensaje -->
             <div class="row">
                 <div class="col-12 text-center" id="tema">
-                    <h1>CALENDARIO DE EXÁMENES</h1>
+                    <h1><strong>CALENDARIO DE EXÁMENES</strong></h1>
                 </div>
             </div>
 
@@ -108,7 +107,7 @@ Para esta pagina flata_
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="mensaje-borde d-flex align-items-center">
                     <div class="icono d-flex justify-content-center align-items-center me-3">
-                        <img src="img/idea 1.png" alt="icono de Idea">
+                        <img src="/img/idea 1.png" alt="icono de Idea">
                     </div>
                     <div class="mensaje">
                         <h6>Las fechas asignadas para el tercer parcial serán proporcionadas por la Facultad.</h6>
@@ -194,7 +193,7 @@ Para esta pagina flata_
             <!-- Resultados -->
             <div class="row" id="results">
                 <div class="col-12 text-center" id="Results">
-                    <h2>Unidades de Aprendizaje</h2>
+                    <h2><strong>Unidades de Aprendizaje</strong></h2>
                 </div>
             </div>
         
@@ -220,7 +219,7 @@ Para esta pagina flata_
         <footer></footer>
 
         <!-- Scrpts -->
-        <script src="Views/scripts.js"></script>
+        <script src="/Views/scripts.js"></script>
     </body>
 
 </html>
