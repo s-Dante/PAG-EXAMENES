@@ -8,9 +8,6 @@
         <meta name="author" content="LMAD">
         <link rel="icon" type="image/png" href="../img/favicon.png">
         <title>LMAD Calendario de exámenes</title>
-        <!-- <link rel="stylesheet" href="generalStyle.css">
-        <link rel="stylesheet" href="headerStyle.css">
-        <link rel="stylesheet" href="bodyStyle.css"> -->
 
         <link rel="stylesheet" href="../Views/style.css">
 
@@ -68,7 +65,7 @@
                         </div>
                         <div class="align-content-center justify-content-center d-flex flex-wrap">
                             <div class="input-group mb-3 mt-5 p-2 me-4">
-                                <label for="claveUsuario" class="mb-3 fs-4" style="font-family: 'Montserrat'; color: cornsilk;">Clave de usaurio:</label>
+                                <label for="claveUsuario" class="mb-3 fs-4" style="font-family: 'Montserrat'; color: cornsilk;">Clave de usuario:</label>
                                 <input type="text" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Clave de usuario">
                             </div>
                             <div class="input-group mb-3 p-2 me-4" style="color: white;">

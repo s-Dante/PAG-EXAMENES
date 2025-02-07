@@ -135,7 +135,7 @@ function initializeCalendar(groupedExams) {
         
                         <div class="card-custom mx-sm-5 mx-2">
                             <div class="info-examen">
-                                <h4 class="mb-2 text-start truncate-text">${Materia}</h4>
+                                <h4 class="mb-2 text-start">${Materia}</h4>
                                 <p class="mb-1 text-start">
                                     <span class="text-secondary-custom">Gpo:</span>
                                     <span class="gpo"><strong class="truncate-text">${group}</strong></span>
@@ -286,7 +286,7 @@ function showPage(pageIndex) {
 
                 <div class="card-custom mx-sm-5 mx-2">
                     <div class="info-examen">
-                        <h4 class="mb-2 text-start truncate-text">${title}</h4>
+                        <h4 class="mb-2 text-start">${title}</h4>
                         <p class="mb-1 text-start">
                             <span class="text-secondary-custom">Gpo:</span>
                             <span class="gpo"><strong class="truncate-text">${group}</strong></span>

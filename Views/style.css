@@ -50,7 +50,7 @@ p{
 .card-custom {
     background-color: rgba(0, 0, 0, 0); /* Fondo transparente */
     box-shadow: 0px 0px 20px rgb(71, 3, 231), 0px 0px 20px rgba(23, 39, 216, 0.5); /* Sombra de caja y glow */
-    border: 2px solid #0DE5FF; /* Borde del color que quieres */
+    border: 2px solid #0de7ff8f; /* Borde del color que quieres */
     border-radius: 15px;
     padding: 16px;
     display: flex;
@@ -71,13 +71,13 @@ p{
 }
 
 .card-custom .info-examen {
-    width: 400px;
+    width: 600px;
 }
 
 /* Ajustar el tamaño de todos los textos dentro de .card-custom */
 .card-custom .info-examen h4 {
-  font-size: 1.5rem; /* Tamaño de fuente por defecto */
-  transition: font-size 0.3s ease-in-out; /* Transición suave */
+    font-size: 1.5rem; /* Tamaño de fuente por defecto */
+    transition: font-size 0.3s ease-in-out; /* Transición suave */
 }
 
 .card-custom .info-examen p {
@@ -121,9 +121,10 @@ p{
 /* Ajuste para el truncamiento de texto largo */
 .card-custom .info-examen h4,
 .card-custom .info-examen p {
-  white-space: normal; /* Permite que el texto se ajuste automáticamente en pantallas grandes */
-  overflow: hidden; 
-  text-overflow: ellipsis;
+    white-space: normal; /* Permite que el texto se ajuste automáticamente en pantallas grandes */
+    word-break: break-word;
+    overflow: normal; 
+    text-overflow: ellipsis;
 }
 
 /* Media Query para dispositivos pequeños (móviles) */
@@ -445,7 +446,7 @@ p{
 
 /* Limitar el ancho de las cabeceras o elementos grandes */
 .info-examen h4 {
-    max-width: 250px;             /* Ajusta el ancho según tus necesidades */
+    max-width: 650px;             /* Ajusta el ancho según tus necesidades */
     overflow: hidden;
     text-overflow: ellipsis;      /* Aplica los tres puntos "..." */
     white-space: nowrap;          /* Evita el salto de línea */
