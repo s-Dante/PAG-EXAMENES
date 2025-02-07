@@ -245,7 +245,7 @@ function cargarExamenes() {
                         <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
 
-                        <img src="img/bisonte-triste.png" alt="logotipo de LMAD">
+                        <img src="img/bisonte-triste.png" alt="logotipo de LMAD" class="img-lmad">
 
                         <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
