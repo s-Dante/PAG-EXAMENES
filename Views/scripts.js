@@ -140,7 +140,7 @@ function initializeCalendar(groupedExams) {
                                     <span class="text-secondary-custom">Gpo:</span>
                                     <span class="gpo"><strong class="truncate-text">${group}</strong></span>
                                 </p>
-                                <p class="mb-1">
+                                <p class="mb-1 text-start">
                                     <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
                                         <strong>${selectedDate}</strong>
                                     </span>
