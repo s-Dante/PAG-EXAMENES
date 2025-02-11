@@ -70,9 +70,15 @@
         <div class="b-example-divider"></div>
     </div>
 
-    <div class="container">
-        <div class="ex-cargados" style="justify-self: center; width: 300px; height: 100px; color: red;">
-            
+    <div class="container-ex">
+        <div class="ex-cargados">
+            <div class="carga">
+                <img src="/img/bisonte-detective.png" alt="" style="width: 100px; height:auto;">
+            </div>
+            <div class="carga">
+                <h2>22</h2><br>
+                <h4>EXÁMENES CARGADOS</h4>
+            </div>
         </div>
     </div>
 </body>
