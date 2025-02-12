@@ -28,7 +28,7 @@ document.getElementById('semestre').addEventListener('change', function () {
     }
 
     // Llamada al backend para obtener materias
-    fetch(`/getMaterias?semestre=${semestre}`)
+    fetch(`/getMaterias?semestre=${encodeURIComponent(semestre)}`)
         .then(response => response.json())
         .then(materias => {
             // Agregar opción extra "Todas"
@@ -204,7 +204,7 @@ function cargarExamenes() {
     currentPage = 0;
 
     // Llamada al backend para obtener exámenes según filtros
-    fetch(`/getExams?semestre=${encodeURIComponent(semestre)}&materia=${encodeURIComponent(ua)}&parcial=${encodeURIComponent(parcial)}`)
+    fetch('/getExams?semestre=' + encodeURIComponent(semestre) + '&materia=' + encodeURIComponent(ua) + '&parcial=' + encodeURIComponent(parcial))
         .then(response => response.json())
         .then(exams => {
             const examDetails = document.getElementById('exam-details');
