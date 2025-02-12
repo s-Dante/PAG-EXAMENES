@@ -118,7 +118,8 @@ function initializeCalendar(groupedExams) {
                     // Extraer y validar propiedades del examen
                     const { 
                         Materia = 'Sin título', 
-                        group = 'No asignado', 
+                        group = 'No asignado',
+                        plan = 'N/A',
                         hora = 'Sin hora', 
                         parcial = 'N/A', 
                         semestre = 'N/A', 
@@ -140,6 +141,10 @@ function initializeCalendar(groupedExams) {
                                     <span class="text-secondary-custom">Gpo:</span>
                                     <span class="gpo"><strong class="truncate-text">${group}</strong></span>
                                 </p>
+                        <p class="mb-1 text-start">
+                            <span class="text-secondary-custom">Plan:</span>
+                            <span class="plan"><strong class="truncate-text">${plan}</strong></span>
+                        </p>
                                 <p class="mb-1 text-start">
                                     <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
                                         <strong>${selectedDate}</strong>
@@ -218,6 +223,7 @@ function cargarExamenes() {
                     acc[date].push({
                         Materia: exam.Materia || 'Sin título',
                         group: exam.Grupo || 'No asignado',
+                        plan: exam.Plan || 'N/A',
                         hora: exam.Hora || 'Sin hora',
                         parcial: exam.Parcial || 'N/A',
                         semestre: exam.Semestre || 'N/A',
@@ -276,6 +282,7 @@ function showPage(pageIndex) {
         pages[pageIndex].forEach(exam => {
             const title = exam.Materia;
             const group = exam.Grupo ?? 'No asignado';
+            const plan = exam.Plan ?? 'N/A';
             const hora = exam.Hora;
             const parcialText = exam.Parcial === '1' ? '1P' : (exam.Parcial === '2' ? '2P' : exam.Parcial);
             const selectedDate = exam.Fecha;
@@ -290,6 +297,10 @@ function showPage(pageIndex) {
                         <p class="mb-1 text-start">
                             <span class="text-secondary-custom">Gpo:</span>
                             <span class="gpo"><strong class="truncate-text">${group}</strong></span>
+                        </p>
+                        <p class="mb-1 text-start">
+                            <span class="text-secondary-custom">Plan:</span>
+                            <span class="plan"><strong class="truncate-text">${plan}</strong></span>
                         </p>
                         <p class="mb-1 text-start">
                             <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
