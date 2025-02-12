@@ -73,13 +73,59 @@
     <div class="container-ex">
         <div class="ex-cargados">
             <div class="carga">
-                <img src="/img/bisonte-detective.png" alt="" style="width: 100px; height:auto;">
+                <img src="/img/examsIcon.png" alt="" style="width: 160px; height:auto;">
             </div>
-            <div class="carga">
-                <h2>22</h2><br>
-                <h4>EXÁMENES CARGADOS</h4>
+            <div class="carga" style="text-align: center;">
+                <h2 style="font-size: 75px; font-family: 'Kodchasan';"><b>22</b></h2><br>
+                <h4 style="text-align: start; font-family: 'Kodchasan' !important;">EXÁMENES CARGADOS</h4>
             </div>
         </div>
+    </div>
+
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+
+    <div class="admin-info" style="text-align: center;">
+        <h2>ADMINISTRACIÓN DE INFORMACIÓN</h2>
+
+        <div class="b-example-divider"></div>
+        
+        <div class="check">
+            <label for="carreraCheck"><input type="checkbox" name="carreraCheck" id="carreraCheck">   Mostrar filtro de carrera</label>
+            
+            <div class="b-example-divider"></div>
+
+            <div class="form-group" id="select" style="justify-self: center; align-self: center;">
+                <label for="filtroCarrera" style="font-size: 22px;">Seleccione la carrera:</label>
+                
+                <select name="filtroCarrera" id="filtroCarrera" class="form-select">
+                    <option value="Seleeccionar">Seleccioar</option>
+                    <option value="Licenciatura en Multimedia y Animacion Digital">Licenciatura en Multimedia y Animacion Digital</option>
+                    <option value="Licenciatura en Matematicas">Licenciatura en Matematicas</option>
+                    <option value="Licenciatura en Fisica">Licenciatura en Fisica</option>
+                    <option value="Licenciatura en Actuaria">Licenciatura en Actuaria</option>
+                    <option value="Licenciatura en Ciencias Computacionales">Licenciatura en Ciencias Computacionales</option>
+                    <option value="Licenciatura en Seguridad e Tecnologías de la Información">Licenciatura en Seguridad e Tecnologías de la Información</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-example-divider"></div>
+
+    <div class="p-0 d-flex flex-wrap" id="rect"></div>
+
+    <div class="b-example-divider"></div>
+
+    <h4>FECHAS DE PARCIALES</h4>
+
+    <div class="selectorFecha">
+        <h5>Primer Parcial</h5>
+
+        <label for="inicioPrimero"></label>
+        <input type="datetime-local" name="inicioPrimero" id="iniPrimero">
     </div>
 </body>
 </html>
