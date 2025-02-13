@@ -92,16 +92,20 @@
 
         <div class="b-example-divider"></div>
         
-        <div class="check">
-            <label for="carreraCheck"><input type="checkbox" name="carreraCheck" id="carreraCheck">   Mostrar filtro de carrera</label>
-            
+        <div class="check" style="color: cornsilk;">
+            <label class="custom-checkbox">
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+                Mostrar filtro de carrera
+            </label>
+
             <div class="b-example-divider"></div>
 
             <div class="form-group" id="select" style="justify-self: center; align-self: center;">
-                <label for="filtroCarrera" style="font-size: 22px;">Seleccione la carrera:</label>
+                <label for="filtroCarrera" style="font-size: 17px; display:block;">Seleccione la carrera:</label>
                 
                 <select name="filtroCarrera" id="filtroCarrera" class="form-select">
-                    <option value="Seleeccionar">Seleccioar</option>
+                    <option value="Seleccionar" disabled hidden selected>Seleccioar</option>
                     <option value="Licenciatura en Multimedia y Animacion Digital">Licenciatura en Multimedia y Animacion Digital</option>
                     <option value="Licenciatura en Matematicas">Licenciatura en Matematicas</option>
                     <option value="Licenciatura en Fisica">Licenciatura en Fisica</option>
@@ -118,14 +122,69 @@
     <div class="p-0 d-flex flex-wrap" id="rect"></div>
 
     <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
 
-    <h4>FECHAS DE PARCIALES</h4>
+    <h5 style="text-align: center;">FECHAS DE PARCIALES</h5>
 
-    <div class="selectorFecha">
-        <h5>Primer Parcial</h5>
+    <div class="b-example-divider"></div>
+    
+    <div class="selectorFecha" style="color: cornsilk !important; justify-self: center;">
+        <p style="color: cornsilk; display:inline;">Primer Parcial</p>
 
+        <span style="margin-right:8px;">Desde el día</span>
         <label for="inicioPrimero"></label>
-        <input type="datetime-local" name="inicioPrimero" id="iniPrimero">
+        <input type="date" name="inicioPrimero" id="iniPrimero">
+
+        <span style="margin-left: 20px; margin-right: 8px;">hasta el día</span>
+        <label for="finPrimero"></label>
+        <input type="date" name="finPrimero" id="finPrimero">
     </div>
+
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+
+    <div class="selectorFecha" style="color: cornsilk !important;">
+        <p style="color: cornsilk; display:inline;">Primer Parcial</p>
+
+        <span style="margin-right:8px;">Desde el día</span>
+        <label for="inicioPrimero"></label>
+        <input type="date" name="inicioPrimero" id="iniPrimero">
+
+        <span style="margin-left: 20px; margin-right: 8px;">hasta el día</span>
+        <label for="finPrimero"></label>
+        <input type="date" name="finPrimero" id="finPrimero">
+    </div>
+
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    
+    <h5 style="text-align: center;">ACTUALIZACIÓN DE INFORMACIÓN</h5>
+
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+
+    <div style="justify-self: center; font-family:'Kodchasan';">
+        <button style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(12, 138, 152),rgb(33, 49, 109) 95%); width:275px; height:30px; display:inline; justify-self:center; margin-right: 10px">Borrar informacion actual</button>
+        <button style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(116, 11, 161),rgb(33, 49, 109) 95%); width:275px; height:30px; display:inline; justify-self:center; margin-left: 10px">Subir informacion nueva</button>
+    </div>
+
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+
+    <h3 style="text-align: center;"><b>UNIDADES DE APRENDIZAJE ACTUALES</b></h3>
+
+    <div class="b-example-divider"></div>
+
+    <div style="justify-self: center;">
+        <input type="text" name="materiaBuscar" id="materiaBuscar" placeholder="buscar UA..." style="width: 585px; height: 30px; border-radius: 10px; background-color: #1F2540; border: 5px solid; border-color: #1F2540">
+    </div>
+
+
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+
 </body>
 </html>
