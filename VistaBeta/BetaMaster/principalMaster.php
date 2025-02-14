@@ -107,11 +107,11 @@
                 <select name="filtroCarrera" id="filtroCarrera" class="form-select">
                     <option value="Seleccionar" disabled hidden selected>Seleccioar</option>
                     <option value="Licenciatura en Multimedia y Animacion Digital">Licenciatura en Multimedia y Animacion Digital</option>
-                    <option value="Licenciatura en Matematicas">Licenciatura en Matematicas</option>
-                    <option value="Licenciatura en Fisica">Licenciatura en Fisica</option>
-                    <option value="Licenciatura en Actuaria">Licenciatura en Actuaria</option>
+                    <option value="Licenciatura en Matemáticas">Licenciatura en Matemáticas</option>
+                    <option value="Licenciatura en Física">Licenciatura en Física</option>
+                    <option value="Licenciatura en Actuaría">Licenciatura en Actuaráa</option>
                     <option value="Licenciatura en Ciencias Computacionales">Licenciatura en Ciencias Computacionales</option>
-                    <option value="Licenciatura en Seguridad e Tecnologías de la Información">Licenciatura en Seguridad e Tecnologías de la Información</option>
+                    <option value="Licenciatura en Seguridad en Tecnologías de la Información">Licenciatura en Seguridad en Tecnologías de la Información</option>
                 </select>
             </div>
         </div>
@@ -124,28 +124,31 @@
     <div class="b-example-divider"></div>
     <div class="b-example-divider"></div>
 
-    <h5 style="text-align: center;">FECHAS DE PARCIALES</h5>
+    <h4 style="text-align: center;">FECHAS DE PARCIALES</h4>
 
     <div class="b-example-divider"></div>
     
-    <div class="selectorFecha" style="color: cornsilk !important; justify-self: center;">
-        <p style="color: cornsilk; display:inline;">Primer Parcial</p>
+    <div class="selectorFecha" style="color: cornsilk !important; justify-self: center; align-items: center; font-size: 20px;">
+        <span style="color: cornsilk; display:inline;" class="parcial">Primer Parcial</span>
+
+        <div style="display: inline-block; width: 2px; height: 50px; background: linear-gradient(0deg, #0DE5FF 0%, #33C2FF 20%, #A05CFF 80%, #C53AFF 100%); margin: 0 15px; transform: translateY(35%);"></div>
 
         <span style="margin-right:8px;">Desde el día</span>
         <label for="inicioPrimero"></label>
-        <input type="date" name="inicioPrimero" id="iniPrimero">
+        <input type="date" name="inicioPrimero" id="iniPrimero" class="date-picker">
 
         <span style="margin-left: 20px; margin-right: 8px;">hasta el día</span>
         <label for="finPrimero"></label>
-        <input type="date" name="finPrimero" id="finPrimero">
+        <input type="date" name="finPrimero" id="finPrimero" class="date-picker">
     </div>
 
     <div class="b-example-divider"></div>
     <div class="b-example-divider"></div>
 
     <div class="selectorFecha" style="color: cornsilk !important;">
-        <p style="color: cornsilk; display:inline;">Primer Parcial</p>
+        <p style="color: cornsilk; display:inline;"><strong>Primer Parcial</strong></p>
 
+        
         <span style="margin-right:8px;">Desde el día</span>
         <label for="inicioPrimero"></label>
         <input type="date" name="inicioPrimero" id="iniPrimero">
@@ -178,13 +181,61 @@
 
     <div class="b-example-divider"></div>
 
-    <div style="justify-self: center;">
-        <input type="text" name="materiaBuscar" id="materiaBuscar" placeholder="buscar UA..." style="width: 585px; height: 30px; border-radius: 10px; background-color: #1F2540; border: 5px solid; border-color: #1F2540">
+   
+
+    <div style="justify-self: center; position: relative;">
+        <input type="text" name="materiaBuscar" id="materiaBuscar" placeholder="buscar UA..." 
+            style="width: 585px; height: 40px; border-radius: 10px; background-color: #1F2540; border: none; border-bottom: 2px solid #0DE5FF;; padding-left: 10px; padding-right: 30px; color: cornsilk;">
+        <img src="/img/lupa.png" alt="lupa" 
+            id="lupaIcon" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); height: 20px; cursor: pointer; filter: invert(1);">
     </div>
 
-
     <div class="b-example-divider"></div>
     <div class="b-example-divider"></div>
 
+    <style>
+        .parcial{
+            text-transform: uppercase;
+        }
+
+        .date-picker{
+            background-color: #1F2540 !important;
+            padding: 5px;
+            border-radius: 10px;
+            border: none;
+            border-bottom:2px solid  #0DE5FF;
+            color: cornsilk;
+        }
+        /* Estilo para cambiar el icono del calendario en Chrome y Safari */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background-color: #FF6347; /* Cambia el color de fondo del icono */
+            border-radius: 50%; /* Hace el icono redondo */
+            padding: 5px; /* Ajusta el espacio interno */
+            cursor: pointer; /* Hace que el cursor sea un puntero al pasar sobre el icono */
+        }
+
+    </style>
+
+    <script>
+        // Eliminar el ícono de la lupa al hacer clic en el input
+        document.getElementById('materiaBuscar').addEventListener('click', function() {
+            document.getElementById('lupaIcon').style.display = 'none';
+        });
+
+        // Mostrar el ícono de la lupa cuando se deje de escribir (cuando el input esté vacío)
+        document.getElementById('materiaBuscar').addEventListener('input', function() {
+            // Si el campo de texto está vacío, mostrar el ícono de la lupa
+            if (this.value === '') {
+                document.getElementById('lupaIcon').style.display = 'block';
+            }
+        });
+
+        // Mostrar el ícono cuando el campo pierda el foco (cuando se deja de escribir)
+        document.getElementById('materiaBuscar').addEventListener('blur', function() {
+            if (this.value === '') {
+                document.getElementById('lupaIcon').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
