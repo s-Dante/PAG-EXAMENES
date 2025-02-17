@@ -137,7 +137,7 @@
         <label for="inicioPrimero"></label>
         <input type="date" name="inicioPrimero" id="iniPrimero" class="date-picker">
 
-        <span style="margin-left: 20px; margin-right: 8px;">hasta el día</span>
+        <span style="margin-left: 25px; margin-right: 8px;">hasta el día</span>
         <label for="finPrimero"></label>
         <input type="date" name="finPrimero" id="finPrimero" class="date-picker">
     </div>
@@ -208,10 +208,11 @@
         }
         /* Estilo para cambiar el icono del calendario en Chrome y Safari */
         input[type="date"]::-webkit-calendar-picker-indicator {
-            background-color: #FF6347; /* Cambia el color de fondo del icono */
+            background-color: transparent; /* Cambia el color de fondo del icono */
             border-radius: 50%; /* Hace el icono redondo */
             padding: 5px; /* Ajusta el espacio interno */
             cursor: pointer; /* Hace que el cursor sea un puntero al pasar sobre el icono */
+            filter: invert(1) sepia(100%) saturate(100%) hue-rotate(180deg);
         }
 
     </style>
