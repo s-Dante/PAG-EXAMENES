@@ -62,12 +62,6 @@
                         (max-width: 1200px) 100vw"
                     alt="img-Der" class="img-der">
                 </div>
-
-                <div class="col-4 text-center pt-3" style="display:normal;">
-                    <a href="/inicioSesion">
-                        <button class="boton">Adminsitrador</button>
-                    </a>
-                </div>
             </header>
         </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+//Configurar con credenciales correctas de la db a usarse
 return [
 
 "database" => [
