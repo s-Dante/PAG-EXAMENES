@@ -145,17 +145,18 @@
     <div class="b-example-divider"></div>
     <div class="b-example-divider"></div>
 
-    <div class="selectorFecha" style="color: cornsilk !important;">
-        <p style="color: cornsilk; display:inline;"><strong>Primer Parcial</strong></p>
+    <div class="selectorFecha" style="color: cornsilk !important; justify-self: center; align-items: center; font-size: 20px; padding-right: 28px;">
+        <span style="color: cornsilk; display:inline;" class="parcial">Segundo Parcial</span>
 
-        
+        <div style="display: inline-block; width: 2px; height: 50px; background: linear-gradient(0deg, #0DE5FF 0%, #33C2FF 20%, #A05CFF 80%, #C53AFF 100%); margin: 0 15px; transform: translateY(35%);"></div>
+
         <span style="margin-right:8px;">Desde el día</span>
         <label for="inicioPrimero"></label>
-        <input type="date" name="inicioPrimero" id="iniPrimero">
+        <input type="date" name="inicioPrimero" id="iniPrimero" class="date-picker">
 
-        <span style="margin-left: 20px; margin-right: 8px;">hasta el día</span>
+        <span style="margin-left: 25px; margin-right: 8px;">hasta el día</span>
         <label for="finPrimero"></label>
-        <input type="date" name="finPrimero" id="finPrimero">
+        <input type="date" name="finPrimero" id="finPrimero" class="date-picker">
     </div>
 
     <div class="b-example-divider"></div>
@@ -213,8 +214,30 @@
             padding: 5px; /* Ajusta el espacio interno */
             cursor: pointer; /* Hace que el cursor sea un puntero al pasar sobre el icono */
             filter: invert(1) sepia(100%) saturate(100%) hue-rotate(180deg);
+
+            color-scheme: cornsilk;
         }
 
+        input[type="date"]::-webkit-datetime-edit-text {
+            padding: 0 0.3rem;
+            color-scheme: dark;
+        }
+        
+        /*
+        ::-webkit-datetime-edit
+        ::-webkit-datetime-edit-fields-wrapper
+        ::-webkit-datetime-edit-text
+
+        ::-webkit-datetime-edit-year-field
+        ::-webkit-datetime-edit-month-field
+        ::-webkit-datetime-edit-week-field
+        ::-webkit-datetime-edit-day-field
+        ::-webkit-datetime-edit-hour-field
+        ::-webkit-datetime-edit-minute-field
+        ::-webkit-datetime-edit-second-field
+        ::-webkit-datetime-edit-millisecond-field
+        ::-webkit-datetime-edit-ampm-field
+        */
     </style>
 
     <script>

@@ -33,12 +33,17 @@ p{
 
 .form-group {
     display: flex;
+    flex-wrap: unset;
     align-items: center;
     margin-bottom: 15px;
 }
 
 .form-group label {
     margin-right: 10px; /* Espaciado entre label y select */
+}
+
+.form-group select {
+    width: 200px;  /* Ancho fijo para el select */
 }
 
 .img-invert{
