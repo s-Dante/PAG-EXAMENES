@@ -1,3 +1,11 @@
+<!--
+Para esta pagina flata
+    -Que funcionen los filtros segun la carrera seleccionada tambien
+        -Seleccionar carrera
+        -mostrar cantidad de semetres segun la carrera
+        -mostrar materias segun semestre y carrera
+-->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,11 +14,16 @@
         <meta name="description" content="Calendario de exámenes de la carrera LMAD de la FCFM, UANL">
         <meta name="keywords" content="FCFM, UANL, LMAD, Exámenes, Calendario">
         <meta name="author" content="LMAD">
-        <link rel="icon" type="image/png" href="img/favicon.png">
+        <link rel="icon" type="image/png" href="/img/favicon.png">
         <title>LMAD Calendario de exámenes</title>
 
+        <!--
+        <link rel="stylesheet" href="generalStyle.css">
+        <link rel="stylesheet" href="headerStyle.css">
+        <link rel="stylesheet" href="bodyStyle.css">
+        -->
 
-        <link rel="stylesheet" href="Views/style.css">
+        <link rel="stylesheet" href="/Views/style.css">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
 
@@ -41,10 +54,10 @@
             <header class="d-flex flex-wrap my-4 px-0 align-content-center justify-content-center">
                 <div class="col-4">
                     <a href="https://www.fcfm.uanl.mx/" target="_blank" rel="noopener noreferrer">
-                        <img src="img/FCFM-LOGO-big.png" 
-                        srcset="img/FCFM-LOGO-small.png 550w, 
-                            img/FCFM-LOGO-medium.png 800w, 
-                            img/FCFM-LOGO-big.png 1000w"
+                        <img src="/img/FCFM-LOGO-big.png" 
+                        srcset="/img/FCFM-LOGO-small.png 550w, 
+                            /img/FCFM-LOGO-medium.png 800w, 
+                            /img/FCFM-LOGO-big.png 1000w"
                         sizes="(max-width: 550px) 80px, 
                             (max-width: 900px) 100px, 
                             (max-width: 1200px) 100vw"
@@ -53,10 +66,10 @@
                 </div>
 
                 <div class="col-4">
-                    <img src="img/Logo-LMAD-big.png" 
-                    srcset="img/Logo-LMAD-small.png 550w, 
-                        img/Logo-LMAD-medium.png 800w, 
-                        img/Logo-LMAD-big.png 1000w"
+                    <img src="/img/Logo-LMAD-big.png" 
+                    srcset="/img/Logo-LMAD-small.png 550w, 
+                        /img/Logo-LMAD-medium.png 800w, 
+                        /img/Logo-LMAD-big.png 1000w"
                     sizes="(max-width: 550px) 80px, 
                         (max-width: 900px) 100px, 
                         (max-width: 1200px) 100vw"
@@ -64,7 +77,7 @@
                 </div>
 
                 <div class="col-4 text-center pt-3" style="display:normal;">
-                    <a href="/inicioSesion">
+                    <a href="../Views/inicioSesion.view.php">
                         <button class="boton">Adminsitrador</button>
                     </a>
                 </div>
@@ -94,7 +107,7 @@
             <div class="container d-flex justify-content-center align-items-center">
                 <div class="mensaje-borde d-flex align-items-center">
                     <div class="icono d-flex justify-content-center align-items-center me-3">
-                        <img src="img/idea 1.png" alt="icono de Idea">
+                        <img src="/img/idea 1.png" alt="icono de Idea">
                     </div>
                     <div class="mensaje">
                         <h6>Las fechas asignadas para el tercer parcial serán proporcionadas por la Facultad.</h6>
@@ -122,6 +135,19 @@
                 <div class="row justify-content-evenly" id="seleccion">
                     <div class="col-4 justify-content-center align-content-center" id="select">
                         <form action="selecciones" method="post">
+                            <div class="form-group ms-4">
+                                <label for="carrera" class="me-2">Carrera:</label>
+                                <select name="carrera" id="carrera" class="form-select">
+                                    <option value="Todas">Todas</option>
+                                    <option value="Licenciatura en Matemáticas">Licenciatura en Matemáticas</option>
+                                    <option value="Licenciatura en Física">Licenciatura en Física</option>
+                                    <option value="Licenciatura en Ciencias Computacionales">Licenciatura en Ciencias Computacionales</option>
+                                    <option value="Licenciatura en Actuaría">Licenciatura en Actuaría</option>
+                                    <option value="Licenciatura en Animación Digital">Licenciatura en Animación Digital</option>
+                                    <option value="Licenciatura en Seguridad en Tecnologías de la Información">Licenciatura en Seguridad en Tecnologías de la Información</option>
+                                </select>    
+                            </div>
+
                             <div class="form-group">
                                 <label for="semestre" class="me-2">Semestre:</label>
                                 <select name="semestre" id="semestre" class="form-select">
@@ -175,7 +201,7 @@
             
             <!-- Detalles del Examen -->
             <div class="row justify-content-center">
-                <div class="col-sm-8 col-md-8 col-11 bg-custom-gradient rounded-top-4 text-center" style="box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.7);">
+                <div class="col-sm-8 col-md-8 col-10 bg-custom-gradient rounded-top-4 text-center" style="box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.7);">
                     <div id="exam-details"></div>
                     <div class="b-example-divider"></div>
 
@@ -193,7 +219,7 @@
         <footer></footer>
 
         <!-- Scrpts -->
-        <script src="Views/scripts.js"></script>
+        <script src="/Views/scripts.js"></script>
     </body>
 
 </html>

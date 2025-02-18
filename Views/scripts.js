@@ -28,7 +28,7 @@ document.getElementById('semestre').addEventListener('change', function () {
     }
 
     // Llamada al backend para obtener materias
-    fetch(`/getMaterias?semestre=${semestre}`)
+    fetch(`/getMaterias?semestre=${encodeURIComponent(semestre)}`)
         .then(response => response.json())
         .then(materias => {
             // Agregar opción extra "Todas"
@@ -118,7 +118,8 @@ function initializeCalendar(groupedExams) {
                     // Extraer y validar propiedades del examen
                     const { 
                         Materia = 'Sin título', 
-                        group = 'No asignado', 
+                        group = 'No asignado',
+                        plan = 'N/A',
                         hora = 'Sin hora', 
                         parcial = 'N/A', 
                         semestre = 'N/A', 
@@ -135,12 +136,16 @@ function initializeCalendar(groupedExams) {
         
                         <div class="card-custom mx-sm-5 mx-2">
                             <div class="info-examen">
-                                <h4 class="mb-2 text-start truncate-text">${Materia}</h4>
+                                <h4 class="mb-2 text-start">${Materia}</h4>
                                 <p class="mb-1 text-start">
                                     <span class="text-secondary-custom">Gpo:</span>
                                     <span class="gpo"><strong class="truncate-text">${group}</strong></span>
                                 </p>
-                                <p class="mb-1">
+                        <p class="mb-1 text-start">
+                            <span class="text-secondary-custom">Plan:</span>
+                            <span class="plan"><strong class="truncate-text">${plan}</strong></span>
+                        </p>
+                                <p class="mb-1 text-start">
                                     <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
                                         <strong>${selectedDate}</strong>
                                     </span>
@@ -159,12 +164,12 @@ function initializeCalendar(groupedExams) {
                     <div class="b-example-divider"></div>
                     <div class="b-example-divider"></div>
         
-                    <p class="text-center">No hay exámenes disponibles.</p>
+                    <p class="text-center" style="font-size: 20px;">No hay exámenes disponibles.</p>
         
                     <div class="b-example-divider"></div>
                     <div class="b-example-divider"></div>
         
-                    <img src="img/Logo-LMAD.png" alt="logotipo de LMAD">
+                    <img src="img/bisonte-triste.png" alt="logotipo de LMAD" class="img-lmad">
         
                     <div class="b-example-divider"></div>
                     <div class="b-example-divider"></div>
@@ -204,7 +209,7 @@ function cargarExamenes() {
     currentPage = 0;
 
     // Llamada al backend para obtener exámenes según filtros
-    fetch(`/getExams?semestre=${encodeURIComponent(semestre)}&materia=${encodeURIComponent(ua)}&parcial=${encodeURIComponent(parcial)}`)
+    fetch('/getExams?semestre=' + encodeURIComponent(semestre) + '&materia=' + encodeURIComponent(ua) + '&parcial=' + encodeURIComponent(parcial))
         .then(response => response.json())
         .then(exams => {
             const examDetails = document.getElementById('exam-details');
@@ -218,6 +223,7 @@ function cargarExamenes() {
                     acc[date].push({
                         Materia: exam.Materia || 'Sin título',
                         group: exam.Grupo || 'No asignado',
+                        plan: exam.Plan || 'N/A',
                         hora: exam.Hora || 'Sin hora',
                         parcial: exam.Parcial || 'N/A',
                         semestre: exam.Semestre || 'N/A',
@@ -240,12 +246,12 @@ function cargarExamenes() {
                     <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
 
-                        <p class="text-center">No hay exámenes disponibles.</p>
+                        <p class="text-center" style="font-size: 20px;>No hay exámenes disponibles.</p>
 
                         <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
 
-                        <img src="img/Logo-LMAD.png" alt="logotipo de LMAD">
+                        <img src="img/bisonte-triste.png" alt="logotipo de LMAD" class="img-lmad">
 
                         <div class="b-example-divider"></div>
                         <div class="b-example-divider"></div>
@@ -276,6 +282,7 @@ function showPage(pageIndex) {
         pages[pageIndex].forEach(exam => {
             const title = exam.Materia;
             const group = exam.Grupo ?? 'No asignado';
+            const plan = exam.Plan ?? 'N/A';
             const hora = exam.Hora;
             const parcialText = exam.Parcial === '1' ? '1P' : (exam.Parcial === '2' ? '2P' : exam.Parcial);
             const selectedDate = exam.Fecha;
@@ -286,12 +293,16 @@ function showPage(pageIndex) {
 
                 <div class="card-custom mx-sm-5 mx-2">
                     <div class="info-examen">
-                        <h4 class="mb-2 text-start truncate-text">${title}</h4>
+                        <h4 class="mb-2 text-start">${title}</h4>
                         <p class="mb-1 text-start">
                             <span class="text-secondary-custom">Gpo:</span>
                             <span class="gpo"><strong class="truncate-text">${group}</strong></span>
                         </p>
-                        <p class="mb-1">
+                        <p class="mb-1 text-start">
+                            <span class="text-secondary-custom">Plan:</span>
+                            <span class="plan"><strong class="truncate-text">${plan}</strong></span>
+                        </p>
+                        <p class="mb-1 text-start">
                             <span class="text-secondary-custom text-start fecha" style="margin-right: 10px">
                                 <strong>${selectedDate}</strong>
                             </span>
