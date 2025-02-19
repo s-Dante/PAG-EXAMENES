@@ -103,7 +103,7 @@
         </select>
     </div>
 
-    <div class="form-group" id="select" style="justify-self: center; align-self: center;">
+    <div class="form-group" id="select" style="justify-self: center; align-self: center; justify-content:space-between;">
         <label for="filtroGpo" style="font-size: 17px;">Grupo:</label>      
         <select name="filtroGpo" id="filtroGpo" class="form-select">
             <option value="Seleccionar" disabled hidden selected>Seleccioar</option>
@@ -142,11 +142,11 @@
 
         <div style="display: inline-block; width: 2px; height: 50px; background: linear-gradient(0deg, #0DE5FF 0%, #33C2FF 20%, #A05CFF 80%, #C53AFF 100%); margin: 0 15px; transform: translateY(35%);"></div>
 
-        <span style="margin-right:8px;">Desde el día</span>
+        <span style="margin-right:8px;">Día:</span>
         <label for="inicioPrimero"></label>
         <input type="date" name="inicioPrimero" id="iniPrimero" class="date-picker">
 
-        <span style="margin-left: 25px; margin-right: 8px;">Hora</span>
+        <span style="margin-left: 25px; margin-right: 8px;">Hora:</span>
         <label for="finPrimero"></label>
         <input type="time" name="finPrimero" id="finPrimero" class="date-picker">
     </div>
@@ -159,7 +159,7 @@
 
         <div style="display: inline-block; width: 2px; height: 50px; background: linear-gradient(0deg, #0DE5FF 0%, #33C2FF 20%, #A05CFF 80%, #C53AFF 100%); margin: 0 15px; transform: translateY(35%);"></div>
 
-        <span style="margin-right:8px;">Desde el día</span>
+        <span style="margin-right:8px;">Día</span>
         <label for="inicioPrimero"></label>
         <input type="date" name="inicioPrimero" id="iniPrimero" class="date-picker">
 
@@ -226,21 +226,7 @@
             padding: 0 0.3rem;
             color-scheme: dark;
         }
-        /*
-        ::-webkit-datetime-edit
-        ::-webkit-datetime-edit-fields-wrapper
-        ::-webkit-datetime-edit-text
-
-        ::-webkit-datetime-edit-year-field
-        ::-webkit-datetime-edit-month-field
-        ::-webkit-datetime-edit-week-field
-        ::-webkit-datetime-edit-day-field
-        ::-webkit-datetime-edit-hour-field
-        ::-webkit-datetime-edit-minute-field
-        ::-webkit-datetime-edit-second-field
-        ::-webkit-datetime-edit-millisecond-field
-        ::-webkit-datetime-edit-ampm-field
-        */
+        
     </style>
 </body>
 </html>

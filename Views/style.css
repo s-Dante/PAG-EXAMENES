@@ -31,9 +31,10 @@ p{
   }
 
 
+
 .form-group {
     display: flex;
-    flex-wrap: unset;
+    flex-wrap: nowrap;
     align-items: center;
     margin-bottom: 15px;
 }
@@ -42,14 +43,13 @@ p{
     margin-right: 10px; /* Espaciado entre label y select */
 }
 
-.form-group select {
-    width: 200px;  /* Ancho fijo para el select */
-}
 
 .img-invert{
     size: 50%;
     filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.263));
 }
+
+
 
 /* Estilo de las cards */
 .card-custom {
@@ -239,6 +239,12 @@ p{
 }
 
 
+
+
+
+
+
+
 .icono img {
     max-width: 100%;
     height: auto; /* Mantener proporción del icono */
@@ -257,6 +263,12 @@ p{
     margin: 0; /* Elimina márgenes adicionales */
     font-size: 1rem; /* Hereda el tamaño definido */
 }
+
+
+
+
+
+
 
 
 #calendar{
@@ -389,6 +401,10 @@ p{
     box-shadow: 0px 0px 10px black;
 }
 
+
+
+
+
 .pagination-container {
     display: flex;
     justify-content: center;
@@ -434,7 +450,7 @@ p{
 .truncate-text {
     white-space: wrap;
     overflow: hidden;             /* Esconde el texto que se desborda */
-    text-overflow:ellipsis;      /* Muestra "..." al final del texto que se trunca */
+    text-overflow:ellipsis;       /* Muestra "..." al final del texto que se trunca */
 }
 
 /* Si quieres permitir el salto de línea para palabras muy largas pero evitar que el texto se salga del contenedor */
@@ -463,6 +479,7 @@ p{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 
 
 
