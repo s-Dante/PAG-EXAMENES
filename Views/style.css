@@ -746,7 +746,7 @@ main {
 }
 
 ::placeholder {
-    color: #fff;  /* Cambia a un color visible como negro */
+    color: #fff;
 }
 
 .custom-input:focus {

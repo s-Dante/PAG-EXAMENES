@@ -179,11 +179,17 @@
     <div class="b-example-divider"></div>
 
     <div style="justify-self: center; font-family:'Kodchasan';">
-        <button style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(12, 138, 152),rgb(33, 49, 109) 95%); width:150px; height:30px; display:inline; justify-self:center; margin-right: 10px">Guardar</button>
-        <button style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(116, 11, 161),rgb(33, 49, 109) 95%); width:150px; height:30px; display:inline; justify-self:center; margin-left: 10px">Cancelar</button>
+        <button class="botonesMaster" style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(12, 138, 152),rgb(33, 49, 109) 95%); width:150px; height:30px; display:inline; justify-self:center; margin-right: 10px">Guardar</button>
+        <button class="botonesMaster" style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(116, 11, 161),rgb(33, 49, 109) 95%); width:150px; height:30px; display:inline; justify-self:center; margin-left: 10px">Cancelar</button>
     </div>
 
     <style>
+        .botonesMaster:hover{
+            transition: 100ms ease-in;
+            transform: translateY(-2px) scale(1.05);
+            cursor: pointer;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+        }
         .parcial{
             text-transform: uppercase;
         }
