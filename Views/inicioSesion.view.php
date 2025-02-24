@@ -17,6 +17,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
+        <!-- Sweetalert -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@450" />
 
@@ -26,6 +30,42 @@
     </head>
 
     <body>
+    <?php
+    if (isset($_SESSION['mensaje'])) {
+        $mensaje = $_SESSION['mensaje'];
+        $alertType = $mensaje['type'] == 'success' ? '¡Éxito!' : 'Error';
+        $rol = $_SESSION['user']['Rol'];
+
+        // Check if the message is for a successful registration
+        if ($mensaje['type'] == 'success'&& $rol == 'Maestro') {
+            echo "<script>
+                swal({
+                    title: '$alertType',
+                    text: '{$mensaje['text']}',
+                    type: '{$mensaje['type']}',
+                    showConfirmButton: true
+                }, function() {
+                    // Redirigir al dashboard
+                    window.location.href = '/maestro';
+                });
+            </script>";
+        } else {
+            echo "<script>
+                swal({
+                    title: '$alertType',
+                    text: '{$mensaje['text']}',
+                    type: '{$mensaje['type']}',
+                    showConfirmButton: true
+                }, function() {
+                    // Redirigir a la página de signUp después de cerrar la alerta
+                    window.location.href = '/inicioSesion';
+                });
+            </script>";
+        }
+    
+        unset($_SESSION['mensaje']); // Elimina el mensaje después de mostrarlo
+    }
+    ?>
         <div class="container">
             <header class="row align-content-center d-flex flex-wrap my-4 px-0 justify-content-around">
                 <div class="col-3 align-content-center">
@@ -57,27 +97,27 @@
         <div class="container d-flex justify-content-center align-items-center min-vh-100 all-login">
             <div class="row rounded-4 p-3 bg-transparent">
                 <!-- Columna izquierda (Formulario de login) -->
-                <div class="col-12 col-md-6 align-content-center left-box"> <!-- Cambiado col-md-6 a col-12 en móviles -->
+                <form action="/inicioSesion" method="POST" class="col-12 col-md-6 align-content-center left-box">
                     <div class="row align-items-center ms-sm-4 ms-1">
                         <div class="titulo-inicio mb-5 ps-sm-4 ps-4">
-                            <!-- H1 más pequeño en dispositivos móviles -->
                             <h1 class="fs-md-3 ps-1" style="font-size: 100px;"><strong>INICIO DE SESIÓN</strong></h1>
                         </div>
                         <div class="align-content-center justify-content-center d-flex flex-wrap">
                             <div class="input-group mb-3 mt-5 p-2 me-4">
                                 <label for="claveUsuario" class="mb-3 fs-4" style="font-family: 'Montserrat'; color: cornsilk;">Clave de usuario:</label>
-                                <input type="text" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Clave de usuario">
+                                <input type="text" id="claveUsuario" name="claveUsuario" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Clave de usuario" required>
                             </div>
-                            <div class="input-group mb-3 p-2 me-4" style="color: white;">
+                            <div class="input-group mb-3 p-2 me-4">
                                 <label for="password" class="mb-3 fs-4" style="font-family: 'Montserrat'; color: cornsilk;">Contraseña:</label>
-                                <input type="password" id="password-input" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Contraseña">
+                                <input type="password" id="password" name="password" class="form-control form-control-lg fs-6 custom-input" style="color: cornsilk;" placeholder="Contraseña" required>
                             </div>
                             <div class="input-group mb-5 p-2 me-0 justify-content-center">
-                                <button class="boton custom-button rounded-3" style="width: 545px; margin-right: 22px; background-color: #0DE5FF; color:black;"><strong>Entrar</strong></button>
+                                <button type="submit" class="boton custom-button rounded-3" style="width: 545px; margin-right: 22px; background-color: #0DE5FF; color:black;"><strong>Entrar</strong></button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
+
 
                 <!-- Columna derecha (Imagen) -->
                 <div class="col-12 col-md-6 d-flex justify-content-center align-items-center flex-column right-box">
@@ -124,12 +164,12 @@
 
         <script>
             // Cambio
-            document.getElementById('password-input').addEventListener('focus', function() {
+            document.getElementById('password').addEventListener('focus', function() {
                 document.getElementById('features-image').src = '../img/bisonte-detective.png';
             });
         
             // devolver
-            document.getElementById('password-input').addEventListener('blur', function() {
+            document.getElementById('password').addEventListener('blur', function() {
                 document.getElementById('features-image').src = '../img/bisonte-saludo.png';
             });
         </script>

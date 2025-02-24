@@ -1,10 +1,11 @@
 <?php
 require 'Guest.php';
-
+require 'Maestro.php';
 
 class Middleware{
     public const MAP= [
-        'guest'=>Guest::class
+        'guest'=>Guest::class,
+        'maestro'=>Maestro::class
     ];
 
     public static function resolve($role){
