@@ -100,7 +100,7 @@
                 <form action="/inicioSesion" method="POST" class="col-12 col-md-6 align-content-center left-box">
                     <div class="row align-items-center ms-sm-4 ms-1">
                         <div class="titulo-inicio mb-5 ps-sm-4 ps-4">
-                            <h1 class="fs-md-3 ps-1" style="font-size: 100px;"><strong>INICIO DE SESIÓN</strong></h1>
+                            <h1 class="fs-md-3 ps-1"><strong>INICIO DE SESIÓN</strong></h1>
                         </div>
                         <div class="align-content-center justify-content-center d-flex flex-wrap">
                             <div class="input-group mb-3 mt-5 p-2 me-4">
@@ -128,19 +128,20 @@
             </div>
         </div>
 
-        <style>
-            @media (max-width: 576px) {
+        <style> 
+
+            @media (width: 330px) and (width:500px){
                 .titulo-inicio h1 {
-                    font-size: 2rem; /* Ajustar tamaño de título en móviles */
+                    font-size: 1rem; /* Ajustar tamaño de título en móviles */
                     width: 300px;
                     text-wrap: nowrap;
                 }
                 .input-group {
-                    margin-bottom: 1rem; /* Reducir el margen entre inputs en pantallas pequeñas */
+                    margin-bottom: 0.5rem; /* Reducir el margen entre inputs en pantallas pequeñas */
                     width: 300px;
                 }
                 .custom-button {
-                    font-size: 1.3rem; /* Ajustar tamaño del botón */
+                    font-size: 0.6rem; /* Ajustar tamaño del botón */
                     width: 220px;
                     margin-right: 10px;
                 }
@@ -155,11 +156,7 @@
                 }
             }
 
-            @media (max-width: 344px) {
-                .all-login {
-                    width: 200px;
-                }
-            }
+            
         </style>
 
         <script>
