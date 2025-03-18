@@ -1,2 +1,2 @@
 <?php
-require "Views/maestros.view.php";
+require "VistaBeta/BetaMaster/principalMaster.php";
