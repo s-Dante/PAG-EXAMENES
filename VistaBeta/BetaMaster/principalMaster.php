@@ -76,7 +76,7 @@
                 <img src="/img/examsIcon.png" alt="" style="width: 160px; height:auto;">
             </div>
             <div class="carga" style="text-align: center;">
-                <h2 style="font-size: 75px; font-family: 'Kodchasan';"><b>22</b></h2><br>
+                <h2 style="font-size: 75px; font-family: 'Kodchasan';"><b><?=$examenesCantidad?></b></h2><br>
                 <h4 style="text-align: start; font-family: 'Kodchasan' !important;">EXÁMENES CARGADOS</h4>
             </div>
         </div>
@@ -109,7 +109,7 @@
                     <option value="Licenciatura en Multimedia y Animacion Digital">Licenciatura en Multimedia y Animacion Digital</option>
                     <option value="Licenciatura en Matemáticas">Licenciatura en Matemáticas</option>
                     <option value="Licenciatura en Física">Licenciatura en Física</option>
-                    <option value="Licenciatura en Actuaría">Licenciatura en Actuaráa</option>
+                    <option value="Licenciatura en Actuaría">Licenciatura en Actuaría</option>
                     <option value="Licenciatura en Ciencias Computacionales">Licenciatura en Ciencias Computacionales</option>
                     <option value="Licenciatura en Seguridad en Tecnologías de la Información">Licenciatura en Seguridad en Tecnologías de la Información</option>
                 </select>

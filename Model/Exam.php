@@ -15,6 +15,13 @@ class Exam{
         return $stmt->fetchAll();
     }
 
+    public function getExamsCount(){
+        $sql = "SELECT COUNT(*) FROM Examen";
+        $stmt = $this->con->getCon()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
     public function getMateriasBySemestre($semestre) {
         $sql = "SELECT DISTINCT Materia FROM Examen WHERE Semestre = :semestre";
         $stmt = $this->con->getCon()->prepare($sql);
