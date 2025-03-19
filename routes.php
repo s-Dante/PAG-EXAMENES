@@ -7,3 +7,5 @@ $router->get('/inicioSesion','Controller/inicioSesion.controller.php');
 $router->get('/maestro','Controller/maestro.controller.php')->only('maestro');
 
 $router->post('/inicioSesion','Controller/inicioSesion.controller.php');
+$router->post('/uploadCSV', 'Controller/uploadCSV.controller.php');
+$router->post('/deleteExams', 'Controller/deleteExams.controller.php');

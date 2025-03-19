@@ -66,6 +66,52 @@ class Exam{
     }
     
     
-    
+    public function insertarDesdeCSV($fileTmpPath) {
+        if (($handle = fopen($fileTmpPath, "r")) !== FALSE) {
+            // Omitimos la primera línea si tiene encabezados
+            fgetcsv($handle, 1000, ",");
 
+            $query = "INSERT INTO Examen (Materia, Fecha, Hora, Grupo, Parcial, Carrera, Plan, Semestre) 
+                      VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->con->getCon()->prepare($query);
+
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                // Convertir fecha y hora
+                $fecha = date("Y-m-d", strtotime(str_replace("/", "-", $data[1]))); 
+                $hora = explode("-", $data[2])[0];
+
+                try {
+                    $stmt->execute([$data[0], $fecha, $hora, $data[3], $data[4], $data[5], $data[6], $data[7]]);
+                } catch (PDOException $e) {
+                    fclose($handle);
+                    return "Error al insertar datos: " . $e->getMessage();
+                }
+            }
+
+            fclose($handle);
+            return "Datos cargados correctamente.";
+        } else {
+            return "Error al abrir el archivo.";
+        }
+        
+    }
+
+
+    public function borrarTodosLosExamenes() {
+        try {
+            $queryDelete = "DELETE FROM Examen"; // Borra todos los registros
+            $queryReset = "ALTER TABLE Examen AUTO_INCREMENT = 1"; // Reinicia el ID a 1
+    
+            $stmt = $this->con->getCon()->prepare($queryDelete);
+            $stmt->execute();
+    
+            $stmtReset = $this->con->getCon()->prepare($queryReset);
+            $stmtReset->execute();
+    
+            return "✅ Todos los exámenes han sido eliminados y las IDs han sido reiniciadas.";
+        } catch (PDOException $e) {
+            return "❌ Error al eliminar los exámenes: " . $e->getMessage();
+        }
+    }
+    
 }

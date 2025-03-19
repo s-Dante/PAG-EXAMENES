@@ -167,10 +167,23 @@
 
     <div class="b-example-divider"></div>
     <div class="b-example-divider"></div>
-
+    
     <div style="justify-self: center; font-family:'Kodchasan';">
-        <button class="botonesMaster" style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(12, 138, 152),rgb(33, 49, 109) 95%); width:275px; height:30px; display:inline; justify-self:center; margin-right: 10px">Borrar informacion actual</button>
-        <button class="botonesMaster" style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(116, 11, 161),rgb(33, 49, 109) 95%); width:275px; height:30px; display:inline; justify-self:center; margin-left: 10px">Subir informacion nueva</button>
+        <button id="btnDelete" class="botonesMaster" 
+            style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(12, 138, 152),rgb(33, 49, 109) 95%); width:275px; height:30px;  display:inline; justify-self:center; margin-right: 10px">
+            Borrar información actual
+        </button>
+    
+        <button id="btnUpload" class="botonesMaster" 
+            style="border-radius: 22px; color:cornsilk; background-image: linear-gradient(90deg,rgb(116, 11, 161),rgb(33, 49, 109) 95%); width:275px; height:30px;  display:inline; justify-self:center; margin-left: 10px">
+            Subir información nueva
+        </button>
+    
+        <!-- Input oculto para seleccionar archivo -->
+        <input type="file" id="fileInput" accept=".csv" style="display: none;">
+    
+        <!-- Mostrar nombre del archivo seleccionado -->
+        <p id="fileName" style="text-align:center; margin-top:10px;"></p>
     </div>
 
     <div class="b-example-divider"></div>
@@ -267,6 +280,43 @@
                 document.getElementById('lupaIcon').style.display = 'block';
             }
         });
+
+        document.getElementById('btnUpload').addEventListener('click', function() {
+        document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            if (file) {
+                document.getElementById('fileName').textContent = "Archivo seleccionado: " + file.name;
+                uploadCSV(file);
+            }
+        });
+
+        document.getElementById('btnDelete').addEventListener('click', function() {
+            if (confirm("⚠️ ¿Estás seguro de que deseas borrar todos los exámenes? Esta acción no se puede deshacer.")) {
+                fetch('/deleteExams', {
+                    method: 'POST',
+                })
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => console.error("Error:", error));
+            }
+        });
+
+
+        function uploadCSV(file) {
+            let formData = new FormData();
+            formData.append("csvFile", file);
+        
+            fetch("/uploadCSV", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch(error => console.error("Error:", error));
+        }
     </script>
 </body>
 </html>
