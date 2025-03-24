@@ -137,6 +137,13 @@
     <div class="b-example-divider"></div>
     <div class="b-example-divider"></div>
 
+    <div class="b-example-divider"></div>
+
+    <h2 style="text-align: center;">FECHAS DE PARCIALES</h2>
+
+    <div class="b-example-divider"></div>
+    <div class="b-example-divider"></div>
+
     <div class="selectorFecha" style="color: cornsilk !important; justify-self: center; align-items: center; font-size: 20px;">
         <span style="color: cornsilk; display:inline;" class="parcial">Primer Parcial</span>
 
