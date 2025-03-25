@@ -31,13 +31,13 @@
 
     <body>
     <?php
+    // 1. Mostrar mensaje si existe
     if (isset($_SESSION['mensaje'])) {
         $mensaje = $_SESSION['mensaje'];
         $alertType = $mensaje['type'] == 'success' ? '¡Éxito!' : 'Error';
         $rol = $_SESSION['user']['Rol'];
-
-        // Check if the message is for a successful registration
-        if ($mensaje['type'] == 'success'&& $rol == 'Maestro') {
+    
+        if ($mensaje['type'] == 'success' && $rol == 'Maestro') {
             echo "<script>
                 swal({
                     title: '$alertType',
@@ -45,8 +45,18 @@
                     type: '{$mensaje['type']}',
                     showConfirmButton: true
                 }, function() {
-                    // Redirigir al dashboard
                     window.location.href = '/maestro';
+                });
+            </script>";
+        } else if ($mensaje['type'] == 'success' && $rol == 'Admin') {
+            echo "<script>
+                swal({
+                    title: '$alertType',
+                    text: '{$mensaje['text']}',
+                    type: '{$mensaje['type']}',
+                    showConfirmButton: true
+                }, function() {
+                    window.location.href = '/admin';
                 });
             </script>";
         } else {
@@ -57,13 +67,22 @@
                     type: '{$mensaje['type']}',
                     showConfirmButton: true
                 }, function() {
-                    // Redirigir a la página de signUp después de cerrar la alerta
                     window.location.href = '/inicioSesion';
                 });
             </script>";
         }
     
         unset($_SESSION['mensaje']); // Elimina el mensaje después de mostrarlo
+    }
+    
+    // 2. Si ya hay sesión pero no hay mensaje, redirige automáticamente
+    elseif (isset($_SESSION['user']['Rol'])) {
+        $rol = $_SESSION['user']['Rol'];
+    
+        echo "<script>
+            window.location.href = '" . ($rol === 'Maestro' ? '/maestro' : ($rol === 'Admin' ? '/admin' : '/')) . "';
+        </script>";
+        exit;
     }
     ?>
         <div class="container">
