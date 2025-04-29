@@ -114,4 +114,61 @@ class Exam{
         }
     }
     
+    public function obtenerMateriasAgrupadas($busqueda = '', $limit = 5, $offset = 0) {
+        $busqueda = "%$busqueda%";
+    
+        $query = "
+            SELECT 
+                Materia, Grupo, Plan, Carrera,
+                GROUP_CONCAT(DISTINCT Parcial ORDER BY Parcial ASC) as Parciales,
+                MAX(CASE WHEN Parcial = 1 THEN Fecha END) as Fecha1P,
+                MAX(CASE WHEN Parcial = 2 THEN Fecha END) as Fecha2P,
+                MIN(Hora) as Hora
+            FROM Examen
+            WHERE Materia LIKE :busqueda
+            GROUP BY Materia, Grupo, Plan, Carrera
+            ORDER BY Materia ASC
+            LIMIT :limit OFFSET :offset
+        ";
+    
+        $stmt = $this->con->getCon()->prepare($query);
+        $stmt->bindValue(':busqueda', $busqueda, PDO::PARAM_STR);
+        $stmt->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function obtenerUnidadParaEditar($materia, $grupo, $plan, $carrera) {
+        $query = "
+            SELECT * FROM Examen 
+            WHERE Materia = :materia AND Grupo = :grupo AND Plan = :plan AND Carrera = :carrera
+            LIMIT 1
+        ";
+    
+        $stmt = $this->con->getCon()->prepare($query);
+        $stmt->bindValue(':materia', $materia);
+        $stmt->bindValue(':grupo', $grupo);
+        $stmt->bindValue(':plan', $plan);
+        $stmt->bindValue(':carrera', $carrera);
+        $stmt->execute();
+    
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function actualizarUnidad($om, $og, $op, $oc, $nm, $ng, $np, $nc, $hora) {
+        $query = "
+            UPDATE Examen
+            SET Materia = :nm, Grupo = :ng, Plan = :np, Carrera = :nc, Hora = :hora
+            WHERE Materia = :om AND Grupo = :og AND Plan = :op AND Carrera = :oc
+        ";
+    
+        $stmt = $this->con->getCon()->prepare($query);
+        $stmt->execute([
+            ':nm' => $nm, ':ng' => $ng, ':np' => $np, ':nc' => $nc, ':hora' => $hora,
+            ':om' => $om, ':og' => $og, ':op' => $op, ':oc' => $oc
+        ]);
+    }
+    
 }

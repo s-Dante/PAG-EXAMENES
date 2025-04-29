@@ -77,7 +77,7 @@
 
     <div class="b-example-divider"></div>
 
-    <div class="form-group" id="select" style="justify-self: center; align-self: center;">
+<!--     <div class="form-group" id="select" style="justify-self: center; align-self: center;">
         <label for="filtroCarrera" style="font-size: 17px;">Carrera:</label>      
         <select name="filtroCarrera" id="filtroCarrera" class="form-select">
             <option value="Seleccionar" disabled hidden selected>Seleccioar</option>
@@ -88,31 +88,53 @@
             <option value="Licenciatura en Ciencias Computacionales">Licenciatura en Ciencias Computacionales</option>
             <option value="Licenciatura en Seguridad en Tecnologías de la Información">Licenciatura en Seguridad en Tecnologías de la Información</option>
         </select>
-    </div>
+    </div> -->
 
     <div class="form-group" id="select" style="justify-self: center; align-self: center;">
         <label for="filtroUA" style="font-size: 17px;">Unidades de Aprendizaje:</label>      
         <select name="filtroUA" id="filtroUA" class="form-select">
-            <option value="Seleccionar" disabled hidden selected>Seleccioar</option>
-            <option value="Licenciatura en Multimedia y Animacion Digital">Licenciatura en Multimedia y Animacion Digital</option>
-            <option value="Licenciatura en Matemáticas">Licenciatura en Matemáticas</option>
-            <option value="Licenciatura en Física">Licenciatura en Física</option>
-            <option value="Licenciatura en Actuaría">Licenciatura en Actuaráa</option>
-            <option value="Licenciatura en Ciencias Computacionales">Licenciatura en Ciencias Computacionales</option>
-            <option value="Licenciatura en Seguridad en Tecnologías de la Información">Licenciatura en Seguridad en Tecnologías de la Información</option>
+            <option value="Seleccionar" disabled hidden>Seleccionar</option>
+            <?php
+            $carreras = [
+                "LMAD",
+                "Licenciatura en Multimedia y Animacion Digital",
+                "Licenciatura en Matemáticas",
+                "Licenciatura en Física",
+                "Licenciatura en Actuaría",
+                "Licenciatura en Ciencias Computacionales",
+                "Licenciatura en Seguridad en Tecnologías de la Información"
+            ];
+            foreach ($carreras as $c) {
+                $selected = ($unidad['Carrera'] == $c) ? 'selected' : '';
+                echo "<option value=\"$c\" $selected>$c</option>";
+            }
+            ?>
         </select>
+
     </div>
 
     <div class="form-group" id="select" style="justify-self: center; align-self: center; justify-content:space-between;">
         <label for="filtroGpo" style="font-size: 17px;">Grupo:</label>      
         <select name="filtroGpo" id="filtroGpo" class="form-select">
-            <option value="Seleccionar" disabled hidden selected>Seleccioar</option>
-            <option value="Licenciatura en Multimedia y Animacion Digital">Licenciatura en Multimedia y Animacion Digital</option>
-            <option value="Licenciatura en Matemáticas">Licenciatura en Matemáticas</option>
-            <option value="Licenciatura en Física">Licenciatura en Física</option>
-            <option value="Licenciatura en Actuaría">Licenciatura en Actuaráa</option>
-            <option value="Licenciatura en Ciencias Computacionales">Licenciatura en Ciencias Computacionales</option>
-            <option value="Licenciatura en Seguridad en Tecnologías de la Información">Licenciatura en Seguridad en Tecnologías de la Información</option>
+            <option value="Seleccionar" disabled hidden>Seleccionar</option>
+            <?php
+            $grupos = [
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58", 
+                "59",
+                "151"
+            ];
+            foreach ($grupos as $g) {
+                $selected = ($unidad['Grupo'] == $g) ? 'selected' : '';
+                echo "<option value=\"$g\" $selected>$g</option>";
+            }
+            ?>
         </select>
     </div>
 

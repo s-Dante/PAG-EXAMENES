@@ -174,8 +174,8 @@
             id="lupaIcon" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); height: 20px; cursor: pointer; filter: invert(1);">
     </div>
 
-    <div class="b-example-divider"></div>
-    <div class="b-example-divider"></div>
+    <div id="materiasContainer" class="mt-4"></div>
+    <div id="paginationContainer" class="text-center mt-3"></div>
 
     <style>
 
@@ -287,6 +287,93 @@
             .then(data => alert(data))
             .catch(error => console.error("Error:", error));
         }
+
+        let currentPage = 1;
+
+    function fetchMaterias(page = 1) {
+        const query = document.getElementById("materiaBuscar").value;
+    
+        fetch(`/getMateriasAgrupadas?q=${encodeURIComponent(query)}&page=${page}`)
+            .then(res => res.json())
+            .then(data => {
+                renderMaterias(data);
+                currentPage = page;
+            });
+    }
+    
+    function renderMaterias(materias) {
+        const container = document.getElementById("materiasContainer");
+        container.innerHTML = "";
+
+        if (materias.length === 0) {
+            container.innerHTML = "<p style='text-align:center; color:cornsilk;'>No se encontraron materias.</p>";
+            return;
+        }
+
+        materias.forEach(item => {
+            const formattedParcial = item.Parciales.includes('1') && item.Parciales.includes('2') 
+                ? '1P & 2P' 
+                : (item.Parciales.includes('1') ? '1P' : '2P');
+
+            // Construcción de texto de fechas por parcial
+            let fechasHTML = "";
+            if (item.Fecha1P) {
+                fechasHTML += `<span class="text-secondary-custom">1P:</span> <strong>${item.Fecha1P}</strong><br>`;
+            }
+            if (item.Fecha2P) {
+                fechasHTML += `<span class="text-secondary-custom">2P:</span> <strong>${item.Fecha2P}</strong>`;
+            }
+
+            const html = `
+                <div class="b-example-divider"></div>   
+                <div class="b-example-divider"></div>
+                    
+                <div class="card-custom mx-sm-5 mx-2">
+                    <div class="info-examen">
+                        <h4 class="mb-2 text-start">${item.Materia}</h4>
+                        <p class="mb-1 text-start">
+                            <span class="text-secondary-custom">Gpo:</span>
+                            <span class="gpo"><strong class="truncate-text">${item.Grupo}</strong></span>
+                        </p>
+                        <p class="mb-1 text-start">
+                            <span class="text-secondary-custom">Plan:</span>
+                            <span class="plan"><strong class="truncate-text">${item.Plan}</strong></span>
+                        </p>
+                        <p class="mb-1 text-start">
+                            <span class="text-secondary-custom">Carrera:</span>
+                            <strong>${item.Carrera}</strong>
+                        </p>
+                        <p class="mb-1 text-start">
+                            ${fechasHTML}
+                            <br><span class="time-text">${item.Hora} hrs</span>
+                        </p>
+                    </div>
+                    <div class="num-parcial text-center">
+                        <div class="badge-custom">${formattedParcial}</div>
+                        <button class="btn btn-sm btn-warning mt-2" onclick="window.location.href='/editarUnidad?materia=${encodeURIComponent(item.Materia)}&grupo=${encodeURIComponent(item.Grupo)}&plan=${encodeURIComponent(item.Plan)}&carrera=${encodeURIComponent(item.Carrera)}'">Editar</button>
+                    </div>
+                </div>
+            `;
+
+
+            container.innerHTML += html;
+        });
+
+        renderPaginationControls();
+    }
+
+    
+    function renderPaginationControls() {
+        const pagContainer = document.getElementById("paginationContainer");
+        pagContainer.innerHTML = `
+            <button onclick="fetchMaterias(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>Anterior</button>
+            <span style="margin: 0 10px; color: cornsilk;">Página ${currentPage}</span>
+            <button onclick="fetchMaterias(${currentPage + 1})">Siguiente</button>
+        `;
+    }
+    
+    document.getElementById("materiaBuscar").addEventListener("input", () => fetchMaterias(1));
+    window.addEventListener("DOMContentLoaded", () => fetchMaterias());
     </script>
 </body>
 </html>
