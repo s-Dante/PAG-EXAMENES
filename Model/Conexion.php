@@ -12,7 +12,7 @@ class Conexion
         //MySQL
         $dsn = "mysql:host=" . $config['host'] . ";port=" . $config['port'] . ";dbname=" . $config['dbname'] . ";charset=utf8mb4";
         //PostgresSQL
-        $dsn = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
+        //$dsn = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
         $this->con = new PDO($dsn, $config['user'], $config['password']);
         $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
