@@ -259,7 +259,7 @@
             let file = event.target.files[0];
             if (file) {
                 document.getElementById('fileName').textContent = "Archivo seleccionado: " + file.name;
-                uploadCSV2(file);
+                uploadCSV(file);
             }
         });
 
