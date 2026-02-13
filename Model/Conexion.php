@@ -9,7 +9,7 @@ class Conexion
     {
         //crea el dsn con los datos, y el ";" que es el separador que pondra por cada parametro
         //$dsn = 'mysql:' . http_build_query($config,"",";");
-        $dsn = "mysql:host=" . $config['host'] . ";port=" . $config['port'] . ";dbname=" . $config['dbname'] . ";charset=utf8mb4";
+        $dsn = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
         $this->con = new PDO($dsn, $config['user'], $config['password']);
         $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
