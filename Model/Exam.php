@@ -96,6 +96,56 @@ class Exam{
         
     }
 
+    public function insertarDesdeCSV2($fileTmpPath) {
+    if (($handle = fopen($fileTmpPath, "r")) !== FALSE) {
+        // Omitimos la primera línea
+        fgetcsv($handle, 0, ",");
+
+        $query = "INSERT INTO Examen (Materia, Fecha, Hora, Grupo, Parcial, Carrera, Plan, Semestre) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->con->getCon()->prepare($query);
+
+        $filasInsertadas = 0;
+        $errores = [];
+
+        // Usamos 0 para no tener límite de longitud de línea
+        while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
+            // AJUSTE DE ÍNDICES: Si tu CSV empieza con un número (1, Materia...), 
+            // desplaza los índices un lugar: Materia=$data[1], Fecha=$data[2], etc.
+            
+            $materia = $data[1]; // Ajustado si hay ID al inicio
+            $fechaRaw = str_replace("/", "-", $data[2]);
+            $fecha = date("Y-m-d", strtotime($fechaRaw));
+            $hora = explode("-", $data[3])[0];
+
+            try {
+                $stmt->execute([
+                    $materia, 
+                    $fecha, 
+                    $hora, 
+                    $data[4], // Grupo
+                    $data[5], // Parcial
+                    $data[6], // Carrera
+                    $data[7], // Plan
+                    $data[8]  // Semestre
+                ]);
+                $filasInsertadas++;
+            } catch (PDOException $e) {
+                // En lugar de cerrar y salir, guardamos el error y seguimos
+                $errores[] = "Fila con materia {$materia}: " . $e->getMessage();
+            }
+        }
+
+        fclose($handle);
+        
+        if (count($errores) > 0) {
+            return "Se insertaron {$filasInsertadas} filas. Errores: " . implode(" | ", $errores);
+        }
+        return "Éxito: Se cargaron las {$filasInsertadas} filas correctamente.";
+    } else {
+        return "Error al abrir el archivo.";
+    }
+}
 
     public function borrarTodosLosExamenes() {
         try {
