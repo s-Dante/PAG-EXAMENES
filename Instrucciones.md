@@ -17,12 +17,15 @@ Como subir el proyecto a railway
 5-. Configurar el proyecto en railway (el repo)
     5.1-. COnfigurar variables de entorno
         5.1.1-  MYSQLDATABASE="${{MySQL.MYSQLDATABASE}}"
-                MYSQLHOST="${{MySQL.MYSQLHOST}}}}"
-                MYSQLPASSWORD="${{MySQL.MYSQLPASSWORD}}}}"
-                MYSQLPORT="${{MySQL.MYSQLPORT}}}}"
+                MYSQLHOST="${{MySQL.MYSQLHOST}}"
+                MYSQLPASSWORD="${{MySQL.MYSQLPASSWORD}}"
+                MYSQLPORT="${{MySQL.MYSQLPORT}}"
                 PGPASSWORD="kftfvgn58v28vuz37saiuexbt8qqcpqs"
     5.2-. En la pestaña de settings de railway poner:
         5.2.1-En Networking, generar un dominio
         3.2.2-En Deploy, gnerar un comando propio y poner:
             3.2.2.1-php -S 0.0.0.0:$PORT
     
+6-. Cambios para poder subir los examenes en la BD
+    6.1-. en las rutas, quitar el middleware de session admin a la ruta $router->get('/admin','Controller/admin.controller.php');
+    6.2-. hacer el deploy en raiway, con a branch actualizada a esta informacion

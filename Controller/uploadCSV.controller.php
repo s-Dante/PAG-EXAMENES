@@ -7,7 +7,7 @@ $examDB = new Exam($config['database']);
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["csvFile"])) {
     $fileTmpPath = $_FILES["csvFile"]["tmp_name"];
 
-    $resultado = $examDB->insertarDesdeCSV($fileTmpPath);
+    $resultado = $examDB->insertarDesdeCSV2($fileTmpPath);
 
     dd($resultado);
 } else {
